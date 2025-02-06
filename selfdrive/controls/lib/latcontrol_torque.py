@@ -54,13 +54,17 @@ class LatControlTorque(LatControl):
 
   def update(self, active, CS, VM, params, steer_limited, desired_curvature, desired_curvature_now, llk):
     self.frame += 1
-    if self.frame % 10 == 0:
+    if self.frame % 100 == 0:
       lateralTorqueCustom = self.params.get_int("LateralTorqueCustom")
       self.dampingFactor = self.params.get_float("DampingFactor") * 0.01
       if lateralTorqueCustom > 0:
         self.torque_params.latAccelFactor = self.params.get_float("LateralTorqueAccelFactor")*0.001
         self.torque_params.friction = self.params.get_float("LateralTorqueFriction")*0.001
+        lateralTorqueKp = self.params.get_float("LateralTorqueKp")*0.01
+        lateralTorqueKi = self.params.get_float("LateralTorqueKi")*0.01
         lateralTorqueKd = self.params.get_float("LateralTorqueKd")*0.01
+        self.pid._k_p = [[0], [lateralTorqueKp]]
+        self.pid._k_i = [[0], [lateralTorqueKi]]
         self.pid._k_d = [[0], [lateralTorqueKd]]
         self.torque_params.latAccelOffset = self.latAccelOffset_default
       elif self.lateralTorqueCustom > 1:  # 1 -> 0, reset to default
@@ -86,7 +90,7 @@ class LatControlTorque(LatControl):
         curvature_deadzone = abs(VM.calc_curvature(math.radians(self.steering_angle_deadzone_deg), CS.vEgo, 0.0))
       else:
         actual_curvature_llk = llk.angularVelocityCalibrated.value[2] / CS.vEgo
-        actual_curvature = interp(CS.vEgo, [2.0, 5.0], [actual_curvature_vm, actual_curvature_llk])
+        actual_curvature = np.interp(CS.vEgo, [2.0, 5.0], [actual_curvature_vm, actual_curvature_llk])
         curvature_deadzone = 0.0
       desired_lateral_accel = desired_curvature * CS.vEgo ** 2
 

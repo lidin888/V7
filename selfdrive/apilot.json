@@ -2,7 +2,7 @@
   "apilot": 20220111,
   "params": [
     {
-      "group": "Á¶ÇâÆ©´×",
+      "group": "ï¿½ï¿½ï¿½ï¿½Æ©ï¿½ï¿½",
       "name": "LateralTorqueCustom",
       "title": "_LateralTorqueCustom(0)",
       "descr": "0:LiveTorque, 1:CustomTorque",
@@ -15,7 +15,7 @@
       "unit": 1
     },
     {
-      "group": "Á¶ÇâÆ©´×",
+      "group": "ï¿½ï¿½ï¿½ï¿½Æ©ï¿½ï¿½",
       "name": "LateralTorqueAccelFactor",
       "title": "_LateralTorqueAccelFactor*0.001(2500)",
       "descr": "",
@@ -28,7 +28,7 @@
       "unit": 100
     },
     {
-      "group": "Á¶ÇâÆ©´×",
+      "group": "ï¿½ï¿½ï¿½ï¿½Æ©ï¿½ï¿½",
       "name": "LateralTorqueFriction",
       "title": "_LateralTorqueFriction*0.001(100)",
       "descr": "",
@@ -41,7 +41,33 @@
       "unit": 10
     },
     {
-      "group": "Á¶ÇâÆ©´×",
+      "group": "ï¿½ï¿½ï¿½ï¿½Æ©ï¿½ï¿½",
+      "name": "LateralTorqueKp",
+      "title": "_LateralTorqueKp*0.01(1000)",
+      "descr": "",
+      "egroup": "LAT",
+      "etitle": "_LateralTorqueKp*0.01(1000)",
+      "edescr": "",
+      "min": 0,
+      "max": 10000,
+      "default": 1000,
+      "unit": 10
+    },
+    {
+      "group": "ï¿½ï¿½ï¿½ï¿½Æ©ï¿½ï¿½",
+      "name": "LateralTorqueKd",
+      "title": "_LateralTorqueKi*0.01(100)",
+      "descr": "",
+      "egroup": "LAT",
+      "etitle": "_LateralTorqueKi*0.01(100)",
+      "edescr": "",
+      "min": 0,
+      "max": 10000,
+      "default": 100,
+      "unit": 10
+    },
+    {
+      "group": "ï¿½ï¿½ï¿½ï¿½Æ©ï¿½ï¿½",
       "name": "LateralTorqueKd",
       "title": "_LateralTorqueKd*0.01(800)",
       "descr": "",
@@ -54,10 +80,10 @@
       "unit": 10
     },
     {
-      "group": "Á¶ÇâÆ©´×",
+      "group": "ï¿½ï¿½ï¿½ï¿½Æ©ï¿½ï¿½",
       "name": "CarrotLatControl",
-      "title": "*´ç±ÙÁ¶ÇâÁ¦¾î(0)",
-      "descr": "0:Default, 1:´ç±ÙÁ¦¾î",
+      "title": "*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(0)",
+      "descr": "0:Default, 1:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½",
       "egroup": "LAT",
       "etitle": "*Carrot method lateral control(0)",
       "edescr": "",
@@ -67,10 +93,10 @@
       "unit": 1
     },
     {
-      "group": "Á¶ÇâÆ©´×",
+      "group": "ï¿½ï¿½ï¿½ï¿½Æ©ï¿½ï¿½",
       "name": "LatMpcPathCost",
       "title": "*LATMPC.PathCost(100)",
-      "descr": "°æ·ÎÃßÁ¾°¡ÁßÄ¡, ³ôÀ¸¸é °æ·Î¿ì¼±½ÃÇÔ.",
+      "descr": "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¡, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Î¿ì¼±ï¿½ï¿½ï¿½ï¿½.",
       "egroup": "LAT",
       "etitle": "*LATMPC.PathCost(100)",
       "edescr": "",
@@ -80,10 +106,10 @@
       "unit": 10
     },
     {
-      "group": "Á¶ÇâÆ©´×",
+      "group": "ï¿½ï¿½ï¿½ï¿½Æ©ï¿½ï¿½",
       "name": "LatMpcAccelCost",
       "title": "*LATMPC.AccelCost(0)",
-      "descr": "È¾°¡¼ÓµµÁ¦ÇÑ, ³·À¸¸é ¹ÎÃ¸¼ºÁõ°¡ ¾ÈÁ¤¼º°¨¼Ò",
+      "descr": "È¾ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½",
       "egroup": "LAT",
       "etitle": "*LATMPC.AccelCost(0)",
       "edescr": "",
@@ -93,10 +119,10 @@
       "unit": 10
     },
     {
-      "group": "Á¶ÇâÆ©´×",
+      "group": "ï¿½ï¿½ï¿½ï¿½Æ©ï¿½ï¿½",
       "name": "LatMpcJerkCost",
       "title": "*LATMPC.JerkCost(4)",
-      "descr": "³·Ãß¸é ºü¸¥Á¶ÇâÇã¿ë, ºÎµå·¯À½°¨¼Ò",
+      "descr": "ï¿½ï¿½ï¿½ß¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½Îµå·¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½",
       "egroup": "LAT",
       "etitle": "*LATMPC.JerkCost(4)",
       "edescr": "",
@@ -106,10 +132,10 @@
       "unit": 1
     },
     {
-      "group": "Á¶ÇâÆ©´×",
+      "group": "ï¿½ï¿½ï¿½ï¿½Æ©ï¿½ï¿½",
       "name": "LatMpcSteeringRateCost",
       "title": "*LATMPC.SteerRateCost(700)",
-      "descr": "Á¶Çâº¯È­À²Á¦ÇÑ, ³·Ãß¸é Á¶ÇâÀÌ Àû±ØÀû",
+      "descr": "ï¿½ï¿½ï¿½âº¯È­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ß¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½",
       "egroup": "LAT",
       "etitle": "*LATMPC.SteerRateCost(700)",
       "edescr": "",
@@ -119,9 +145,9 @@
       "unit": 100
     },
     {
-      "group": "Á¶ÇâÆ©´×",
+      "group": "ï¿½ï¿½ï¿½ï¿½Æ©ï¿½ï¿½",
       "name": "DampingFactor",
-      "title": "Á¶Çâ´ïÇÎÆÑÅÍ(25)",
+      "title": "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(25)",
       "descr": "",
       "egroup": "LAT",
       "etitle": "DampingFactor(25)",
@@ -132,7 +158,7 @@
       "unit": 10
     },
     {
-      "group": "Á¶ÇâÆ©´×",
+      "group": "ï¿½ï¿½ï¿½ï¿½Æ©ï¿½ï¿½",
       "name": "CustomSteerMax",
       "title": "_CustomSteerMax(0)",
       "descr": "",
@@ -145,7 +171,7 @@
       "unit": 1
     },
     {
-      "group": "Á¶ÇâÆ©´×",
+      "group": "ï¿½ï¿½ï¿½ï¿½Æ©ï¿½ï¿½",
       "name": "CustomSteerDeltaUp",
       "title": "_CustomSteerDeltaUp(0)",
       "descr": "",
@@ -158,7 +184,7 @@
       "unit": 1
     },
     {
-      "group": "Á¶ÇâÆ©´×",
+      "group": "ï¿½ï¿½ï¿½ï¿½Æ©ï¿½ï¿½",
       "name": "CustomSteerDeltaDown",
       "title": "_CustomSteerDeltaDown(0)",
       "descr": "",
@@ -171,10 +197,10 @@
       "unit": 1
     },
     {
-      "group": "Á¶ÇâÆ©´×",
+      "group": "ï¿½ï¿½ï¿½ï¿½Æ©ï¿½ï¿½",
       "name": "SteerActuatorDelay",
       "title": "SteerActuatorDelay(40)",
-      "descr": "Á¶ÇâÁö¿¬°ª",
+      "descr": "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½",
       "egroup": "LAT",
       "etitle": "SteerActuatorDelay(40)",
       "edescr": "",
@@ -184,10 +210,10 @@
       "unit": 1
     },
     {
-      "group": "Á¶ÇâÆ©´×",
+      "group": "ï¿½ï¿½ï¿½ï¿½Æ©ï¿½ï¿½",
       "name": "ModelActuatorDelay",
       "title": "*ModelActuatorDelay(80)x0.01",
-      "descr": "¸ðµ¨Áö¿¬°ª, Ä¿ºêÁøÀÔ½ÃÁ¡·Î Á¶Àý",
+      "descr": "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½Ô½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½",
       "egroup": "LAT",
       "etitle": "*ModelActuatorDelay(80)",
       "edescr": "",
@@ -197,10 +223,10 @@
       "unit": 1
     },
     {
-      "group": "Å©·çÁî",
+      "group": "Å©ï¿½ï¿½ï¿½ï¿½",
       "name": "CruiseOnDist",
-      "title": "Å©·çÁîON°Å¸®(0cm)",
-      "descr": "¿¢¼¿/ºê·¹ÀÌÅ©OFF ½Ã, ¼±ÇàÂ÷°¡ °¡±î¿ÍÁö¸é Å©·çÁîON",
+      "title": "Å©ï¿½ï¿½ï¿½ï¿½ONï¿½Å¸ï¿½(0cm)",
+      "descr": "ï¿½ï¿½ï¿½ï¿½/ï¿½ê·¹ï¿½ï¿½Å©OFF ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å©ï¿½ï¿½ï¿½ï¿½ON",
       "egroup": "CRUISE",
       "etitle": "CruiseOnDist(0cm)",
       "edescr": "Gas/Brake Off and LeadCar close, CruiseON(+)",
@@ -210,10 +236,10 @@
       "unit": 50
     },
     {
-      "group": "Å©·çÁî",
+      "group": "Å©ï¿½ï¿½ï¿½ï¿½",
       "name": "CruiseEcoControl",
-      "title": "Å©·çÁî¿¬ºñÁ¦¾î(2km/h)",
-      "descr": "¸ñÇ¥¼Óµµ¸¦ ÀÏ½ÃÀûÀ¸·Î ¿Ã¸²",
+      "title": "Å©ï¿½ï¿½ï¿½î¿¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(2km/h)",
+      "descr": "ï¿½ï¿½Ç¥ï¿½Óµï¿½ï¿½ï¿½ ï¿½Ï½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¸ï¿½",
       "egroup": "CRUISE",
       "etitle": "CruiseEcoControl(2km/h)",
       "edescr": "",
@@ -223,10 +249,10 @@
       "unit": 1
     },
     {
-      "group": "Á¶ÇâÆ©´×",
+      "group": "ï¿½ï¿½ï¿½ï¿½Æ©ï¿½ï¿½",
       "name": "CustomSR",
       "title": "CustomSteerRatiox0.1(0)",
-      "descr": "0: LiveSteerRatio»ç¿ë, ´ÜÀ§:0.1",
+      "descr": "0: LiveSteerRatioï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½:0.1",
       "egroup": "LAT",
       "etitle": "CustomSteerRatiox0.1(0)",
       "edescr": "0: Use LiveSteerRatio",
@@ -236,10 +262,10 @@
       "unit": 1
     },
     {
-      "group": "Á¶ÇâÆ©´×",
+      "group": "ï¿½ï¿½ï¿½ï¿½Æ©ï¿½ï¿½",
       "name": "SteerRatioRate",
       "title": "CustomSteerRatioRatex0.01(100)",
-      "descr": "LiveSteerRatio ¹Ý¿µ·ü",
+      "descr": "LiveSteerRatio ï¿½Ý¿ï¿½ï¿½ï¿½",
       "egroup": "LAT",
       "etitle": "CustomSteerRatioRatex0.01(100)",
       "edescr": "LiveSteerRatio Apply Ratio",
@@ -249,9 +275,9 @@
       "unit": 1
     },
     {
-      "group": "°¡¼Ó¼³Á¤",
+      "group": "ï¿½ï¿½ï¿½Ó¼ï¿½ï¿½ï¿½",
       "name": "CruiseMaxVals1",
-      "title": "°¡¼Ó¼³Á¤1:0km/h(160)",
+      "title": "ï¿½ï¿½ï¿½Ó¼ï¿½ï¿½ï¿½1:0km/h(160)",
       "descr": "Normal mode only (x0.01m/s^2)",
       "egroup": "ACCEL",
       "etitle": "AccelSet1:0km/h(160)",
@@ -262,9 +288,9 @@
       "unit": 5
     },
     {
-      "group": "°¡¼Ó¼³Á¤",
+      "group": "ï¿½ï¿½ï¿½Ó¼ï¿½ï¿½ï¿½",
       "name": "CruiseMaxVals2",
-      "title": "°¡¼Ó¼³Á¤2:40km/h(120)",
+      "title": "ï¿½ï¿½ï¿½Ó¼ï¿½ï¿½ï¿½2:40km/h(120)",
       "descr": "Normal mode only (x0.01m/s^2)",
       "egroup": "ACCEL",
       "etitle": "AccelSet2:40km/h(120)",
@@ -275,9 +301,9 @@
       "unit": 5
     },
     {
-      "group": "°¡¼Ó¼³Á¤",
+      "group": "ï¿½ï¿½ï¿½Ó¼ï¿½ï¿½ï¿½",
       "name": "CruiseMaxVals3",
-      "title": "°¡¼Ó¼³Á¤3:60km/h(100)",
+      "title": "ï¿½ï¿½ï¿½Ó¼ï¿½ï¿½ï¿½3:60km/h(100)",
       "descr": "Normal mode only (x0.01m/s^2)",
       "egroup": "ACCEL",
       "etitle": "AccelSet3:60km/h(100)",
@@ -288,9 +314,9 @@
       "unit": 5
     },
     {
-      "group": "°¡¼Ó¼³Á¤",
+      "group": "ï¿½ï¿½ï¿½Ó¼ï¿½ï¿½ï¿½",
       "name": "CruiseMaxVals4",
-      "title": "°¡¼Ó¼³Á¤4:80km/h(80)",
+      "title": "ï¿½ï¿½ï¿½Ó¼ï¿½ï¿½ï¿½4:80km/h(80)",
       "descr": "Normal mode only (x0.01m/s^2)",
       "egroup": "ACCEL",
       "etitle": "AccelSet4:80km/h(80)",
@@ -301,9 +327,9 @@
       "unit": 5
     },
     {
-      "group": "°¡¼Ó¼³Á¤",
+      "group": "ï¿½ï¿½ï¿½Ó¼ï¿½ï¿½ï¿½",
       "name": "CruiseMaxVals5",
-      "title": "°¡¼Ó¼³Á¤5:110km/h(70)",
+      "title": "ï¿½ï¿½ï¿½Ó¼ï¿½ï¿½ï¿½5:110km/h(70)",
       "descr": "Normal mode only (x0.01m/s^2)",
       "egroup": "ACCEL",
       "etitle": "AccelSet5:110km/h(70)",
@@ -314,9 +340,9 @@
       "unit": 5
     },
     {
-      "group": "°¡¼Ó¼³Á¤",
+      "group": "ï¿½ï¿½ï¿½Ó¼ï¿½ï¿½ï¿½",
       "name": "CruiseMaxVals6",
-      "title": "°¡¼Ó¼³Á¤6:140km/h(60)",
+      "title": "ï¿½ï¿½ï¿½Ó¼ï¿½ï¿½ï¿½6:140km/h(60)",
       "descr": "Normal mode only (x0.01m/s^2)",
       "egroup": "ACCEL",
       "etitle": "AccelSet6:140km/h(60)",
@@ -327,7 +353,7 @@
       "unit": 5
     },
     {
-      "group": "ÁÖÇàÆ©´×",
+      "group": "ï¿½ï¿½ï¿½ï¿½Æ©ï¿½ï¿½",
       "name": "StopDistanceCarrot",
       "title": "StopDistance(600)cm",
       "descr": "",
@@ -340,10 +366,10 @@
       "unit": 10
     },
     {
-      "group": "ÁÖÇàÆ©´×",
+      "group": "ï¿½ï¿½ï¿½ï¿½Æ©ï¿½ï¿½",
       "name": "ComfortBrake",
       "title": "Comfort Brake(240)",
-      "descr": "x0.01, °ªÀÌ Å©¸é ±ÞÇÏ°Ô ºê·¹ÀÌÅ·",
+      "descr": "x0.01, ï¿½ï¿½ï¿½ï¿½ Å©ï¿½ï¿½ ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ê·¹ï¿½ï¿½Å·",
       "egroup": "LONG",
       "etitle": "Comfort Brake(240)",
       "edescr": "",
@@ -353,7 +379,7 @@
       "unit": 5
     },
     {
-      "group": "ÁÖÇàÆ©´×",
+      "group": "ï¿½ï¿½ï¿½ï¿½Æ©ï¿½ï¿½",
       "name": "LongTuningKpV",
       "title": "Long KpV(100)x0.01",
       "descr": "",
@@ -366,7 +392,7 @@
       "unit": 5
     },
     {
-      "group": "ÁÖÇàÆ©´×",
+      "group": "ï¿½ï¿½ï¿½ï¿½Æ©ï¿½ï¿½",
       "name": "LongTuningKf",
       "title": "Long Kf(100)x0.01",
       "descr": "",
@@ -379,7 +405,7 @@
       "unit": 5
     },
     {
-      "group": "ÁÖÇàÆ©´×",
+      "group": "ï¿½ï¿½ï¿½ï¿½Æ©ï¿½ï¿½",
       "name": "LongTuningKiV",
       "title": "Long KiV(0)x0.01",
       "descr": "",
@@ -392,7 +418,7 @@
       "unit": 1
     },
     {
-      "group": "ÁÖÇàÆ©´×",
+      "group": "ï¿½ï¿½ï¿½ï¿½Æ©ï¿½ï¿½",
       "name": "LongActuatorDelay",
       "title": "LongActuatorDelay(20)x0.01",
       "descr": "",
@@ -405,10 +431,10 @@
       "unit": 5
     },
     {
-      "group": "ÁÖÇàÆ©´×",
+      "group": "ï¿½ï¿½ï¿½ï¿½Æ©ï¿½ï¿½",
       "name": "RadarReactionFactor",
       "title": "Radar reaction factor (10)%",
-      "descr": "°ªÀÌ ³·¾ÆÁö¸é ¼±ÇàÂ÷·®¿¡ ´ëÇÑ ¹ÝÀÀÀÌ »¡¶óÁü.",
+      "descr": "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.",
       "egroup": "LONG",
       "etitle": "Radar reaction factor (10)%",
       "edescr": "",
@@ -418,10 +444,10 @@
       "unit": 1
     },
     {
-      "group": "°¨¼ÓÁ¦¾î",
+      "group": "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½",
       "name": "AutoCurveSpeedFactor",
-      "title": "Ä¿ºê¼Óµµ Á¶ÀýºñÀ²(100%)",
-      "descr": "³ôÀ¸¸é Ä¿ºê¼Óµµ°¡ ´À·ÁÁý´Ï´Ù.",
+      "title": "Ä¿ï¿½ï¿½Óµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(100%)",
+      "descr": "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä¿ï¿½ï¿½Óµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.",
       "egroup": "DECEL",
       "etitle": "CurveSpeedFactor(100%)",
       "edescr": "Higher value, slow curve speed",
@@ -431,10 +457,10 @@
       "unit": 5
     },
     {
-      "group": "°¨¼ÓÁ¦¾î",
+      "group": "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½",
       "name": "AutoCurveSpeedAggressiveness",
-      "title": "Ä¿ºê¼Óµµ Àû±Ø¼º(100%)",
-      "descr": "¿Ã¸®¸é ÁøÀÔ¼Óµµ°¡ Àû±ØÀûÀ¸·Î º¯ÇÕ´Ï´Ù.",
+      "title": "Ä¿ï¿½ï¿½Óµï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½(100%)",
+      "descr": "ï¿½Ã¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ô¼Óµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Õ´Ï´ï¿½.",
       "egroup": "DECEL",
       "etitle": "CurveSpeed Aggressiveness(100%)",
       "edescr": "Higher value, more speed down",
@@ -444,10 +470,10 @@
       "unit": 1
     },
     {
-      "group": "Á¶ÇâÀÏ¹Ý",
+      "group": "ï¿½ï¿½ï¿½ï¿½ï¿½Ï¹ï¿½",
       "name": "AutoTurnControl",
       "title": "ATC: AutoTurnControl(0)",
-      "descr": "0:»ç¿ë¾ÈÇÔ,1:Â÷¼±º¯°æ, 2:Â÷¼±º¯°æ+¼Óµµ, 3:¼Óµµ",
+      "descr": "0:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,1:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, 2:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½+ï¿½Óµï¿½, 3:ï¿½Óµï¿½",
       "egroup": "LATSET",
       "etitle": "ATC: AutoTurnControl",
       "edescr": "0: Not used, 1:laneChange, 2:laneChange+speed, 3:speed",
@@ -457,10 +483,10 @@
       "unit": 1
     },
     {
-      "group": "Á¶ÇâÀÏ¹Ý",
+      "group": "ï¿½ï¿½ï¿½ï¿½ï¿½Ï¹ï¿½",
       "name": "AutoTurnControlSpeedTurn",
-      "title": "ATC: ÅÏ¼Óµµ(20)",
-      "descr": "0:»ç¿ë¾ÈÇÔ, ÅÏ½Ã Àû¿ë¼Óµµ",
+      "title": "ATC: ï¿½Ï¼Óµï¿½(20)",
+      "descr": "0:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½Ï½ï¿½ ï¿½ï¿½ï¿½ï¿½Óµï¿½",
       "egroup": "LATSET",
       "etitle": "ATC: Turn Speed(20)",
       "edescr": "0: Not used, Turn Speed",
@@ -470,10 +496,10 @@
       "unit": 5
     },
     {
-      "group": "Á¶ÇâÀÏ¹Ý",
+      "group": "ï¿½ï¿½ï¿½ï¿½ï¿½Ï¹ï¿½",
       "name": "AutoTurnControlTurnEnd",
-      "title": "ATC: ½Ã°£°Å¸®(3)",
-      "descr": "NOO¿Ï·á ½Ã°£°Å¸®(¼Óµµ*½Ã°£)",
+      "title": "ATC: ï¿½Ã°ï¿½ï¿½Å¸ï¿½(3)",
+      "descr": "NOOï¿½Ï·ï¿½ ï¿½Ã°ï¿½ï¿½Å¸ï¿½(ï¿½Óµï¿½*ï¿½Ã°ï¿½)",
       "egroup": "LATSET",
       "etitle": "ATC: Speed Ctrl left Time(3)",
       "edescr": "",
@@ -483,10 +509,10 @@
       "unit": 1
     },
     {
-      "group": "Á¶ÇâÀÏ¹Ý",
+      "group": "ï¿½ï¿½ï¿½ï¿½ï¿½Ï¹ï¿½",
       "name": "AutoTurnMapChange",
-      "title": "ATC Helper ¸ÊÀüÈ¯(0)",
-      "descr": "ATC ÀÛµ¿½Ã ÀÚµ¿¸ÊÀüÈ¯",
+      "title": "ATC Helper ï¿½ï¿½ï¿½ï¿½È¯(0)",
+      "descr": "ATC ï¿½Ûµï¿½ï¿½ï¿½ ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½È¯",
       "egroup": "LATSET",
       "etitle": "ATC Helper Map display(0)",
       "edescr": "",
@@ -496,10 +522,10 @@
       "unit": 1
     },
     {
-      "group": "¹öÆ°¼³Á¤",
+      "group": "ï¿½ï¿½Æ°ï¿½ï¿½ï¿½ï¿½",
       "name": "CruiseButtonMode",
-      "title": "Å©·çÁî¹öÆ°ÀÛµ¿¸ðµå(0)",
-      "descr": "0:ÀÏ¹Ý,1:»ç¿ëÀÚ1,2:»ç¿ëÀÚ2",
+      "title": "Å©ï¿½ï¿½ï¿½ï¿½ï¿½Æ°ï¿½Ûµï¿½ï¿½ï¿½ï¿½(0)",
+      "descr": "0:ï¿½Ï¹ï¿½,1:ï¿½ï¿½ï¿½ï¿½ï¿½1,2:ï¿½ï¿½ï¿½ï¿½ï¿½2",
       "egroup": "BUTN",
       "etitle": "Cruise Button Mode(0)",
       "edescr": "0:General,1:User1,2:User2",
@@ -509,10 +535,10 @@
       "unit": 1
     },
     {
-      "group": "¹öÆ°¼³Á¤",
+      "group": "ï¿½ï¿½Æ°ï¿½ï¿½ï¿½ï¿½",
       "name": "CruiseButtonTest1",
-      "title": "Å©·çÁî¹öÆ°½ºÆÔ½î±â(8)",
-      "descr": "¼Óµµ¹öÆ°½ÅÈ£ ¹ß¼ÛÁ¦ÇÑ½Ã°£,ºñ·ÕÄÁ¿¡¼­ »ç¿ë",
+      "title": "Å©ï¿½ï¿½ï¿½ï¿½ï¿½Æ°ï¿½ï¿½ï¿½Ô½ï¿½ï¿½(8)",
+      "descr": "ï¿½Óµï¿½ï¿½ï¿½Æ°ï¿½ï¿½È£ ï¿½ß¼ï¿½ï¿½ï¿½ï¿½Ñ½Ã°ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½",
       "egroup": "BUTN",
       "etitle": "Cruise Button spam1(8)",
       "edescr": "",
@@ -522,10 +548,10 @@
       "unit": 1
     },
     {
-      "group": "¹öÆ°¼³Á¤",
+      "group": "ï¿½ï¿½Æ°ï¿½ï¿½ï¿½ï¿½",
       "name": "CruiseButtonTest2",
-      "title": "Å©·çÁî¹öÆ°½ºÆÔ½¬±â(30)",
-      "descr": "¼Óµµ¹öÆ°½ÅÈ£ ¹ß¼Û ÈÞÁö½Ã°£, ºñ·ÕÄÁ¿¡¼­ »ç¿ë",
+      "title": "Å©ï¿½ï¿½ï¿½ï¿½ï¿½Æ°ï¿½ï¿½ï¿½Ô½ï¿½ï¿½ï¿½(30)",
+      "descr": "ï¿½Óµï¿½ï¿½ï¿½Æ°ï¿½ï¿½È£ ï¿½ß¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ã°ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½",
       "egroup": "BUTN",
       "etitle": "Cruise Button spam2(30)",
       "edescr": "",
@@ -535,10 +561,10 @@
       "unit": 1
     },
     {
-      "group": "¹öÆ°¼³Á¤",
+      "group": "ï¿½ï¿½Æ°ï¿½ï¿½ï¿½ï¿½",
       "name": "CruiseButtonTest3",
-      "title": "Å©·çÁî¹öÆ°½ºÆÔ¿¬¼Ó½î±â(1)",
-      "descr": "¼Óµµ¹öÆ°½ÅÈ£ ¿¬¼ÓÈ¸¼ö, ºñ·ÕÄÁ¿¡¼­ »ç¿ë",
+      "title": "Å©ï¿½ï¿½ï¿½ï¿½ï¿½Æ°ï¿½ï¿½ï¿½Ô¿ï¿½ï¿½Ó½ï¿½ï¿½(1)",
+      "descr": "ï¿½Óµï¿½ï¿½ï¿½Æ°ï¿½ï¿½È£ ï¿½ï¿½ï¿½ï¿½È¸ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½",
       "egroup": "BUTN",
       "etitle": "Cruise Button spam3(1)",
       "edescr": "",
@@ -548,10 +574,10 @@
       "unit": 1
     },
     {
-      "group": "¹öÆ°¼³Á¤",
+      "group": "ï¿½ï¿½Æ°ï¿½ï¿½ï¿½ï¿½",
       "name": "CruiseSpeedUnit",
-      "title": "Å©·çÁî¹öÆ°¼Óµµ´ÜÀ§(10)",
-      "descr": "Å©·çÁî¹öÆ° ¼Óµµ ´ÜÀ§",
+      "title": "Å©ï¿½ï¿½ï¿½ï¿½ï¿½Æ°ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½(10)",
+      "descr": "Å©ï¿½ï¿½ï¿½ï¿½ï¿½Æ° ï¿½Óµï¿½ ï¿½ï¿½ï¿½ï¿½",
       "egroup": "BUTN",
       "etitle": "Cruise Speed Unit(10)",
       "edescr": "SET/DECEL up/down speed rate",
@@ -561,10 +587,10 @@
       "unit": 1
     },
     {
-      "group": "½ÃÀÛ",
+      "group": "ï¿½ï¿½ï¿½ï¿½",
       "name": "AutoCruiseControl",
-      "title": "¿ÀÅäÅ©·çÁîÁ¦¾î(HKG only)",
-      "descr": "1:SOFTHOLD, Auto Cruise, 2:SoftHold¿À·ù½Ã",
+      "title": "ï¿½ï¿½ï¿½ï¿½Å©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(HKG only)",
+      "descr": "1:SOFTHOLD, Auto Cruise, 2:SoftHoldï¿½ï¿½ï¿½ï¿½ï¿½ï¿½",
       "egroup": "START",
       "etitle": "Auto Cruise control(HKG only)",
       "edescr": "Softhold, Auto Cruise ON/OFF control",
@@ -574,10 +600,10 @@
       "unit": 1
     },
     {
-      "group": "½ÃÀÛ",
+      "group": "ï¿½ï¿½ï¿½ï¿½",
       "name": "AutoGasTokSpeed",
-      "title": "¿ÀÅäÅ©·çÁî: ¿¢¼¿Åå ¼Óµµ",
-      "descr": "ÇØ´ç¼Óµµ ÀÌ»ó¿¡¼­¸¸ ÀÛµ¿ÇÔ.",
+      "title": "ï¿½ï¿½ï¿½ï¿½Å©ï¿½ï¿½ï¿½ï¿½: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Óµï¿½",
+      "descr": "ï¿½Ø´ï¿½Óµï¿½ ï¿½Ì»ó¿¡¼ï¿½ï¿½ï¿½ ï¿½Ûµï¿½ï¿½ï¿½.",
       "egroup": "START",
       "etitle": "Auto Cruise: Gas Tok speed",
       "edescr": "",
@@ -587,9 +613,9 @@
       "unit": 5
     },
     {
-      "group": "½ÃÀÛ",
+      "group": "ï¿½ï¿½ï¿½ï¿½",
       "name": "AutoEngage",
-      "title": "¿ÀÅäÀÎ°ÔÀÌÁö",
+      "title": "ï¿½ï¿½ï¿½ï¿½ï¿½Î°ï¿½ï¿½ï¿½ï¿½ï¿½",
       "descr": "1:SteerEnable, 2:Steer,Cruise Enable",
       "egroup": "START",
       "etitle": "Auto Engage on onroad",
@@ -600,9 +626,9 @@
       "unit": 1
     },
     {
-      "group": "½ÃÀÛ",
+      "group": "ï¿½ï¿½ï¿½ï¿½",
       "name": "MapboxStyle",
-      "title": "¸Ê¹Ú½º ½ºÅ¸ÀÏ",
+      "title": "ï¿½Ê¹Ú½ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½",
       "descr": "",
       "egroup": "START",
       "etitle": "MapboxStyle",
@@ -613,10 +639,10 @@
       "unit": 1
     },
     {
-      "group": "½ÃÀÛ",
+      "group": "ï¿½ï¿½ï¿½ï¿½",
       "name": "DisableMinSteerSpeed",
-      "title": "Àú¼ÓÁ¶ÇâÁ¦ÇÑÇØÁ¦",
-      "descr": "Àú¼ÓÁ¶ÇâÀÌ ¾ÈµÇ³ª, SMDPSÀåÂøÂ÷·®",
+      "title": "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½",
+      "descr": "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ÈµÇ³ï¿½, SMDPSï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½",
       "egroup": "START",
       "etitle": "DisableMinSteerSpeed",
       "edescr": "",
@@ -626,10 +652,10 @@
       "unit": 1
     },
     {
-      "group": "½ÃÀÛ",
+      "group": "ï¿½ï¿½ï¿½ï¿½",
       "name": "SpeedFromPCM",
-      "title": "PCMÂ÷·®¼ÓµµÁ¦¾î(¼øÁ¤SCC)",
-      "descr": "1:¹öÆ°½ºÆÐ¹Ö¾ÈÇÔ(Â÷·®¼Óµµ), 0: Ä¿ºê/Ä«¸Þ¶ó °¨¼Ó + OPLong, 2: Ä¿ºê/Ä«¸Þ¶ó °¨¼Ó, 3:Honda/Toyota",
+      "title": "PCMï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½SCC)",
+      "descr": "1:ï¿½ï¿½Æ°ï¿½ï¿½ï¿½Ð¹Ö¾ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½), 0: Ä¿ï¿½ï¿½/Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½ï¿½ï¿½ + OPLong, 2: Ä¿ï¿½ï¿½/Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½ï¿½ï¿½, 3:Honda/Toyota",
       "egroup": "START",
       "etitle": "Speed from PCM(StockSCC)",
       "edescr": "1: Cruise speed control from Car, 0,2: Speed OP, 3:Honda",
@@ -639,9 +665,9 @@
       "unit": 1
     },
     {
-      "group": "½ÃÀÛ",
+      "group": "ï¿½ï¿½ï¿½ï¿½",
       "name": "MaxTimeOffroadMin",
-      "title": "ÀÚµ¿Àü¿øOFF(ºÐ)",
+      "title": "ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½OFF(ï¿½ï¿½)",
       "descr": "",
       "egroup": "START",
       "etitle": "PowerOffTime(min)",
@@ -652,7 +678,7 @@
       "unit": 10
     },
     {
-      "group": "½ÃÀÛ",
+      "group": "ï¿½ï¿½ï¿½ï¿½",
       "name": "DisableDM",
       "title": "DisableDM",
       "descr": "",
@@ -665,10 +691,10 @@
       "unit": 1
     },
     {
-      "group": "Å©·çÁî",
+      "group": "Å©ï¿½ï¿½ï¿½ï¿½",
       "name": "AutoSpeedUptoRoadSpeedLimit",
-      "title": "ÀÚµ¿¼ÓµµÁõ°¡ (100)%",
-      "descr": "Àü¹æÂ÷·®¿¡ µû¶ó ÀÚµ¿¼ÓµµÁõ°¡. ·Îµå½ºÇÇµå*ºñÀ² ±îÁö ÀÚµ¿¼Óµµ¿Ã¸².",
+      "title": "ï¿½Úµï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½ (100)%",
+      "descr": "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½. ï¿½Îµå½ºï¿½Çµï¿½*ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ï¿½Óµï¿½ï¿½Ã¸ï¿½.",
       "egroup": "CRUISE",
       "etitle": "AutoSpeedUpx:(100)%",
       "edescr": "",
@@ -678,10 +704,10 @@
       "unit": 10
     },
     {
-      "group": "°¨¼ÓÁ¦¾î",
+      "group": "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½",
       "name": "AutoRoadSpeedAdjust",
-      "title": "ÀÚµ¿µµ·ÎÁ¦ÇÑ¼Óµµ°¨¼Ó (50)%",
-      "descr": "100: ±âÁ¸¼ÓµµÀ¯Áö, 50: Áß°£°ª, 0: »õ·Î¿îµµ·Î¼Óµµ",
+      "title": "ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¼Óµï¿½ï¿½ï¿½ï¿½ï¿½ (50)%",
+      "descr": "100: ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½, 50: ï¿½ß°ï¿½ï¿½ï¿½, 0: ï¿½ï¿½ï¿½Î¿îµµï¿½Î¼Óµï¿½",
       "egroup": "CRUISE",
       "etitle": "AutoRoadLimitSpeedAdjust (50)%",
       "edescr": "",
@@ -691,10 +717,10 @@
       "unit": 10
     },
     {
-      "group": "Å©·çÁî",
+      "group": "Å©ï¿½ï¿½ï¿½ï¿½",
       "name": "AutoGasSyncSpeed",
-      "title": "ÀÚµ¿Å©·çÁî¼Óµµ ¾÷µ¥ÀÌÆ®",
-      "descr": "Å©·çÁî¼Óµµ º¸´Ù»¡¶óÁö¸é ¼Óµµ ¾÷µ¥ÀÌÆ®µÊ",
+      "title": "ï¿½Úµï¿½Å©ï¿½ï¿½ï¿½ï¿½Óµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®",
+      "descr": "Å©ï¿½ï¿½ï¿½ï¿½Óµï¿½ ï¿½ï¿½ï¿½Ù»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Óµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½",
       "egroup": "CRUISE",
       "etitle": "Auto update Cruise speed",
       "edescr": "",
@@ -705,9 +731,9 @@
     },
 
     {
-      "group": "È­¸é",
+      "group": "È­ï¿½ï¿½",
       "name": "ShowDebugUI",
-      "title": "µð¹ö±×Á¤º¸ Ç¥½Ã",
+      "title": "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ç¥ï¿½ï¿½",
       "descr": "",
       "egroup": "DISP",
       "etitle": "Show Debug Info",
@@ -718,9 +744,9 @@
       "unit": 1
     },
     {
-      "group": "È­¸é",
+      "group": "È­ï¿½ï¿½",
       "name": "ShowDateTime",
-      "title": "½Ã°£Á¤º¸Ç¥½Ã",
+      "title": "ï¿½Ã°ï¿½ï¿½ï¿½ï¿½ï¿½Ç¥ï¿½ï¿½",
       "descr": "",
       "egroup": "DISP",
       "etitle": "Show Time Info",
@@ -731,9 +757,9 @@
       "unit": 1
     },
     {
-      "group": "È­¸é",
+      "group": "È­ï¿½ï¿½",
       "name": "ShowPathEnd",
-      "title": "ÆÐ¾²³¡Ç¥½Ã",
+      "title": "ï¿½Ð¾ï¿½ï¿½ï¿½Ç¥ï¿½ï¿½",
       "descr": "",
       "egroup": "DISP",
       "etitle": "Show Path End",
@@ -744,9 +770,9 @@
       "unit": 1
     },
     {
-      "group": "È­¸é",
+      "group": "È­ï¿½ï¿½",
       "name": "ShowDeviceState",
-      "title": "µð¹ÙÀÌ½ºÁ¤º¸",
+      "title": "ï¿½ï¿½ï¿½ï¿½Ì½ï¿½ï¿½ï¿½ï¿½ï¿½",
       "descr": "",
       "egroup": "DISP",
       "etitle": "Show Device Info",
@@ -757,9 +783,9 @@
       "unit": 1
     },
     {
-      "group": "È­¸é",
+      "group": "È­ï¿½ï¿½",
       "name": "ShowCustomBrightness",
-      "title": "È­¸é¹à±âºñÀ²",
+      "title": "È­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½",
       "descr": "",
       "egroup": "DISP",
       "etitle": "ScreenBrightness ratio",
@@ -770,10 +796,10 @@
       "unit": 1
     },
     {
-      "group": "È­¸é",
+      "group": "È­ï¿½ï¿½",
       "name": "ShowLaneInfo",
-      "title": "Â÷¼±Á¤º¸",
-      "descr": "-1:¾øÀ½, 0:ÆÐ½º¸¸, 1:·¹ÀÎ, 2:·Îµå¿§Áö",
+      "title": "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½",
+      "descr": "-1:ï¿½ï¿½ï¿½ï¿½, 0:ï¿½Ð½ï¿½ï¿½ï¿½, 1:ï¿½ï¿½ï¿½ï¿½, 2:ï¿½Îµå¿§ï¿½ï¿½",
       "egroup": "DISP",
       "etitle": "Show Lane Info",
       "edescr": "-1:None, 0:Path, 1:Path+Lane, 2:Path+Lane+RoadEdge",
@@ -783,10 +809,10 @@
       "unit": 1
     },
     {
-      "group": "È­¸é",
+      "group": "È­ï¿½ï¿½",
       "name": "ShowRadarInfo",
-      "title": "·¹ÀÌ´õ°¨ÁöÁ¤º¸(0)",
-      "descr": "0:¾ÈÇÔ,1:Ç¥½ÃÇÔ,2:»ó´ëÀ§Ä¡,3:Á¤ÁöÂ÷·®",
+      "title": "ï¿½ï¿½ï¿½Ì´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(0)",
+      "descr": "0:ï¿½ï¿½ï¿½ï¿½,1:Ç¥ï¿½ï¿½ï¿½ï¿½,2:ï¿½ï¿½ï¿½ï¿½ï¿½Ä¡,3:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½",
       "egroup": "DISP",
       "etitle": "Show Radar Info",
       "edescr": "",
@@ -796,10 +822,10 @@
       "unit": 1
     },
     {
-      "group": "È­¸é",
+      "group": "È­ï¿½ï¿½",
       "name": "ShowRouteInfo",
-      "title": "°æ·ÎARÇ¥½Ã(0)",
-      "descr": "0:¾ÈÇÔ,1:Ç¥½ÃÇÔ",
+      "title": "ï¿½ï¿½ï¿½ARÇ¥ï¿½ï¿½(0)",
+      "descr": "0:ï¿½ï¿½ï¿½ï¿½,1:Ç¥ï¿½ï¿½ï¿½ï¿½",
       "egroup": "DISP",
       "etitle": "Show Route Info",
       "edescr": "",
@@ -809,10 +835,10 @@
       "unit": 1
     },
     {
-      "group": "È­¸éÆÐ½º",
+      "group": "È­ï¿½ï¿½ï¿½Ð½ï¿½",
       "name": "ShowPathMode",
-      "title": "ÆÐ½ºÁ¾·ù,·¹ÀÎ¸®½º(9)",
-      "descr": "0:ÀÏ¹Ý,1,2:»ç°¢,3,4:^^,5,6:»ç°¢,7,8:^^,9,10,11:smooth^^,12:smooth2^^,13:3ÁÙ,14:2ÁÙ,15:1ÁÙ",
+      "title": "ï¿½Ð½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½Î¸ï¿½ï¿½ï¿½(9)",
+      "descr": "0:ï¿½Ï¹ï¿½,1,2:ï¿½ç°¢,3,4:^^,5,6:ï¿½ç°¢,7,8:^^,9,10,11:smooth^^,12:smooth2^^,13:3ï¿½ï¿½,14:2ï¿½ï¿½,15:1ï¿½ï¿½",
       "egroup": "DISP",
       "etitle": "Show Path Mode:LaneLess(9)",
       "edescr": "",
@@ -822,10 +848,10 @@
       "unit": 1
     },
     {
-      "group": "È­¸éÆÐ½º",
+      "group": "È­ï¿½ï¿½ï¿½Ð½ï¿½",
       "name": "ShowPathColor",
-      "title": "ÆÐ½º»ö»ó,·¹ÀÎ¸®½º(12)",
-      "descr": "(+10:¶ì)0:»¡,1:ÁÖ,2:³ë,3:ÃÊ,4:ÆÄ,5:³²,6:º¸,7:°í,8:Èò,9:°Ë",
+      "title": "ï¿½Ð½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½Î¸ï¿½ï¿½ï¿½(12)",
+      "descr": "(+10:ï¿½ï¿½)0:ï¿½ï¿½,1:ï¿½ï¿½,2:ï¿½ï¿½,3:ï¿½ï¿½,4:ï¿½ï¿½,5:ï¿½ï¿½,6:ï¿½ï¿½,7:ï¿½ï¿½,8:ï¿½ï¿½,9:ï¿½ï¿½",
       "egroup": "DISP",
       "etitle": "Show Path Color:LaneLess(12)",
       "edescr": "",
@@ -835,10 +861,10 @@
       "unit": 1
     },
     {
-      "group": "È­¸éÆÐ½º",
+      "group": "È­ï¿½ï¿½ï¿½Ð½ï¿½",
       "name": "ShowPathModeCruiseOff",
-      "title": "ÆÐ½ºÁ¾·ù,Å©·çÁîOFF(9)",
-      "descr": "0:ÀÏ¹Ý,1,2:»ç°¢,3,4:^^,5,6:»ç°¢,7,8:^^,9,10,11:smooth^^,12:smooth2^^,13:3ÁÙ,14:2ÁÙ,15:1ÁÙ",
+      "title": "ï¿½Ð½ï¿½ï¿½ï¿½ï¿½ï¿½,Å©ï¿½ï¿½ï¿½ï¿½OFF(9)",
+      "descr": "0:ï¿½Ï¹ï¿½,1,2:ï¿½ç°¢,3,4:^^,5,6:ï¿½ç°¢,7,8:^^,9,10,11:smooth^^,12:smooth2^^,13:3ï¿½ï¿½,14:2ï¿½ï¿½,15:1ï¿½ï¿½",
       "egroup": "DISP",
       "etitle": "Show Path Mode:CruiseOFF(9)",
       "edescr": "",
@@ -848,10 +874,10 @@
       "unit": 1
     },
     {
-      "group": "È­¸éÆÐ½º",
+      "group": "È­ï¿½ï¿½ï¿½Ð½ï¿½",
       "name": "ShowPathColorCruiseOff",
-      "title": "ÆÐ½º»ö»ó,Å©·çÁîOFF(1)",
-      "descr": "(+10:¶ì)0:»¡,1:ÁÖ,2:³ë,3:ÃÊ,4:ÆÄ,5:³²,6:º¸,7:°í,8:Èò,9:°Ë",
+      "title": "ï¿½Ð½ï¿½ï¿½ï¿½ï¿½ï¿½,Å©ï¿½ï¿½ï¿½ï¿½OFF(1)",
+      "descr": "(+10:ï¿½ï¿½)0:ï¿½ï¿½,1:ï¿½ï¿½,2:ï¿½ï¿½,3:ï¿½ï¿½,4:ï¿½ï¿½,5:ï¿½ï¿½,6:ï¿½ï¿½,7:ï¿½ï¿½,8:ï¿½ï¿½,9:ï¿½ï¿½",
       "egroup": "DISP",
       "etitle": "Show Path Color:CruiseOFF(1)",
       "edescr": "",
@@ -861,10 +887,10 @@
       "unit": 1
     },
     {
-      "group": "È­¸éÆÐ½º",
+      "group": "È­ï¿½ï¿½ï¿½Ð½ï¿½",
       "name": "ShowPathModeLane",
-      "title": "ÆÐ½ºÁ¾·ù,·¹ÀÎ¸ðµå(11)",
-      "descr": "0:ÀÏ¹Ý,1,2:»ç°¢,3,4:^^,5,6:»ç°¢,7,8:^^,9,10,11:smooth^^,12:smooth2^^,13:3ÁÙ,14:2ÁÙ,15:1ÁÙ",
+      "title": "ï¿½Ð½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½Î¸ï¿½ï¿½(11)",
+      "descr": "0:ï¿½Ï¹ï¿½,1,2:ï¿½ç°¢,3,4:^^,5,6:ï¿½ç°¢,7,8:^^,9,10,11:smooth^^,12:smooth2^^,13:3ï¿½ï¿½,14:2ï¿½ï¿½,15:1ï¿½ï¿½",
       "egroup": "DISP",
       "etitle": "Show Path Mode:LaneMode(11)",
       "edescr": "",
@@ -874,10 +900,10 @@
       "unit": 1
     },
     {
-      "group": "È­¸éÆÐ½º",
+      "group": "È­ï¿½ï¿½ï¿½Ð½ï¿½",
       "name": "ShowPathColorLane",
-      "title": "ÆÐ½º»ö»ó,·¹ÀÎ¸ðµå(3)",
-      "descr": "(+10:¶ì)0:»¡,1:ÁÖ,2:³ë,3:ÃÊ,4:ÆÄ,5:³²,6:º¸,7:°í,8:Èò,9:°Ë",
+      "title": "ï¿½Ð½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½Î¸ï¿½ï¿½(3)",
+      "descr": "(+10:ï¿½ï¿½)0:ï¿½ï¿½,1:ï¿½ï¿½,2:ï¿½ï¿½,3:ï¿½ï¿½,4:ï¿½ï¿½,5:ï¿½ï¿½,6:ï¿½ï¿½,7:ï¿½ï¿½,8:ï¿½ï¿½,9:ï¿½ï¿½",
       "egroup": "DISP",
       "etitle": "Show Path Color:LaneMode(3)",
       "edescr": "",
@@ -887,10 +913,10 @@
       "unit": 1
     },
     {
-      "group": "È­¸é",
+      "group": "È­ï¿½ï¿½",
       "name": "ShowPlotMode",
-      "title": "µð¹ö±×ÇÃ·Ô(0)",
-      "descr": "1:°¡¼Óµµ,2:¼Óµµ+°¡¼Óµµ,3:¸ðµ¨,4:Lead,5:Lead2",
+      "title": "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã·ï¿½(0)",
+      "descr": "1:ï¿½ï¿½ï¿½Óµï¿½,2:ï¿½Óµï¿½+ï¿½ï¿½ï¿½Óµï¿½,3:ï¿½ï¿½,4:Lead,5:Lead2",
       "egroup": "DISP",
       "etitle": "Show Debug plot(0)",
       "edescr": "1:Accel,2:Accel+vel,3:Model,4:Lead,5:Lead2",
@@ -900,10 +926,10 @@
       "unit": 1
     },
     {
-      "group": "Á¶ÇâÀÏ¹Ý",
+      "group": "ï¿½ï¿½ï¿½ï¿½ï¿½Ï¹ï¿½",
       "name": "UseLaneLineSpeed",
-      "title": "·¹ÀÎ¸ðµå: ¼Óµµ(0)",
-      "descr": "·¹ÀÎ(Â÷¼±)¸ðµå »ç¿ëÇÏ¸é ±âÁ¸ÀÇ Á¶ÇâÁ¦¾î(lat_mpc)¸¦ »ç¿ëÇÕ´Ï´Ù.",
+      "title": "ï¿½ï¿½ï¿½Î¸ï¿½ï¿½: ï¿½Óµï¿½(0)",
+      "descr": "ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½)ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(lat_mpc)ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.",
       "egroup": "LAT",
       "etitle": "Laneline: Speed(0)",
       "edescr": "Lainline mode, lat_mpc control used",
@@ -913,10 +939,10 @@
       "unit": 1
     },
     {
-      "group": "Á¶ÇâÀÏ¹Ý",
+      "group": "ï¿½ï¿½ï¿½ï¿½ï¿½Ï¹ï¿½",
       "name": "UseLaneLineCurveSpeed",
-      "title": "·¹ÀÎ¸ðµå: Ä¿ºê¼Óµµ(0)",
-      "descr": "·¹ÀÎ(Â÷¼±)¸ðµå¸¦ ÁöÁ¤ÅÏ¼Óµµ ÀÌÇÏ¿¡¼­´Â »ç¿ëÇÏÁö ¾Ê½À´Ï´Ù.",
+      "title": "ï¿½ï¿½ï¿½Î¸ï¿½ï¿½: Ä¿ï¿½ï¿½Óµï¿½(0)",
+      "descr": "ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½)ï¿½ï¿½å¸¦ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¼Óµï¿½ ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê½ï¿½ï¿½Ï´ï¿½.",
       "egroup": "LAT",
       "etitle": "Laneline: Curve Speed(0)",
       "edescr": "Lainline mode, above curve speed",
@@ -926,10 +952,10 @@
       "unit": 10
     },
     {
-      "group": "Á¶ÇâÀÏ¹Ý",
+      "group": "ï¿½ï¿½ï¿½ï¿½ï¿½Ï¹ï¿½",
       "name": "AdjustLaneOffset",
-      "title": "·¹ÀÎ¸ðµå: Â÷¼±Á¶Àý¿É¼Â (0)cm",
-      "descr": "µµ·Î°æ°èÂÊÀ¸·Î ÁÖÇàÇÕ´Ï´Ù.",
+      "title": "ï¿½ï¿½ï¿½Î¸ï¿½ï¿½: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¼ï¿½ (0)cm",
+      "descr": "ï¿½ï¿½ï¿½Î°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.",
       "egroup": "LAT",
       "etitle": "LaneLine: AdjustLaneOffset (0)cm",
       "edescr": "",
@@ -939,10 +965,10 @@
       "unit": 10
     },
     {
-      "group": "Á¶ÇâÀÏ¹Ý",
+      "group": "ï¿½ï¿½ï¿½ï¿½ï¿½Ï¹ï¿½",
       "name": "AdjustCurveOffset",
-      "title": "·¹ÀÎ¸ðµå: Ä¿ºêÁ¶Àý¿É¼Â (0)cm",
-      "descr": "Ä¿ºê½Ã ¾ÈÂÊÀ¸·Î µ¹µµ·ÏÇÕ´Ï´Ù.",
+      "title": "ï¿½ï¿½ï¿½Î¸ï¿½ï¿½: Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¼ï¿½ (0)cm",
+      "descr": "Ä¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.",
       "egroup": "LAT",
       "etitle": "LaneLine: AdjustCurveOffset (0)cm",
       "edescr": "",
@@ -952,10 +978,10 @@
       "unit": 10
     },
     {
-      "group": "Á¶ÇâÀÏ¹Ý",
+      "group": "ï¿½ï¿½ï¿½ï¿½ï¿½Ï¹ï¿½",
       "name": "AdjustLaneTime",
-      "title": "·¹ÀÎ¸ðµå: ½Ã°£Áö¿¬º¸»ó (13)x0.01",
-      "descr": "·¹ÀÎÁ¦¾î±âÀÇ Áö¿¬½Ã°£À» º¸»óÇÏ¿©, ºü¸¥ Á¶ÇâÀ» À¯µµÇÔ",
+      "title": "ï¿½ï¿½ï¿½Î¸ï¿½ï¿½: ï¿½Ã°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (13)x0.01",
+      "descr": "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½",
       "egroup": "LAT",
       "etitle": "LaneLine: AdjustLaneTime (13)x0.01",
       "edescr": "LaneLine controller delay compensation",
@@ -965,10 +991,10 @@
       "unit": 1
     },
     {
-      "group": "Á¶ÇâÀÏ¹Ý",
+      "group": "ï¿½ï¿½ï¿½ï¿½ï¿½Ï¹ï¿½",
       "name": "LaneChangeNeedTorque",
-      "title": "Â÷¼±º¯°æ Á¶ÇâÅäÅ© »ç¿ë",
-      "descr": "Â÷¼±º¯°æ½Ã Á¶ÇâÅäÅ©¸¦ Áà¾ß ÀÛµ¿ÇÔ",
+      "title": "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å© ï¿½ï¿½ï¿½",
+      "descr": "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å©ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ûµï¿½ï¿½ï¿½",
       "egroup": "LAT",
       "etitle": "LaneChange use steering torque",
       "edescr": "",
@@ -978,10 +1004,10 @@
       "unit": 1
     },
     {
-      "group": "½ÃÀÛ",
+      "group": "ï¿½ï¿½ï¿½ï¿½",
       "name": "HapticFeedbackWhenSpeedCamera",
-      "title": "ÇÚµéÇÝÆ½±â´É»ç¿ë(0)",
-      "descr": "0:»ç¿ë¾ÈÇÔ,1:Áøµ¿,2:°è±âÆÇ,3:HUDÇ¥½Ã",
+      "title": "ï¿½Úµï¿½ï¿½ï¿½Æ½ï¿½ï¿½É»ï¿½ï¿½(0)",
+      "descr": "0:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,1:ï¿½ï¿½ï¿½ï¿½,2:ï¿½ï¿½ï¿½ï¿½ï¿½,3:HUDÇ¥ï¿½ï¿½",
       "egroup": "START",
       "etitle": "HapticFeedbackSpeedCamera(0)",
       "edescr": "",
@@ -991,10 +1017,10 @@
       "unit": 1
     },
     {
-      "group": "½ÃÀÛ",
+      "group": "ï¿½ï¿½ï¿½ï¿½",
       "name": "MaxAngleFrames",
       "title": "MaxAngleFrames(89)",
-      "descr": "89:±âº»°ª",
+      "descr": "89:ï¿½âº»ï¿½ï¿½",
       "egroup": "START",
       "etitle": "MaxAngleFrames(1)",
       "edescr": "",
@@ -1004,10 +1030,10 @@
       "unit": 1
     },
     {
-      "group": "½ÃÀÛ",
+      "group": "ï¿½ï¿½ï¿½ï¿½",
       "name": "HyundaiCameraSCC",
       "title": "HYUNDAI: CAMERA SCC",
-      "descr": "SCC¹è¼± °³Á¶½Ã 1·Î ¼³Á¤",
+      "descr": "SCCï¿½è¼± ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 1ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½",
       "egroup": "START",
       "etitle": "HYUNDAI: CAMERA SCC(0)",
       "edescr": "",
@@ -1017,10 +1043,10 @@
       "unit": 1
     },
     {
-      "group": "½ÃÀÛ",
+      "group": "ï¿½ï¿½ï¿½ï¿½",
       "name": "CanfdHDA2",
-      "title": "CANFD HDA2Áö¿ø(0)",
-      "descr": "HDA2 °­Á¦ÀÎ½Ä, ÀÏºÎCANFDÂ÷·® ¿À·ù¹ß»ý½Ã ÄÑ¾ßÇÔ.",
+      "title": "CANFD HDA2ï¿½ï¿½ï¿½ï¿½(0)",
+      "descr": "HDA2 ï¿½ï¿½ï¿½ï¿½ï¿½Î½ï¿½, ï¿½Ïºï¿½CANFDï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ß»ï¿½ï¿½ï¿½ ï¿½Ñ¾ï¿½ï¿½ï¿½.",
       "egroup": "START",
       "etitle": "CANFD HDA2(0)",
       "edescr": "",
@@ -1030,7 +1056,7 @@
       "unit": 1
     },
     {
-      "group": "½ÃÀÛ",
+      "group": "ï¿½ï¿½ï¿½ï¿½",
       "name": "CanfdDebug",
       "title": "CANFD Debug(0)",
       "descr": "",
@@ -1043,10 +1069,10 @@
       "unit": 1
     },
     {
-      "group": "½ÃÀÛ",
+      "group": "ï¿½ï¿½ï¿½ï¿½",
       "name": "EnableRadarTracks",
-      "title": "·¹ÀÌ´õÆ®·¢»ç¿ë(0)",
-      "descr": "ÀÏºÎÂ÷·®¸¸ Áö¿øµÊ, 2: SCC mix (¹®Á¦ÀÖÀ½)",
+      "title": "ï¿½ï¿½ï¿½Ì´ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ï¿½(0)",
+      "descr": "ï¿½Ïºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, 2: SCC mix (ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)",
       "egroup": "START",
       "etitle": "Enable radar tracks(0)",
       "edescr": "",
@@ -1056,10 +1082,10 @@
       "unit": 1
     },
     {
-      "group": "½ÃÀÛ",
+      "group": "ï¿½ï¿½ï¿½ï¿½",
       "name": "HotspotOnBoot",
-      "title": "ºÎÆÃ½Ã ÇÖ½ºÆÌÄÑ±â",
-      "descr": "COMMA¿¡ USIMÀ» ÀåÂøÇÑ°æ¿ì ÇÖ½ºÆÌÀ» ÀÚµ¿À¸·Î ÄÑÁÖ´Â ±â´É",
+      "title": "ï¿½ï¿½ï¿½Ã½ï¿½ ï¿½Ö½ï¿½ï¿½ï¿½ï¿½Ñ±ï¿½",
+      "descr": "COMMAï¿½ï¿½ USIMï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ°ï¿½ï¿½ ï¿½Ö½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½",
       "egroup": "START",
       "etitle": "Enable HotSpot(0)",
       "edescr": "",
@@ -1069,9 +1095,9 @@
       "unit": 1
     },
     {
-      "group": "½ÃÀÛ",
+      "group": "ï¿½ï¿½ï¿½ï¿½",
       "name": "SoundVolumeAdjust",
-      "title": "»ç¿îµåº¼·ýÁ¶Àý(100%)",
+      "title": "ï¿½ï¿½ï¿½åº¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(100%)",
       "descr": "",
       "egroup": "START",
       "etitle": "Sound Volume adjust(100%)",
@@ -1082,9 +1108,9 @@
       "unit": 5
     },
     {
-      "group": "½ÃÀÛ",
+      "group": "ï¿½ï¿½ï¿½ï¿½",
       "name": "SoundVolumeAdjustEngage",
-      "title": "»ç¿îµåº¼·ýÁ¶Àý,Engage(10%)",
+      "title": "ï¿½ï¿½ï¿½åº¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,Engage(10%)",
       "descr": "",
       "egroup": "START",
       "etitle": "Sound Volume adjust,Engage(10%)",
@@ -1095,10 +1121,10 @@
       "unit": 5
     },
     {
-      "group": "Â÷·®°£°Ý",
+      "group": "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½",
       "name": "TFollowGap1",
-      "title": "TF(1): Â÷·®°£°Ý½Ã°£1x0.01s(110)",
-      "descr": "´Ü°èº° Â÷°£ ½Ã°£°Å¸® ¼³Á¤",
+      "title": "TF(1): ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý½Ã°ï¿½1x0.01s(110)",
+      "descr": "ï¿½Ü°èº° ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ï¿½Å¸ï¿½ ï¿½ï¿½ï¿½ï¿½",
       "egroup": "FDIST",
       "etitle": "TF(1): TimeFollow1x0.01s(110)",
       "edescr": "",
@@ -1108,10 +1134,10 @@
       "unit": 5
     },
     {
-      "group": "Â÷·®°£°Ý",
+      "group": "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½",
       "name": "TFollowGap2",
-      "title": "TF(2): Â÷·®°£°Ý½Ã°£2x0.01s(120)",
-      "descr": "´Ü°èº° Â÷°£ ½Ã°£°Å¸® ¼³Á¤",
+      "title": "TF(2): ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý½Ã°ï¿½2x0.01s(120)",
+      "descr": "ï¿½Ü°èº° ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ï¿½Å¸ï¿½ ï¿½ï¿½ï¿½ï¿½",
       "egroup": "FDIST",
       "etitle": "TF(2): TimeFollow2x0.01s(120)",
       "edescr": "",
@@ -1121,10 +1147,10 @@
       "unit": 5
     },
     {
-      "group": "Â÷·®°£°Ý",
+      "group": "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½",
       "name": "TFollowGap3",
-      "title": "TF(3): Â÷·®°£°Ý½Ã°£3x0.01s(140)",
-      "descr": "´Ü°èº° Â÷°£ ½Ã°£°Å¸® ¼³Á¤",
+      "title": "TF(3): ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý½Ã°ï¿½3x0.01s(140)",
+      "descr": "ï¿½Ü°èº° ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ï¿½Å¸ï¿½ ï¿½ï¿½ï¿½ï¿½",
       "egroup": "FDIST",
       "etitle": "TF(3): TimeFollow3x0.01s(140)",
       "edescr": "",
@@ -1134,10 +1160,10 @@
       "unit": 5
     },
     {
-      "group": "Â÷·®°£°Ý",
+      "group": "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½",
       "name": "TFollowGap4",
-      "title": "TF(4): Â÷·®°£°Ý½Ã°£4x0.01s(160)",
-      "descr": "´Ü°èº° Â÷°£ ½Ã°£°Å¸® ¼³Á¤",
+      "title": "TF(4): ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý½Ã°ï¿½4x0.01s(160)",
+      "descr": "ï¿½Ü°èº° ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ï¿½Å¸ï¿½ ï¿½ï¿½ï¿½ï¿½",
       "egroup": "FDIST",
       "etitle": "TF(4): TimeFollow4x0.01s(160)",
       "edescr": "",
@@ -1147,10 +1173,10 @@
       "unit": 5
     },
     {
-      "group": "Â÷·®°£°Ý",
+      "group": "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½",
       "name": "DynamicTFollow",
-      "title": "µ¿Àû Â÷°£°Å¸® ¼³Á¤(0)",
-      "descr": "¼±ÇàÂ÷¿Í °Å¸®¿¡µû¸¥ µ¿Àû ¼³Á¤",
+      "title": "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Å¸ï¿½ ï¿½ï¿½ï¿½ï¿½(0)",
+      "descr": "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½",
       "egroup": "FDIST",
       "etitle": "Dynamic TFollow",
       "edescr": "",
@@ -1160,10 +1186,10 @@
       "unit": 5
     },
     {
-      "group": "Â÷·®°£°Ý",
+      "group": "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½",
       "name": "DynamicTFollowLC",
-      "title": "µ¿Àû Â÷°£°Å¸® ¼³Á¤ Â÷¼±º¯°æ(100)%",
-      "descr": "Â÷¼±º¯°æ½ÃÀÛ½Ã Â÷·®°£°ÝÀ» Á¼Èû.",
+      "title": "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Å¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(100)%",
+      "descr": "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Û½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.",
       "egroup": "FDIST",
       "etitle": "Dynamic TFollow LaneChange(100)%",
       "edescr": "",
@@ -1173,10 +1199,10 @@
       "unit": 5
     },
     {
-      "group": "°¨¼ÓÁ¦¾î",
+      "group": "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½",
       "name": "AutoCurveSpeedLowerLimit",
-      "title": "Ä¿ºê¼Óµµ ÃÖÀú¼Óµµ(30)",
-      "descr": "ÃÖÀú¼Óµµ¼³Á¤",
+      "title": "Ä¿ï¿½ï¿½Óµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½(30)",
+      "descr": "ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½",
       "egroup": "FDIST",
       "etitle": "AutoCurveSpeed LowerLimit(30)",
       "edescr": "Lower limit speed",
@@ -1186,10 +1212,10 @@
       "unit": 10
     },
     {
-      "group": "ÁÖÇàÆ©´×",
+      "group": "ï¿½ï¿½ï¿½ï¿½Æ©ï¿½ï¿½",
       "name": "StoppingAccel",
-      "title": "Á¤Áö½ÃÀÛ°¡¼Óµµx0.01(0)",
-      "descr": "Á¤Áö½ÃÀÛ°¡¼Óµµ Á¶Á¤, 0À¸·Î ÇÏ¸é ±âÁ¸¹æ½Ä",
+      "title": "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Û°ï¿½ï¿½Óµï¿½x0.01(0)",
+      "descr": "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Û°ï¿½ï¿½Óµï¿½ ï¿½ï¿½ï¿½ï¿½, 0ï¿½ï¿½ï¿½ï¿½ ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½",
       "egroup": "LONG",
       "etitle": "StoppingStartAccelx0.01(0)",
       "edescr": "",
@@ -1199,10 +1225,10 @@
       "unit": 10
     },
     {
-      "group": "°¡¼Ó¼³Á¤",
+      "group": "ï¿½ï¿½ï¿½Ó¼ï¿½ï¿½ï¿½",
       "name": "MyDrivingMode",
-      "title": "µå¶óÀÌºê¸ðµå:(3)",
-      "descr": "1:¿¬ºñ,2:¾ÈÀü,3:ÀÏ¹Ý,4:°í¼Ó(½ÅÈ£¹«½Ã)",
+      "title": "ï¿½ï¿½ï¿½ï¿½Ìºï¿½ï¿½ï¿½:(3)",
+      "descr": "1:ï¿½ï¿½ï¿½ï¿½,2:ï¿½ï¿½ï¿½ï¿½,3:ï¿½Ï¹ï¿½,4:ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½È£ï¿½ï¿½ï¿½ï¿½)",
       "egroup": "ACCEL",
       "etitle": "DrivingMode:Init(3)",
       "edescr": "1:Eco,2:Safe,3:General,4:HighSpeed",
@@ -1212,10 +1238,10 @@
       "unit": 1
     },
     {
-      "group": "°¡¼Ó¼³Á¤",
+      "group": "ï¿½ï¿½ï¿½Ó¼ï¿½ï¿½ï¿½",
       "name": "MyDrivingModeAuto",
-      "title": "µå¶óÀÌºê¸ðµå: ÀÚµ¿",
-      "descr": "ÀÏ¹Ý¸ðµå¿¡¼­¸¸ ÀÛµ¿ÇÔ",
+      "title": "ï¿½ï¿½ï¿½ï¿½Ìºï¿½ï¿½ï¿½: ï¿½Úµï¿½",
+      "descr": "ï¿½Ï¹Ý¸ï¿½å¿¡ï¿½ï¿½ï¿½ï¿½ ï¿½Ûµï¿½ï¿½ï¿½",
       "egroup": "ACCEL",
       "etitle": "DrivingMode: Auto",
       "edescr": "General Driving Mode only",
@@ -1225,10 +1251,10 @@
       "unit": 1
     },
     {
-      "group": "°¨¼ÓÁ¦¾î",
+      "group": "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½",
       "name": "TrafficLightDetectMode",
-      "title": "½ÅÈ£°¨Áö ±â´É",
-      "descr": "0:½ÅÈ£°¨Áö¾ÈÇÔ, 1:½ÅÈ£Á¤Áö¸¸ °¨Áö, 2:½ÅÈ£Á¤Áö/Ãâ¹ß ¸ðµÎ",
+      "title": "ï¿½ï¿½È£ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½",
+      "descr": "0:ï¿½ï¿½È£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, 1:ï¿½ï¿½È£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, 2:ï¿½ï¿½È£ï¿½ï¿½ï¿½ï¿½/ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½",
       "egroup": "SPEED",
       "etitle": "TrafficLightDetectMode",
       "edescr": "0:None,1:Stopping only, 2:Stop & Go",
@@ -1238,10 +1264,10 @@
       "unit": 1
     },
     {
-      "group": "°¨¼ÓÁ¦¾î",
+      "group": "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½",
       "name": "AutoNaviSpeedCtrlEnd",
-      "title": "°ú¼ÓÄ«¸Þ¶ó°¨¼Ó ¿Ï·á ½Ã°£(6ÃÊ)",
-      "descr": "°¨¼ÓÁ¾·á½ÃÁ¡À» ¼³Á¤ÇÕ´Ï´Ù.",
+      "title": "ï¿½ï¿½ï¿½ï¿½Ä«ï¿½Þ¶ó°¨¼ï¿½ ï¿½Ï·ï¿½ ï¿½Ã°ï¿½(6ï¿½ï¿½)",
+      "descr": "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.",
       "egroup": "SPEED",
       "etitle": "NaviSpeedEndingPoint(6s)",
       "edescr": "Deceleration completion point",
@@ -1251,9 +1277,9 @@
       "unit": 1
     },
     {
-      "group": "°¨¼ÓÁ¦¾î",
+      "group": "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½",
       "name": "AutoNaviSpeedBumpTime",
-      "title": "»ç°í¹æÁöÅÎ °¨¼Ó¿Ï·á½Ã°£½ÃÁ¡(1s)",
+      "title": "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ó¿Ï·ï¿½Ã°ï¿½ï¿½ï¿½ï¿½ï¿½(1s)",
       "descr": "",
       "egroup": "SPEED",
       "etitle": "SpeedBumpEndingPoint(1s)",
@@ -1264,9 +1290,9 @@
       "unit": 1
     },
     {
-      "group": "°¨¼ÓÁ¦¾î",
+      "group": "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½",
       "name": "AutoNaviSpeedBumpSpeed",
-      "title": "»ç°í¹æÁöÅÎ ¼Óµµ(35Km/h)",
+      "title": "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Óµï¿½(35Km/h)",
       "descr": "",
       "egroup": "SPEED",
       "etitle": "SpeedBumpSpeed(35km/h)",
@@ -1277,10 +1303,10 @@
       "unit": 5
     },
     {
-      "group": "°¨¼ÓÁ¦¾î",
+      "group": "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½",
       "name": "AutoNaviSpeedDecelRate",
-      "title": "°ú¼ÓÄ«¸Þ¶ó °¨¼ÓÀ² x0.01m/s^2(200)",
-      "descr": "³·À¸¸é ¸Ö¸®¼­ºÎÅÍ °¨¼ÓÇÔ",
+      "title": "ï¿½ï¿½ï¿½ï¿½Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ x0.01m/s^2(200)",
+      "descr": "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½",
       "egroup": "SPEED",
       "etitle": "NaviSpeedDecelRate 0.01m/s^2x(200)",
       "edescr": "",
@@ -1290,10 +1316,10 @@
       "unit": 10
     },
     {
-      "group": "°¨¼ÓÁ¦¾î",
+      "group": "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½",
       "name": "AutoNaviCountDownMode",
-      "title": "³×ºñ¾Ë¸² Ä«¿îÆ®´Ù¿î ¹æ¹ý",
-      "descr": "0: ¾Ë¸²¾øÀ½, 1: ÅÏÁöÁ¡+¼Óµµ, 2: ÅÏÁöÁ¡+¼Óµµ+¹æÁöÅÎ",
+      "title": "ï¿½×ºï¿½Ë¸ï¿½ Ä«ï¿½ï¿½Æ®ï¿½Ù¿ï¿½ ï¿½ï¿½ï¿½",
+      "descr": "0: ï¿½Ë¸ï¿½ï¿½ï¿½ï¿½ï¿½, 1: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½+ï¿½Óµï¿½, 2: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½+ï¿½Óµï¿½+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½",
       "egroup": "SPEED",
       "etitle": "NaviCountDownMode",
       "edescr": "",
@@ -1303,10 +1329,10 @@
       "unit": 1
     },
     {
-      "group": "°¨¼ÓÁ¦¾î",
+      "group": "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½",
       "name": "TurnSpeedControlMode",
-      "title": "ÅÏ¼ÓµµÁ¦¾î¹æ¹ý",
-      "descr": "0: ¼ÓµµÁ¦¾î¾ÈÇÔ,1:ºñÁ¯,2:ºñÁ¯+°æ·Î,3:°æ·Î",
+      "title": "ï¿½Ï¼Óµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½",
+      "descr": "0: ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,1:ï¿½ï¿½ï¿½ï¿½,2:ï¿½ï¿½ï¿½ï¿½+ï¿½ï¿½ï¿½,3:ï¿½ï¿½ï¿½",
       "egroup": "SPEED",
       "etitle": "TurnSpeedControlMode",
       "edescr": "",
@@ -1316,10 +1342,10 @@
       "unit": 1
     },
     {
-      "group": "°¨¼ÓÁ¦¾î",
+      "group": "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½",
       "name": "MapTurnSpeedFactor",
-      "title": "°æ·ÎÅÏ¼Óµµ¹Ý¿µºñÀ²(100%)",
-      "descr": "ÀÛÀ¸¸é ¼Óµµ°¡ ÁÙ¾îµë",
+      "title": "ï¿½ï¿½ï¿½ï¿½Ï¼Óµï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½(100%)",
+      "descr": "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Óµï¿½ï¿½ï¿½ ï¿½Ù¾ï¿½ï¿½",
       "egroup": "SPEED",
       "etitle": "MapTurnSpeedFactor",
       "edescr": "",
@@ -1329,9 +1355,9 @@
       "unit": 10
     },
     {
-      "group": "°¨¼ÓÁ¦¾î",
+      "group": "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½",
       "name": "AutoNaviSpeedSafetyFactor",
-      "title": "°ú¼ÓÄ«¸Þ¶ó Á¦ÇÑ¼ÓµµÀû¿ëÀ²(105)%",
+      "title": "ï¿½ï¿½ï¿½ï¿½Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½ï¿½Ñ¼Óµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(105)%",
       "descr": "",
       "egroup": "SPEED",
       "etitle": "NaviSpeedLimitRatio(105)%",

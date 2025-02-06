@@ -122,6 +122,7 @@ std::unordered_map<std::string, uint32_t> keys = {
     {"ExperimentalModeConfirmed", PERSISTENT},
     {"FirmwareQueryDone", CLEAR_ON_MANAGER_START | CLEAR_ON_ONROAD_TRANSITION},
     {"ForcePowerDown", PERSISTENT},
+    {"ForceOffroad", CLEAR_ON_MANAGER_START},
     {"GitBranch", PERSISTENT},
     {"GitCommit", PERSISTENT},
     {"GitCommitDate", PERSISTENT},
@@ -159,6 +160,7 @@ std::unordered_map<std::string, uint32_t> keys = {
     {"LocationFilterInitialState", PERSISTENT},
     {"LongitudinalManeuverMode", CLEAR_ON_MANAGER_START | CLEAR_ON_OFFROAD_TRANSITION},
     {"LongitudinalPersonality", PERSISTENT},
+    {"BydModifiedStockLong", PERSISTENT},
     {"NetworkMetered", PERSISTENT},
     {"ObdMultiplexingChanged", CLEAR_ON_MANAGER_START | CLEAR_ON_ONROAD_TRANSITION},
     {"ObdMultiplexingEnabled", CLEAR_ON_MANAGER_START | CLEAR_ON_ONROAD_TRANSITION},
@@ -202,9 +204,10 @@ std::unordered_map<std::string, uint32_t> keys = {
     {"Version", PERSISTENT},
 
     // carrot
+    {"AlwaysOnLKAS", PERSISTENT},
     {"LongitudinalPersonalityMax", PERSISTENT},
     {"NetworkAddress", CLEAR_ON_MANAGER_START},
-    
+
     {"ApiCache_NavDestinations", PERSISTENT},
     {"NavDestination", CLEAR_ON_MANAGER_START | CLEAR_ON_OFFROAD_TRANSITION},
     {"NavDestinationWaypoints", CLEAR_ON_MANAGER_START | CLEAR_ON_OFFROAD_TRANSITION},
@@ -310,7 +313,7 @@ std::unordered_map<std::string, uint32_t> keys = {
     {"MaxAngleFrames", PERSISTENT},
     {"SoftHoldMode", PERSISTENT},
     {"CarrotLatControl", PERSISTENT },
-    {"LatMpcPathCost", PERSISTENT },
+    {"LatMpcPathCost", PERSISTENT},
     {"LatMpcMotionCost", PERSISTENT },
     {"LatMpcAccelCost", PERSISTENT},
     {"LatMpcJerkCost", PERSISTENT},
@@ -319,6 +322,8 @@ std::unordered_map<std::string, uint32_t> keys = {
     {"LateralTorqueCustom", PERSISTENT},
     {"LateralTorqueAccelFactor", PERSISTENT},
     {"LateralTorqueFriction", PERSISTENT},
+    {"LateralTorqueKp", PERSISTENT},
+    {"LateralTorqueKi", PERSISTENT},
     {"LateralTorqueKd", PERSISTENT},
     {"CustomSteerMax", PERSISTENT},
     {"CustomSteerDeltaUp", PERSISTENT},

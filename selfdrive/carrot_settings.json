@@ -2,7 +2,7 @@
   "apilot": 20220111,
   "params": [
     {
-      "group": "조향튜닝",
+      "group": "转向调校",
       "name": "LateralTorqueCustom",
       "title": "_LateralTorqueCustom(0)",
       "descr": "0:LiveTorque, 1:CustomTorque",
@@ -15,7 +15,7 @@
       "unit": 1
     },
     {
-      "group": "조향튜닝",
+      "group": "转向调校",
       "name": "LateralTorqueAccelFactor",
       "title": "_LateralTorqueAccelFactor*0.001(2500)",
       "descr": "",
@@ -28,7 +28,7 @@
       "unit": 100
     },
     {
-      "group": "조향튜닝",
+      "group": "转向调校",
       "name": "LateralTorqueFriction",
       "title": "_LateralTorqueFriction*0.001(100)",
       "descr": "",
@@ -41,23 +41,49 @@
       "unit": 10
     },
     {
-      "group": "조향튜닝",
-      "name": "LateralTorqueKd",
-      "title": "_LateralTorqueKd*0.01(800)",
+      "group": "转向调校",
+      "name": "LateralTorqueKp",
+      "title": "_LateralTorqueKp*0.01(100)",
       "descr": "",
       "egroup": "LAT",
-      "etitle": "_LateralTorqueKd*0.01(800)",
+      "etitle": "_LateralTorqueKp*0.01(100)",
       "edescr": "",
       "min": 0,
-      "max": 10000,
+      "max": 1000,
       "default": 100,
       "unit": 10
     },
     {
-      "group": "조향튜닝",
+      "group": "转向调校",
+      "name": "LateralTorqueKi",
+      "title": "_LateralTorqueKi*0.01(10)",
+      "descr": "",
+      "egroup": "LAT",
+      "etitle": "_LateralTorqueKi*0.01(10)",
+      "edescr": "",
+      "min": 0,
+      "max": 1000,
+      "default": 10,
+      "unit": 1
+    },
+    {
+      "group": "转向调校",
+      "name": "LateralTorqueKd",
+      "title": "_LateralTorqueKd*0.01(0)",
+      "descr": "",
+      "egroup": "LAT",
+      "etitle": "_LateralTorqueKd*0.01(0)",
+      "edescr": "",
+      "min": 0,
+      "max": 1000,
+      "default": 0,
+      "unit": 1
+    },
+    {
+      "group": "转向调校",
       "name": "CarrotLatControl",
-      "title": "*당근조향제어(0)",
-      "descr": "0:Default, 1:당근제어",
+      "title": "*胡萝卜转向控制(0)",
+      "descr": "0:默认, 1:胡萝卜控制",
       "egroup": "LAT",
       "etitle": "*Carrot method lateral control(0)",
       "edescr": "",
@@ -67,10 +93,10 @@
       "unit": 1
     },
     {
-      "group": "조향튜닝",
+      "group": "转向调校",
       "name": "LatMpcPathCost",
       "title": "*LATMPC.PathCost(100)",
-      "descr": "경로추종가중치, 높으면 경로우선시함.",
+      "descr": "路径追踪权重，值高时优先路径",
       "egroup": "LAT",
       "etitle": "*LATMPC.PathCost(100)",
       "edescr": "",
@@ -80,10 +106,10 @@
       "unit": 10
     },
     {
-      "group": "조향튜닝",
+      "group": "转向调校",
       "name": "LatMpcMotionCost",
       "title": "*LATMPC.MotionCost(11)",
-      "descr": "헤딩가중치",
+      "descr": "航向权重",
       "egroup": "LAT",
       "etitle": "*LATMPC.MotionCost(11)",
       "edescr": "",
@@ -93,10 +119,10 @@
       "unit": 1
     },
     {
-      "group": "조향튜닝",
+      "group": "转向调校",
       "name": "LatMpcAccelCost",
       "title": "*LATMPC.AccelCost(0)",
-      "descr": "횡가속도제한, 낮으면 민첩성증가 안정성감소",
+      "descr": "横向加速度限制，值低时敏捷性增加稳定性降低",
       "egroup": "LAT",
       "etitle": "*LATMPC.AccelCost(0)",
       "edescr": "",
@@ -106,10 +132,10 @@
       "unit": 10
     },
     {
-      "group": "조향튜닝",
+      "group": "转向调校",
       "name": "LatMpcJerkCost",
       "title": "*LATMPC.JerkCost(4)",
-      "descr": "낮추면 빠른조향허용, 부드러음감소",
+      "descr": "值低时允许快速转向，平滑性降低",
       "egroup": "LAT",
       "etitle": "*LATMPC.JerkCost(4)",
       "edescr": "",
@@ -119,10 +145,10 @@
       "unit": 1
     },
     {
-      "group": "조향튜닝",
+      "group": "转向调校",
       "name": "LatMpcSteeringRateCost",
       "title": "*LATMPC.SteerRateCost(700)",
-      "descr": "조향변화율제한, 낮추면 조향이 적극적",
+      "descr": "转向变化率限制，值低时转向更积极",
       "egroup": "LAT",
       "etitle": "*LATMPC.SteerRateCost(700)",
       "edescr": "",
@@ -132,9 +158,9 @@
       "unit": 100
     },
     {
-      "group": "조향튜닝",
+      "group": "转向调校",
       "name": "DampingFactor",
-      "title": "조향댐핑팩터(25)",
+      "title": "转向阻尼因子(25)",
       "descr": "",
       "egroup": "LAT",
       "etitle": "DampingFactor(25)",
@@ -145,7 +171,7 @@
       "unit": 10
     },
     {
-      "group": "조향튜닝",
+      "group": "转向调校",
       "name": "CustomSteerMax",
       "title": "_CustomSteerMax(0)",
       "descr": "",
@@ -158,7 +184,7 @@
       "unit": 1
     },
     {
-      "group": "조향튜닝",
+      "group": "转向调校",
       "name": "CustomSteerDeltaUp",
       "title": "_CustomSteerDeltaUp(0)",
       "descr": "",
@@ -171,7 +197,7 @@
       "unit": 1
     },
     {
-      "group": "조향튜닝",
+      "group": "转向调校",
       "name": "CustomSteerDeltaDown",
       "title": "_CustomSteerDeltaDown(0)",
       "descr": "",
@@ -184,10 +210,10 @@
       "unit": 1
     },
     {
-      "group": "조향튜닝",
+      "group": "转向调校",
       "name": "SteerActuatorDelay",
       "title": "SteerActuatorDelay(40)",
-      "descr": "조향지연값",
+      "descr": "转向延迟值",
       "egroup": "LAT",
       "etitle": "SteerActuatorDelay(40)",
       "edescr": "",
@@ -197,10 +223,10 @@
       "unit": 1
     },
     {
-      "group": "조향튜닝",
+      "group": "转向调校",
       "name": "ModelActuatorDelay",
       "title": "*ModelActuatorDelay(80)x0.01",
-      "descr": "모델지연값, 커브진입시점로 조절",
+      "descr": "模型延迟值，调节弯道进入时机",
       "egroup": "LAT",
       "etitle": "*ModelActuatorDelay(80)",
       "edescr": "",
@@ -210,10 +236,10 @@
       "unit": 1
     },
     {
-      "group": "크루즈",
+      "group": "巡航",
       "name": "CruiseOnDist",
-      "title": "크루즈ON거리(0cm)",
-      "descr": "엑셀/브레이크OFF 시, 선행차가 가까와지면 크루즈ON",
+      "title": "巡航开启距离(0cm)",
+      "descr": "油门/刹车关闭时，前车接近则开启巡航",
       "egroup": "CRUISE",
       "etitle": "CruiseOnDist(0cm)",
       "edescr": "Gas/Brake Off and LeadCar close, CruiseON(+)",
@@ -223,10 +249,10 @@
       "unit": 50
     },
     {
-      "group": "크루즈",
+      "group": "巡航",
       "name": "CruiseEcoControl",
-      "title": "크루즈연비제어(2km/h)",
-      "descr": "목표속도를 일시적으로 올림",
+      "title": "巡航油耗控制(2km/h)",
+      "descr": "暂时提高目标速度",
       "egroup": "CRUISE",
       "etitle": "CruiseEcoControl(2km/h)",
       "edescr": "",
@@ -236,10 +262,10 @@
       "unit": 1
     },
     {
-      "group": "조향튜닝",
+      "group": "转向调校",
       "name": "CustomSR",
       "title": "CustomSteerRatiox0.1(0)",
-      "descr": "0: LiveSteerRatio사용, 단위:0.1",
+      "descr": "0: 使用LiveSteerRatio，单位:0.1",
       "egroup": "LAT",
       "etitle": "CustomSteerRatiox0.1(0)",
       "edescr": "0: Use LiveSteerRatio",
@@ -249,10 +275,10 @@
       "unit": 1
     },
     {
-      "group": "조향튜닝",
+      "group": "转向调校",
       "name": "SteerRatioRate",
       "title": "CustomSteerRatioRatex0.01(100)",
-      "descr": "LiveSteerRatio 반영률",
+      "descr": "LiveSteerRatio应用率",
       "egroup": "LAT",
       "etitle": "CustomSteerRatioRatex0.01(100)",
       "edescr": "LiveSteerRatio Apply Ratio",
@@ -262,9 +288,9 @@
       "unit": 1
     },
     {
-      "group": "가속설정",
+      "group": "加速设置",
       "name": "CruiseMaxVals1",
-      "title": "가속설정1:0km/h(160)",
+      "title": "加速设置1:0km/h(160)",
       "descr": "Normal mode only (x0.01m/s^2)",
       "egroup": "ACCEL",
       "etitle": "AccelSet1:0km/h(160)",
@@ -275,9 +301,9 @@
       "unit": 5
     },
     {
-      "group": "가속설정",
+      "group": "加速设置",
       "name": "CruiseMaxVals2",
-      "title": "가속설정2:40km/h(120)",
+      "title": "加速设置2:40km/h(120)",
       "descr": "Normal mode only (x0.01m/s^2)",
       "egroup": "ACCEL",
       "etitle": "AccelSet2:40km/h(120)",
@@ -288,9 +314,9 @@
       "unit": 5
     },
     {
-      "group": "가속설정",
+      "group": "加速设置",
       "name": "CruiseMaxVals3",
-      "title": "가속설정3:60km/h(100)",
+      "title": "加速设置3:60km/h(100)",
       "descr": "Normal mode only (x0.01m/s^2)",
       "egroup": "ACCEL",
       "etitle": "AccelSet3:60km/h(100)",
@@ -301,9 +327,9 @@
       "unit": 5
     },
     {
-      "group": "가속설정",
+      "group": "加速设置",
       "name": "CruiseMaxVals4",
-      "title": "가속설정4:80km/h(80)",
+      "title": "加速设置4:80km/h(80)",
       "descr": "Normal mode only (x0.01m/s^2)",
       "egroup": "ACCEL",
       "etitle": "AccelSet4:80km/h(80)",
@@ -314,9 +340,9 @@
       "unit": 5
     },
     {
-      "group": "가속설정",
+      "group": "加速设置",
       "name": "CruiseMaxVals5",
-      "title": "가속설정5:110km/h(70)",
+      "title": "加速设置5:110km/h(70)",
       "descr": "Normal mode only (x0.01m/s^2)",
       "egroup": "ACCEL",
       "etitle": "AccelSet5:110km/h(70)",
@@ -327,9 +353,9 @@
       "unit": 5
     },
     {
-      "group": "가속설정",
+      "group": "加速设置",
       "name": "CruiseMaxVals6",
-      "title": "가속설정6:140km/h(60)",
+      "title": "加速设置6:140km/h(60)",
       "descr": "Normal mode only (x0.01m/s^2)",
       "egroup": "ACCEL",
       "etitle": "AccelSet6:140km/h(60)",
@@ -340,7 +366,7 @@
       "unit": 5
     },
     {
-      "group": "주행튜닝",
+      "group": "行驶调校",
       "name": "StopDistanceCarrot",
       "title": "StopDistance(600)cm",
       "descr": "",
@@ -353,10 +379,10 @@
       "unit": 10
     },
     {
-      "group": "주행튜닝",
+      "group": "行驶调校",
       "name": "ComfortBrake",
       "title": "Comfort Brake(240)",
-      "descr": "x0.01, 값이 크면 급하게 브레이킹",
+      "descr": "x0.01，值大时急刹车",
       "egroup": "LONG",
       "etitle": "Comfort Brake(240)",
       "edescr": "",
@@ -366,7 +392,7 @@
       "unit": 5
     },
     {
-      "group": "주행튜닝",
+      "group": "行驶调校",
       "name": "LongTuningKpV",
       "title": "Long KpV(100)x0.01",
       "descr": "",
@@ -379,7 +405,7 @@
       "unit": 5
     },
     {
-      "group": "주행튜닝",
+      "group": "行驶调校",
       "name": "LongTuningKf",
       "title": "Long Kf(100)x0.01",
       "descr": "",
@@ -392,7 +418,7 @@
       "unit": 5
     },
     {
-      "group": "주행튜닝",
+      "group": "行驶调校",
       "name": "LongTuningKiV",
       "title": "Long KiV(0)x0.01",
       "descr": "",
@@ -405,7 +431,7 @@
       "unit": 1
     },
     {
-      "group": "주행튜닝",
+      "group": "行驶调校",
       "name": "LongActuatorDelay",
       "title": "LongActuatorDelay(20)x0.01",
       "descr": "",
@@ -418,10 +444,10 @@
       "unit": 5
     },
     {
-      "group": "주행튜닝",
+      "group": "行驶调校",
       "name": "RadarReactionFactor",
       "title": "Radar reaction factor (10)%",
-      "descr": "값이 낮아지면 선행차량에 대한 반응이 빨라짐.",
+      "descr": "值降低时对前车反应更快",
       "egroup": "LONG",
       "etitle": "Radar reaction factor (10)%",
       "edescr": "",
@@ -431,10 +457,10 @@
       "unit": 1
     },
     {
-      "group": "감속제어",
+      "group": "减速控制",
       "name": "AutoCurveSpeedFactor",
-      "title": "커브속도 조절비율(100%)",
-      "descr": "높으면 커브속도가 느려집니다.",
+      "title": "曲线速度调节比例(100%)",
+      "descr": "值高时曲线速度变慢",
       "egroup": "DECEL",
       "etitle": "CurveSpeedFactor(100%)",
       "edescr": "Higher value, slow curve speed",
@@ -444,10 +470,10 @@
       "unit": 5
     },
     {
-      "group": "감속제어",
+      "group": "减速控制",
       "name": "AutoCurveSpeedAggressiveness",
-      "title": "커브속도 적극성(100%)",
-      "descr": "올리면 진입속도가 적극적으로 변합니다.",
+      "title": "曲线速度积极性(100%)",
+      "descr": "提高时进入速度更积极变化",
       "egroup": "DECEL",
       "etitle": "CurveSpeed Aggressiveness(100%)",
       "edescr": "Higher value, more speed down",
@@ -457,10 +483,10 @@
       "unit": 1
     },
     {
-      "group": "조향일반",
+      "group": "转向常规",
       "name": "AutoTurnControl",
       "title": "ATC: AutoTurnControl(0)",
-      "descr": "0:사용안함,1:차선변경, 2:차선변경+속도, 3:속도",
+      "descr": "0:关闭,1:变道, 2:变道+速度, 3:速度",
       "egroup": "LATSET",
       "etitle": "ATC: AutoTurnControl",
       "edescr": "0: Not used, 1:laneChange, 2:laneChange+speed, 3:speed",
@@ -470,10 +496,10 @@
       "unit": 1
     },
     {
-      "group": "조향일반",
+      "group": "转向常规",
       "name": "AutoTurnControlSpeedTurn",
-      "title": "ATC: 턴속도(20)",
-      "descr": "0:사용안함, 턴시 적용속도",
+      "title": "ATC: 转弯速度(20)",
+      "descr": "0:关闭，转弯时应用速度",
       "egroup": "LATSET",
       "etitle": "ATC: Turn Speed(20)",
       "edescr": "0: Not used, Turn Speed",
@@ -483,10 +509,10 @@
       "unit": 5
     },
     {
-      "group": "조향일반",
+      "group": "转向常规",
       "name": "AutoTurnControlTurnEnd",
-      "title": "ATC: 시간거리(3)",
-      "descr": "NOO완료 시간거리(속도*시간)",
+      "title": "ATC: 时间距离(3)",
+      "descr": "NOO完成时间距离(速度*时间)",
       "egroup": "LATSET",
       "etitle": "ATC: Speed Ctrl left Time(3)",
       "edescr": "",
@@ -496,10 +522,10 @@
       "unit": 1
     },
     {
-      "group": "조향일반",
+      "group": "转向常规",
       "name": "GpsDelayTimeAdjust",
       "title": "GpsDelayTimeAdjust(200)x0.01",
-      "descr": "Noo를 위한 gps표시위치 보정",
+      "descr": "用于NOO的GPS显示位置校准",
       "egroup": "LATSET",
       "etitle": "GpsDelayTimeAdjust",
       "edescr": "",
@@ -509,10 +535,10 @@
       "unit": 10
     },
     {
-      "group": "조향일반",
+      "group": "转向常规",
       "name": "AutoTurnMapChange",
-      "title": "ATC Helper 맵전환(0)",
-      "descr": "ATC 작동시 자동맵전환",
+      "title": "ATC助手地图切换(0)",
+      "descr": "ATC工作时自动切换地图",
       "egroup": "LATSET",
       "etitle": "ATC Helper Map display(0)",
       "edescr": "",
@@ -522,10 +548,10 @@
       "unit": 1
     },
     {
-      "group": "버튼설정",
+      "group": "按钮设置",
       "name": "CruiseButtonMode",
-      "title": "크루즈버튼작동모드(0)",
-      "descr": "0:일반,1:사용자1,2:사용자2",
+      "title": "巡航按钮操作模式(0)",
+      "descr": "0:常规,1:用户1,2:用户2",
       "egroup": "BUTN",
       "etitle": "Cruise Button Mode(0)",
       "edescr": "0:General,1:User1,2:User2",
@@ -535,10 +561,10 @@
       "unit": 1
     },
     {
-      "group": "버튼설정",
+      "group": "按钮设置",
       "name": "CruiseButtonTest1",
-      "title": "크루즈버튼스팸쏘기(8)",
-      "descr": "속도버튼신호 발송제한시간,비롱컨에서 사용",
+      "title": "巡航按钮连续发送(8)",
+      "descr": "速度按钮信号发送限制时间，用于非遥控器",
       "egroup": "BUTN",
       "etitle": "Cruise Button spam1(8)",
       "edescr": "",
@@ -548,10 +574,10 @@
       "unit": 1
     },
     {
-      "group": "버튼설정",
+      "group": "按钮设置",
       "name": "CruiseButtonTest2",
-      "title": "크루즈버튼스팸쉬기(30)",
-      "descr": "속도버튼신호 발송 휴지시간, 비롱컨에서 사용",
+      "title": "巡航按钮间隔时间(30)",
+      "descr": "速度按钮信号发送间隔时间，用于非遥控器",
       "egroup": "BUTN",
       "etitle": "Cruise Button spam2(30)",
       "edescr": "",
@@ -561,10 +587,10 @@
       "unit": 1
     },
     {
-      "group": "버튼설정",
+      "group": "按钮设置",
       "name": "CruiseButtonTest3",
-      "title": "크루즈버튼스팸연속쏘기(1)",
-      "descr": "속도버튼신호 연속회수, 비롱컨에서 사용",
+      "title": "巡航按钮连续发送次数(1)",
+      "descr": "速度按钮信号连续发送次数，用于非遥控器",
       "egroup": "BUTN",
       "etitle": "Cruise Button spam3(1)",
       "edescr": "",
@@ -574,10 +600,10 @@
       "unit": 1
     },
     {
-      "group": "버튼설정",
+      "group": "按钮设置",
       "name": "CruiseSpeedUnit",
-      "title": "크루즈버튼속도단위(10)",
-      "descr": "크루즈버튼 속도 단위",
+      "title": "巡航按钮速度单位(10)",
+      "descr": "巡航按钮速度单位",
       "egroup": "BUTN",
       "etitle": "Cruise Speed Unit(10)",
       "edescr": "SET/DECEL up/down speed rate",
@@ -587,10 +613,10 @@
       "unit": 1
     },
     {
-      "group": "시작",
+      "group": "启动",
       "name": "AutoCruiseControl",
-      "title": "오토크루즈제어(HKG only)",
-      "descr": "1:SOFTHOLD, Auto Cruise, 2:SoftHold오류시",
+      "title": "自动巡航控制(HKG only)",
+      "descr": "1:SOFTHOLD, 自动巡航, 2:SoftHold错误时",
       "egroup": "START",
       "etitle": "Auto Cruise control(HKG only)",
       "edescr": "Softhold, Auto Cruise ON/OFF control",
@@ -600,10 +626,10 @@
       "unit": 1
     },
     {
-      "group": "시작",
+      "group": "启动",
       "name": "AutoGasTokSpeed",
-      "title": "오토크루즈: 엑셀톡 속도",
-      "descr": "해당속도 이상에서만 작동함.",
+      "title": "自动巡航: 油门响应速度",
+      "descr": "仅在达到该速度时工作",
       "egroup": "START",
       "etitle": "Auto Cruise: Gas Tok speed",
       "edescr": "",
@@ -613,10 +639,10 @@
       "unit": 5
     },
     {
-      "group": "시작",
+      "group": "启动",
       "name": "AutoEngage",
-      "title": "오토인게이지",
-      "descr": "1:SteerEnable, 2:Steer,Cruise Enable",
+      "title": "自动介入",
+      "descr": "1:转向启用, 2:转向+巡航启用",
       "egroup": "START",
       "etitle": "Auto Engage on onroad",
       "edescr": "1:SteerEnable, 2:Steer, Cruise Enable",
@@ -626,9 +652,9 @@
       "unit": 1
     },
     {
-      "group": "시작",
+      "group": "启动",
       "name": "MapboxStyle",
-      "title": "맵박스 스타일",
+      "title": "地图样式",
       "descr": "",
       "egroup": "START",
       "etitle": "MapboxStyle",
@@ -639,10 +665,10 @@
       "unit": 1
     },
     {
-      "group": "시작",
+      "group": "启动",
       "name": "DisableMinSteerSpeed",
-      "title": "저속조향제한해제",
-      "descr": "저속조향이 안되나, SMDPS장착차량",
+      "title": "解除低速转向限制",
+      "descr": "无法低速转向，但适用于SMDPS车型",
       "egroup": "START",
       "etitle": "DisableMinSteerSpeed",
       "edescr": "",
@@ -652,10 +678,10 @@
       "unit": 1
     },
     {
-      "group": "시작",
+      "group": "启动",
       "name": "SpeedFromPCM",
-      "title": "PCM차량속도제어(순정SCC)",
-      "descr": "1:버튼스패밍안함(차량속도), 0: 커브/카메라 감속 + OPLong, 2: 커브/카메라 감속, 3:Honda/Toyota",
+      "title": "PCM车速控制(原厂SCC)",
+      "descr": "1:不发送按钮信号(使用车辆速度), 0: 弯道/摄像头减速 + OPLong, 2: 弯道/摄像头减速, 3:Honda/Toyota",
       "egroup": "START",
       "etitle": "Speed from PCM(StockSCC)",
       "edescr": "1: Cruise speed control from Car, 0,2: Speed OP, 3:Honda",
@@ -665,9 +691,9 @@
       "unit": 1
     },
     {
-      "group": "시작",
+      "group": "启动",
       "name": "MaxTimeOffroadMin",
-      "title": "자동전원OFF(분)",
+      "title": "自动关机时间(分钟)",
       "descr": "",
       "egroup": "START",
       "etitle": "PowerOffTime(min)",
@@ -678,7 +704,7 @@
       "unit": 10
     },
     {
-      "group": "시작",
+      "group": "启动",
       "name": "DisableDM",
       "title": "DisableDM",
       "descr": "",
@@ -691,10 +717,10 @@
       "unit": 1
     },
     {
-      "group": "크루즈",
+      "group": "巡航",
       "name": "AutoSpeedUptoRoadSpeedLimit",
-      "title": "자동속도증가 (100)%",
-      "descr": "전방차량에 따라 자동속도증가. 로드스피드*비율 까지 자동속도올림.",
+      "title": "自动速度提升 (100)%",
+      "descr": "根据前车自动提速。根据道路限速*比例自动提速",
       "egroup": "CRUISE",
       "etitle": "AutoSpeedUpx:(100)%",
       "edescr": "",
@@ -704,10 +730,10 @@
       "unit": 10
     },
     {
-      "group": "감속제어",
+      "group": "减速控制",
       "name": "AutoRoadSpeedAdjust",
-      "title": "자동도로제한속도감속 (50)%",
-      "descr": "100: 기존속도유지, 50: 중간값, 0: 새로운도로속도",
+      "title": "自动道路限速调整 (50)%",
+      "descr": "100: 维持原速, 50: 中间值, 0: 新道路限速",
       "egroup": "CRUISE",
       "etitle": "AutoRoadLimitSpeedAdjust (50)%",
       "edescr": "",
@@ -717,10 +743,10 @@
       "unit": 10
     },
     {
-      "group": "크루즈",
+      "group": "巡航",
       "name": "AutoGasSyncSpeed",
-      "title": "자동크루즈속도 업데이트",
-      "descr": "크루즈속도 보다빨라지면 속도 업데이트됨",
+      "title": "自动巡航速度更新",
+      "descr": "超过巡航速度则更新速度",
       "egroup": "CRUISE",
       "etitle": "Auto update Cruise speed",
       "edescr": "",
@@ -729,11 +755,10 @@
       "default": 0,
       "unit": 1
     },
-
     {
-      "group": "화면",
+      "group": "显示",
       "name": "ShowDebugUI",
-      "title": "디버그정보 표시",
+      "title": "显示调试信息",
       "descr": "",
       "egroup": "DISP",
       "etitle": "Show Debug Info",
@@ -744,22 +769,22 @@
       "unit": 1
     },
     {
-      "group": "화면",
+      "group": "显示",
       "name": "ShowDateTime",
-      "title": "시간정보표시",
+      "title": "显示时间信息",
       "descr": "",
       "egroup": "DISP",
       "etitle": "Show Time Info",
-      "edescr": "0:None, 1:Time/Date, 2:Time, 3:Date",
+      "edescr": "0:无, 1:时间/日期, 2:时间, 3:日期",
       "min": 0,
       "max": 3,
       "default": 1,
       "unit": 1
     },
     {
-      "group": "화면",
+      "group": "显示",
       "name": "ShowPathEnd",
-      "title": "패쓰끝표시",
+      "title": "显示路径末端",
       "descr": "",
       "egroup": "DISP",
       "etitle": "Show Path End",
@@ -770,9 +795,9 @@
       "unit": 1
     },
     {
-      "group": "화면",
+      "group": "显示",
       "name": "ShowDeviceState",
-      "title": "디바이스정보",
+      "title": "设备信息",
       "descr": "",
       "egroup": "DISP",
       "etitle": "Show Device Info",
@@ -783,9 +808,9 @@
       "unit": 1
     },
     {
-      "group": "화면",
+      "group": "显示",
       "name": "ShowCustomBrightness",
-      "title": "화면밝기비율",
+      "title": "屏幕亮度比例",
       "descr": "",
       "egroup": "DISP",
       "etitle": "ScreenBrightness ratio",
@@ -796,10 +821,10 @@
       "unit": 1
     },
     {
-      "group": "화면",
+      "group": "显示",
       "name": "ShowLaneInfo",
-      "title": "차선정보",
-      "descr": "-1:없음, 0:패스만, 1:레인, 2:로드엣지",
+      "title": "车道信息",
+      "descr": "-1:无, 0:仅路径, 1:车道, 2:道路边缘",
       "egroup": "DISP",
       "etitle": "Show Lane Info",
       "edescr": "-1:None, 0:Path, 1:Path+Lane, 2:Path+Lane+RoadEdge",
@@ -809,10 +834,10 @@
       "unit": 1
     },
     {
-      "group": "화면",
+      "group": "显示",
       "name": "ShowRadarInfo",
-      "title": "레이더감지정보(0)",
-      "descr": "0:안함,1:표시함,2:상대위치,3:정지차량",
+      "title": "雷达检测信息(0)",
+      "descr": "0:关闭,1:显示,2:相对位置,3:静止车辆",
       "egroup": "DISP",
       "etitle": "Show Radar Info",
       "edescr": "",
@@ -822,10 +847,10 @@
       "unit": 1
     },
     {
-      "group": "화면",
+      "group": "显示",
       "name": "ShowRouteInfo",
-      "title": "경로AR표시(0)",
-      "descr": "0:안함,1:표시함",
+      "title": "路径AR显示(0)",
+      "descr": "0:关闭,1:显示",
       "egroup": "DISP",
       "etitle": "Show Route Info",
       "edescr": "",
@@ -835,10 +860,10 @@
       "unit": 1
     },
     {
-      "group": "화면패스",
+      "group": "显示路径",
       "name": "ShowPathMode",
-      "title": "패스종류,레인리스(9)",
-      "descr": "0:일반,1,2:사각,3,4:^^,5,6:사각,7,8:^^,9,10,11:smooth^^,12:smooth2^^,13:3줄,14:2줄,15:1줄",
+      "title": "路径类型,无车道(9)",
+      "descr": "0:常规,1,2:方形,3,4:^^,5,6:方形,7,8:^^,9,10,11:平滑^^,12:平滑2^^,13:3线,14:2线,15:1线",
       "egroup": "DISP",
       "etitle": "Show Path Mode:LaneLess(9)",
       "edescr": "",
@@ -848,10 +873,10 @@
       "unit": 1
     },
     {
-      "group": "화면패스",
+      "group": "显示路径",
       "name": "ShowPathColor",
-      "title": "패스색상,레인리스(12)",
-      "descr": "(+10:띠)0:빨,1:주,2:노,3:초,4:파,5:남,6:보,7:고,8:흰,9:검",
+      "title": "路径颜色,无车道(12)",
+      "descr": "(+10:条纹)0:红,1:橙,2:黄,3:绿,4:蓝,5:靛,6:紫,7:粉,8:白,9:黑",
       "egroup": "DISP",
       "etitle": "Show Path Color:LaneLess(12)",
       "edescr": "",
@@ -861,10 +886,10 @@
       "unit": 1
     },
     {
-      "group": "화면패스",
+      "group": "显示路径",
       "name": "ShowPathModeCruiseOff",
-      "title": "패스종류,크루즈OFF(9)",
-      "descr": "0:일반,1,2:사각,3,4:^^,5,6:사각,7,8:^^,9,10,11:smooth^^,12:smooth2^^,13:3줄,14:2줄,15:1줄",
+      "title": "路径类型,巡航关闭(9)",
+      "descr": "0:常规,1,2:方形,3,4:^^,5,6:方形,7,8:^^,9,10,11:平滑^^,12:平滑2^^,13:3线,14:2线,15:1线",
       "egroup": "DISP",
       "etitle": "Show Path Mode:CruiseOFF(9)",
       "edescr": "",
@@ -874,10 +899,10 @@
       "unit": 1
     },
     {
-      "group": "화면패스",
+      "group": "显示路径",
       "name": "ShowPathColorCruiseOff",
-      "title": "패스색상,크루즈OFF(1)",
-      "descr": "(+10:띠)0:빨,1:주,2:노,3:초,4:파,5:남,6:보,7:고,8:흰,9:검",
+      "title": "路径颜色,巡航关闭(1)",
+      "descr": "(+10:条纹)0:红,1:橙,2:黄,3:绿,4:蓝,5:靛,6:紫,7:粉,8:白,9:黑",
       "egroup": "DISP",
       "etitle": "Show Path Color:CruiseOFF(1)",
       "edescr": "",
@@ -887,10 +912,10 @@
       "unit": 1
     },
     {
-      "group": "화면패스",
+      "group": "显示路径",
       "name": "ShowPathModeLane",
-      "title": "패스종류,레인모드(11)",
-      "descr": "0:일반,1,2:사각,3,4:^^,5,6:사각,7,8:^^,9,10,11:smooth^^,12:smooth2^^,13:3줄,14:2줄,15:1줄",
+      "title": "路径类型,车道模式(11)",
+      "descr": "0:常规,1,2:方形,3,4:^^,5,6:方形,7,8:^^,9,10,11:平滑^^,12:平滑2^^,13:3线,14:2线,15:1线",
       "egroup": "DISP",
       "etitle": "Show Path Mode:LaneMode(11)",
       "edescr": "",
@@ -900,10 +925,10 @@
       "unit": 1
     },
     {
-      "group": "화면패스",
+      "group": "显示路径",
       "name": "ShowPathColorLane",
-      "title": "패스색상,레인모드(3)",
-      "descr": "(+10:띠)0:빨,1:주,2:노,3:초,4:파,5:남,6:보,7:고,8:흰,9:검",
+      "title": "路径颜色,车道模式(3)",
+      "descr": "(+10:条纹)0:红,1:橙,2:黄,3:绿,4:蓝,5:靛,6:紫,7:粉,8:白,9:黑",
       "egroup": "DISP",
       "etitle": "Show Path Color:LaneMode(3)",
       "edescr": "",
@@ -913,10 +938,10 @@
       "unit": 1
     },
     {
-      "group": "화면",
+      "group": "屏幕",
       "name": "ShowPlotMode",
-      "title": "디버그플롯(0)",
-      "descr": "1:가속도,2:속도+가속도,3:모델,4:Lead,5:Lead2",
+      "title": "调试绘图(0)",
+      "descr": "1:加速度,2:速度+加速度,3:模型,4:Lead,5:Lead2",
       "egroup": "DISP",
       "etitle": "Show Debug plot(0)",
       "edescr": "1:Accel,2:Accel+vel,3:Model,4:Lead,5:Lead2",
@@ -926,10 +951,10 @@
       "unit": 1
     },
     {
-      "group": "조향일반",
+      "group": "转向一般",
       "name": "UseLaneLineSpeed",
-      "title": "레인모드: 속도(0)",
-      "descr": "레인(차선)모드 사용하면 기존의 조향제어(lat_mpc)를 사용합니다.",
+      "title": "车道模式: 速度(0)",
+      "descr": "使用车道模式时，使用现有的转向控制(lat_mpc)。",
       "egroup": "LAT",
       "etitle": "Laneline: Speed(0)",
       "edescr": "Lainline mode, lat_mpc control used",
@@ -939,10 +964,10 @@
       "unit": 1
     },
     {
-      "group": "조향일반",
+      "group": "转向一般",
       "name": "UseLaneLineCurveSpeed",
-      "title": "레인모드: 커브속도(0)",
-      "descr": "레인(차선)모드를 지정턴속도 이하에서는 사용하지 않습니다.",
+      "title": "车道模式: 弯道速度(0)",
+      "descr": "在指定转弯速度以下时不使用车道模式。",
       "egroup": "LAT",
       "etitle": "Laneline: Curve Speed(0)",
       "edescr": "Lainline mode, above curve speed",
@@ -952,10 +977,10 @@
       "unit": 10
     },
     {
-      "group": "조향일반",
+      "group": "转向一般",
       "name": "AdjustLaneOffset",
-      "title": "레인모드: 차선조절옵셋 (0)cm",
-      "descr": "도로경계쪽으로 주행합니다.",
+      "title": "车道模式: 车道调节偏移 (0)cm",
+      "descr": "向道路边界方向行驶。",
       "egroup": "LAT",
       "etitle": "LaneLine: AdjustLaneOffset (0)cm",
       "edescr": "",
@@ -965,10 +990,10 @@
       "unit": 10
     },
     {
-      "group": "조향일반",
+      "group": "转向一般",
       "name": "AdjustCurveOffset",
-      "title": "레인모드: 커브조절옵셋 (0)cm",
-      "descr": "커브시 안쪽으로 돌도록합니다.",
+      "title": "车道模式: 弯道调节偏移 (0)cm",
+      "descr": "弯道时向内转弯。",
       "egroup": "LAT",
       "etitle": "LaneLine: AdjustCurveOffset (0)cm",
       "edescr": "",
@@ -978,10 +1003,10 @@
       "unit": 10
     },
     {
-      "group": "조향일반",
+      "group": "转向一般",
       "name": "AdjustLaneTime",
-      "title": "레인모드: 시간지연보상 (13)x0.01",
-      "descr": "레인제어기의 지연시간을 보상하여, 빠른 조향을 유도함",
+      "title": "车道模式: 时间延迟补偿 (13)x0.01",
+      "descr": "补偿车道控制器的延迟时间，引导快速转向。",
       "egroup": "LAT",
       "etitle": "LaneLine: AdjustLaneTime (13)x0.01",
       "edescr": "LaneLine controller delay compensation",
@@ -991,10 +1016,10 @@
       "unit": 1
     },
     {
-      "group": "조향일반",
+      "group": "转向一般",
       "name": "LaneChangeNeedTorque",
-      "title": "차선변경 조향토크 사용",
-      "descr": "차선변경시 조향토크를 줘야 작동함",
+      "title": "车道变更转向扭矩使用",
+      "descr": "车道变更时需要转向扭矩才能工作。",
       "egroup": "LAT",
       "etitle": "LaneChange use steering torque",
       "edescr": "",
@@ -1004,10 +1029,10 @@
       "unit": 1
     },
     {
-      "group": "시작",
+      "group": "启动",
       "name": "HapticFeedbackWhenSpeedCamera",
-      "title": "핸들햅틱기능사용(0)",
-      "descr": "0:사용안함,1:진동,2:계기판,3:HUD표시",
+      "title": "方向盘触觉功能使用(0)",
+      "descr": "0:不使用,1:振动,2:仪表盘,3:HUD显示",
       "egroup": "START",
       "etitle": "HapticFeedbackSpeedCamera(0)",
       "edescr": "",
@@ -1017,10 +1042,10 @@
       "unit": 1
     },
     {
-      "group": "시작",
+      "group": "启动",
       "name": "MaxAngleFrames",
       "title": "MaxAngleFrames(89)",
-      "descr": "89:기본값",
+      "descr": "89:默认值",
       "egroup": "START",
       "etitle": "MaxAngleFrames(1)",
       "edescr": "",
@@ -1030,10 +1055,10 @@
       "unit": 1
     },
     {
-      "group": "시작",
+      "group": "启动",
       "name": "HyundaiCameraSCC",
       "title": "HYUNDAI: CAMERA SCC",
-      "descr": "SCC배선 개조시 1로 설정",
+      "descr": "SCC线路改造时设置为1",
       "egroup": "START",
       "etitle": "HYUNDAI: CAMERA SCC(0)",
       "edescr": "",
@@ -1043,10 +1068,10 @@
       "unit": 1
     },
     {
-      "group": "시작",
+      "group": "启动",
       "name": "CanfdHDA2",
-      "title": "CANFD HDA2지원(0)",
-      "descr": "HDA2 강제인식, 일부CANFD차량 오류발생시 켜야함.",
+      "title": "CANFD HDA2支持(0)",
+      "descr": "强制识别HDA2，部分CANFD车辆出现错误时需要开启。",
       "egroup": "START",
       "etitle": "CANFD HDA2(0)",
       "edescr": "",
@@ -1056,7 +1081,7 @@
       "unit": 1
     },
     {
-      "group": "시작",
+      "group": "启动",
       "name": "CanfdDebug",
       "title": "CANFD Debug(0)",
       "descr": "",
@@ -1069,10 +1094,10 @@
       "unit": 1
     },
     {
-      "group": "시작",
+      "group": "启动",
       "name": "EnableRadarTracks",
-      "title": "레이더트랙사용(0)",
-      "descr": "일부차량만 지원됨, 2: SCC mix (문제있음)",
+      "title": "雷达轨迹使用(0)",
+      "descr": "仅部分车辆支持，2: SCC混合（有问题）",
       "egroup": "START",
       "etitle": "Enable radar tracks(0)",
       "edescr": "",
@@ -1082,10 +1107,10 @@
       "unit": 1
     },
     {
-      "group": "시작",
+      "group": "启动",
       "name": "HotspotOnBoot",
-      "title": "부팅시 핫스팟켜기",
-      "descr": "COMMA에 USIM을 장착한경우 핫스팟을 자동으로 켜주는 기능",
+      "title": "启动时开启热点",
+      "descr": "COMMA安装了USIM时自动开启热点的功能",
       "egroup": "START",
       "etitle": "Enable HotSpot(0)",
       "edescr": "",
@@ -1095,9 +1120,9 @@
       "unit": 1
     },
     {
-      "group": "시작",
+      "group": "启动",
       "name": "SoundVolumeAdjust",
-      "title": "사운드볼륨조절(100%)",
+      "title": "声音音量调节(100%)",
       "descr": "",
       "egroup": "START",
       "etitle": "Sound Volume adjust(100%)",
@@ -1108,9 +1133,9 @@
       "unit": 5
     },
     {
-      "group": "시작",
+      "group": "启动",
       "name": "SoundVolumeAdjustEngage",
-      "title": "사운드볼륨조절,Engage(10%)",
+      "title": "声音音量调节,Engage(10%)",
       "descr": "",
       "egroup": "START",
       "etitle": "Sound Volume adjust,Engage(10%)",
@@ -1121,10 +1146,10 @@
       "unit": 5
     },
     {
-      "group": "차량간격",
+      "group": "车辆间距",
       "name": "TFollowGap1",
-      "title": "TF(1): 차량간격시간1x0.01s(110)",
-      "descr": "단계별 차간 시간거리 설정",
+      "title": "TF(1): 车辆间距时间1x0.01s(110)",
+      "descr": "分阶段设置车辆间距时间",
       "egroup": "FDIST",
       "etitle": "TF(1): TimeFollow1x0.01s(110)",
       "edescr": "",
@@ -1134,10 +1159,10 @@
       "unit": 5
     },
     {
-      "group": "차량간격",
+      "group": "车辆间距",
       "name": "TFollowGap2",
-      "title": "TF(2): 차량간격시간2x0.01s(120)",
-      "descr": "단계별 차간 시간거리 설정",
+      "title": "TF(2): 车辆间距时间2x0.01s(120)",
+      "descr": "分阶段设置车辆间距时间",
       "egroup": "FDIST",
       "etitle": "TF(2): TimeFollow2x0.01s(120)",
       "edescr": "",
@@ -1147,10 +1172,10 @@
       "unit": 5
     },
     {
-      "group": "차량간격",
+      "group": "车辆间距",
       "name": "TFollowGap3",
-      "title": "TF(3): 차량간격시간3x0.01s(140)",
-      "descr": "단계별 차간 시간거리 설정",
+      "title": "TF(3): 车辆间距时间3x0.01s(140)",
+      "descr": "分阶段设置车辆间距时间",
       "egroup": "FDIST",
       "etitle": "TF(3): TimeFollow3x0.01s(140)",
       "edescr": "",
@@ -1160,10 +1185,10 @@
       "unit": 5
     },
     {
-      "group": "차량간격",
+      "group": "车辆间距",
       "name": "TFollowGap4",
-      "title": "TF(4): 차량간격시간4x0.01s(160)",
-      "descr": "단계별 차간 시간거리 설정",
+      "title": "TF(4): 车辆间距时间4x0.01s(160)",
+      "descr": "分阶段设置车辆间距时间",
       "egroup": "FDIST",
       "etitle": "TF(4): TimeFollow4x0.01s(160)",
       "edescr": "",
@@ -1173,10 +1198,10 @@
       "unit": 5
     },
     {
-      "group": "차량간격",
+      "group": "车辆间距",
       "name": "DynamicTFollow",
-      "title": "동적 차간거리 설정(0)",
-      "descr": "선행차와 거리에따른 동적 설정",
+      "title": "动态车辆间距设置(0)",
+      "descr": "根据前车距离的动态设置",
       "egroup": "FDIST",
       "etitle": "Dynamic TFollow",
       "edescr": "",
@@ -1186,10 +1211,10 @@
       "unit": 5
     },
     {
-      "group": "차량간격",
+      "group": "车辆间距",
       "name": "DynamicTFollowLC",
-      "title": "동적 차간거리 설정 차선변경(100)%",
-      "descr": "차선변경시작시 차량간격을 좁힘.",
+      "title": "动态车辆间距设置 车道变更(100)%",
+      "descr": "车道变更开始时缩小车辆间距。",
       "egroup": "FDIST",
       "etitle": "Dynamic TFollow LaneChange(100)%",
       "edescr": "",
@@ -1199,10 +1224,10 @@
       "unit": 5
     },
     {
-      "group": "감속제어",
+      "group": "减速控制",
       "name": "AutoCurveSpeedLowerLimit",
-      "title": "커브속도 최저속도(30)",
-      "descr": "최저속도설정",
+      "title": "弯道速度最低速度(30)",
+      "descr": "最低速度设置",
       "egroup": "FDIST",
       "etitle": "AutoCurveSpeed LowerLimit(30)",
       "edescr": "Lower limit speed",
@@ -1212,10 +1237,10 @@
       "unit": 10
     },
     {
-      "group": "주행튜닝",
+      "group": "驾驶调校",
       "name": "StoppingAccel",
-      "title": "정지시작가속도x0.01(0)",
-      "descr": "정지시작가속도 조정, 0으로 하면 기존방식",
+      "title": "停止开始加速度x0.01(0)",
+      "descr": "调整停止开始加速度，设为0则使用原有方式",
       "egroup": "LONG",
       "etitle": "StoppingStartAccelx0.01(0)",
       "edescr": "",
@@ -1225,10 +1250,10 @@
       "unit": 10
     },
     {
-      "group": "가속설정",
+      "group": "加速设置",
       "name": "MyDrivingMode",
-      "title": "드라이브모드:(3)",
-      "descr": "1:연비,2:안전,3:일반,4:고속(신호무시)",
+      "title": "驾驶模式:(3)",
+      "descr": "1:经济,2:安全,3:一般,4:高速(忽略信号)",
       "egroup": "ACCEL",
       "etitle": "DrivingMode:Init(3)",
       "edescr": "1:Eco,2:Safe,3:General,4:HighSpeed",
@@ -1238,10 +1263,10 @@
       "unit": 1
     },
     {
-      "group": "가속설정",
+      "group": "加速设置",
       "name": "MyDrivingModeAuto",
-      "title": "드라이브모드: 자동",
-      "descr": "일반모드에서만 작동함",
+      "title": "驾驶模式: 自动",
+      "descr": "仅在一般模式下工作",
       "egroup": "ACCEL",
       "etitle": "DrivingMode: Auto",
       "edescr": "General Driving Mode only",
@@ -1251,10 +1276,10 @@
       "unit": 1
     },
     {
-      "group": "감속제어",
+      "group": "减速控制",
       "name": "TrafficLightDetectMode",
-      "title": "신호감지 기능",
-      "descr": "0:신호감지안함, 1:신호정지만 감지, 2:신호정지/출발 모두",
+      "title": "信号检测功能",
+      "descr": "0:不检测信号, 1:仅检测信号停止, 2:检测信号停止/启动",
       "egroup": "SPEED",
       "etitle": "TrafficLightDetectMode",
       "edescr": "0:None,1:Stopping only, 2:Stop & Go",
@@ -1264,10 +1289,10 @@
       "unit": 1
     },
     {
-      "group": "감속제어",
+      "group": "减速控制",
       "name": "AutoNaviSpeedCtrlEnd",
-      "title": "과속카메라감속 완료 시간(6초)",
-      "descr": "감속종료시점을 설정합니다.",
+      "title": "超速摄像头减速完成时间(6秒)",
+      "descr": "设置减速结束时间点。",
       "egroup": "SPEED",
       "etitle": "NaviSpeedEndingPoint(6s)",
       "edescr": "Deceleration completion point",
@@ -1277,9 +1302,9 @@
       "unit": 1
     },
     {
-      "group": "감속제어",
+      "group": "减速控制",
       "name": "AutoNaviSpeedBumpTime",
-      "title": "사고방지턱 감속완료시간시점(1s)",
+      "title": "事故防止减速带减速完成时间点(1s)",
       "descr": "",
       "egroup": "SPEED",
       "etitle": "SpeedBumpEndingPoint(1s)",
@@ -1290,9 +1315,9 @@
       "unit": 1
     },
     {
-      "group": "감속제어",
+      "group": "减速控制",
       "name": "AutoNaviSpeedBumpSpeed",
-      "title": "사고방지턱 속도(35Km/h)",
+      "title": "事故防止减速带速度(35Km/h)",
       "descr": "",
       "egroup": "SPEED",
       "etitle": "SpeedBumpSpeed(35km/h)",
@@ -1303,10 +1328,10 @@
       "unit": 5
     },
     {
-      "group": "감속제어",
+      "group": "减速控制",
       "name": "AutoNaviSpeedDecelRate",
-      "title": "과속카메라 감속율 x0.01m/s^2(200)",
-      "descr": "낮으면 멀리서부터 감속함",
+      "title": "超速摄像头减速率 x0.01m/s^2(200)",
+      "descr": "数值越低，减速越早开始",
       "egroup": "SPEED",
       "etitle": "NaviSpeedDecelRate 0.01m/s^2x(200)",
       "edescr": "",
@@ -1316,10 +1341,10 @@
       "unit": 10
     },
     {
-      "group": "감속제어",
+      "group": "减速控制",
       "name": "AutoNaviCountDownMode",
-      "title": "네비알림 카운트다운 방법",
-      "descr": "0: 알림없음, 1: 턴지점+속도, 2: 턴지점+속도+방지턱",
+      "title": "导航通知倒计时方法",
+      "descr": "0: 无通知, 1: 转弯点+速度, 2: 转弯点+速度+减速带",
       "egroup": "SPEED",
       "etitle": "NaviCountDownMode",
       "edescr": "",
@@ -1329,10 +1354,10 @@
       "unit": 1
     },
     {
-      "group": "감속제어",
+      "group": "减速控制",
       "name": "TurnSpeedControlMode",
-      "title": "턴속도제어방법",
-      "descr": "0: 속도제어안함,1:비젼,2:비젼+경로,3:경로",
+      "title": "转弯速度控制方法",
+      "descr": "0: 不控制速度,1:视觉,2:视觉+路径,3:路径",
       "egroup": "SPEED",
       "etitle": "TurnSpeedControlMode",
       "edescr": "",
@@ -1342,10 +1367,10 @@
       "unit": 1
     },
     {
-      "group": "감속제어",
+      "group": "减速控制",
       "name": "MapTurnSpeedFactor",
-      "title": "경로턴속도반영비율(100%)",
-      "descr": "작으면 속도가 줄어듬",
+      "title": "路径转弯速度反映比率(100%)",
+      "descr": "数值越小，速度越低",
       "egroup": "SPEED",
       "etitle": "MapTurnSpeedFactor",
       "edescr": "",
@@ -1355,9 +1380,9 @@
       "unit": 10
     },
     {
-      "group": "감속제어",
+      "group": "减速控制",
       "name": "AutoNaviSpeedSafetyFactor",
-      "title": "과속카메라 제한속도적용율(105)%",
+      "title": "超速摄像头限速应用比率(105)%",
       "descr": "",
       "egroup": "SPEED",
       "etitle": "NaviSpeedLimitRatio(105)%",

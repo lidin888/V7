@@ -48,16 +48,17 @@ def main() -> NoReturn:
     msg.clocks.wallTimeNanos = time.time_ns()
     pm.send('clocks', msg)
 
-    gps = sm[gps_location_service]
-    gps_time = datetime.datetime.fromtimestamp(gps.unixTimestampMillis / 1000.)
-    if not sm.updated[gps_location_service] or (time.monotonic() - sm.logMonoTime[gps_location_service] / 1e9) > 2.0:
-      continue
-    if not gps.hasFix:
-      continue
-    if gps_time < min_date():
-      continue
+    if not system_time_valid():
+      gps = sm[gps_location_service]
+      gps_time = datetime.datetime.fromtimestamp(gps.unixTimestampMillis / 1000.)
+      if not sm.updated[gps_location_service] or (time.monotonic() - sm.logMonoTime[gps_location_service] / 1e9) > 2.0:
+        continue
+      if not gps.hasFix:
+        continue
+      if gps_time < min_date():
+        continue
 
-    set_time(gps_time)
+      set_time(gps_time)
     time.sleep(10)
 
 if __name__ == "__main__":
