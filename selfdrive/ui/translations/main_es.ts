@@ -88,6 +88,37 @@
     </message>
 </context>
 <context>
+    <name>CarrotPanel</name>
+    <message>
+        <source>Start</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cruise</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Speed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tuning</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disp</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SELECT YOUR CAR</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ConfirmationDialog</name>
     <message>
         <source>Ok</source>
@@ -114,6 +145,33 @@
     </message>
 </context>
 <context>
+    <name>DestinationWidget</name>
+    <message>
+        <source>Home</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Work</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No destination set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>home</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>work</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No %1 location set</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>DeveloperPanel</name>
     <message>
         <source>Joystick Debug Mode</source>
@@ -124,24 +182,24 @@
         <translation>Modo de maniobra longitudinal</translation>
     </message>
     <message>
-        <source>openpilot Longitudinal Control (Alpha)</source>
-        <translation>Control longitudinal de openpilot (fase experimental)</translation>
-    </message>
-    <message>
-        <source>WARNING: openpilot longitudinal control is in alpha for this car and will disable Automatic Emergency Braking (AEB).</source>
-        <translation>AVISO: el control longitudinal de openpilot está en fase experimental para este automóvil y desactivará el Frenado Automático de Emergencia (AEB).</translation>
-    </message>
-    <message>
-        <source>On this car, openpilot defaults to the car&apos;s built-in ACC instead of openpilot&apos;s longitudinal control. Enable this to switch to openpilot longitudinal control. Enabling Experimental mode is recommended when enabling openpilot longitudinal control alpha.</source>
-        <translation>En este automóvil, openpilot se configura de manera predeterminada con el Autocrucero Adaptativo (ACC) incorporado en el automóvil en lugar del control longitudinal de openpilot. Habilita esta opción para cambiar al control longitudinal de openpilot. Se recomienda activar el modo experimental al habilitar el control longitudinal de openpilot (aún en fase experimental).</translation>
-    </message>
-    <message>
         <source>Enable ADB</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>ADB (Android Debug Bridge) allows connecting to your device over USB or over the network. See https://docs.comma.ai/how-to/connect-to-comma for more info.</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>openpilot Longitudinal Control (Alpha)</source>
+        <translation type="unfinished">Control longitudinal de openpilot (fase experimental)</translation>
+    </message>
+    <message>
+        <source>WARNING: openpilot longitudinal control is in alpha for this car and will disable Automatic Emergency Braking (AEB).</source>
+        <translation type="unfinished">AVISO: el control longitudinal de openpilot está en fase experimental para este automóvil y desactivará el Frenado Automático de Emergencia (AEB).</translation>
+    </message>
+    <message>
+        <source>On this car, openpilot defaults to the car&apos;s built-in ACC instead of openpilot&apos;s longitudinal control. Enable this to switch to openpilot longitudinal control. Enabling Experimental mode is recommended when enabling openpilot longitudinal control alpha.</source>
+        <translation type="unfinished">En este automóvil, openpilot se configura de manera predeterminada con el Autocrucero Adaptativo (ACC) incorporado en el automóvil en lugar del control longitudinal de openpilot. Habilita esta opción para cambiar al control longitudinal de openpilot. Se recomienda activar el modo experimental al habilitar el control longitudinal de openpilot (aún en fase experimental).</translation>
     </message>
 </context>
 <context>
@@ -286,6 +344,109 @@
         <source>Disengage to Power Off</source>
         <translation>Desactivar para apagar</translation>
     </message>
+    <message>
+        <source>Force Offroad</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Git Pull &amp; Reboot</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Git pull &amp; Reboot?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Yes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to fetch updates.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Already up to date.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Git pull failed. Please check the logs.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Git pull successful. Rebooting...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set default</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set to default?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Are you sure you want to go ONroad?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unforce</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Are you sure you want to go OFFroad?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Force</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disengage to Force Offroad</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Go ONroad</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Go OFFroad</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Git fetch process timed out.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Git fetch process crashed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to read Git status.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DrawCarrot</name>
+    <message>
+        <source>ECO</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SAFE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NORM</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>FAST</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ERRM</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>DriverViewWindow</name>
@@ -339,6 +500,51 @@
     <message>
         <source>Installing...</source>
         <translation>Instalando...</translation>
+    </message>
+</context>
+<context>
+    <name>MapETA</name>
+    <message>
+        <source>eta</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>min</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>hr</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MapSettings</name>
+    <message>
+        <source>NAVIGATION</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Manage at %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Manage at connect.comma.ai</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MapWindow</name>
+    <message>
+        <source>Map Loading</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Waiting for APN</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Waiting for route</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -478,7 +684,7 @@
     </message>
     <message>
         <source>Please connect to Wi-Fi to complete initial pairing</source>
-        <translation>Conéctese a Wi-Fi para completar el emparejamiento inicial</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -546,7 +752,7 @@
     </message>
     <message>
         <source>openpilot</source>
-        <translation>openpilot</translation>
+        <translation type="vanished">openpilot</translation>
     </message>
     <message>
         <source>now</source>
@@ -572,6 +778,26 @@
             <numerusform>hace %n día</numerusform>
             <numerusform>hace %n días</numerusform>
         </translation>
+    </message>
+    <message>
+        <source>km</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>m</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>mi</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ft</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>carrotpilot</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -640,6 +866,10 @@ Esto puede tardar un minuto.</translation>
     <message>
         <source>Developer</source>
         <translation>Desarrollador</translation>
+    </message>
+    <message>
+        <source>Carrot</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -756,11 +986,11 @@ Esto puede tardar un minuto.</translation>
     <name>Sidebar</name>
     <message>
         <source>CONNECT</source>
-        <translation>CONNECT</translation>
+        <translation type="vanished">CONNECT</translation>
     </message>
     <message>
         <source>OFFLINE</source>
-        <translation>OFFLINE</translation>
+        <translation type="vanished">OFFLINE</translation>
     </message>
     <message>
         <source>ONLINE</source>
@@ -768,7 +998,7 @@ Esto puede tardar un minuto.</translation>
     </message>
     <message>
         <source>ERROR</source>
-        <translation>ERROR</translation>
+        <translation type="vanished">ERROR</translation>
     </message>
     <message>
         <source>TEMP</source>
@@ -776,15 +1006,15 @@ Esto puede tardar un minuto.</translation>
     </message>
     <message>
         <source>HIGH</source>
-        <translation>ALTA</translation>
+        <translation type="vanished">ALTA</translation>
     </message>
     <message>
         <source>GOOD</source>
-        <translation>BUENA</translation>
+        <translation type="vanished">BUENA</translation>
     </message>
     <message>
         <source>OK</source>
-        <translation>OK</translation>
+        <translation type="vanished">OK</translation>
     </message>
     <message>
         <source>VEHICLE</source>
@@ -825,6 +1055,10 @@ Esto puede tardar un minuto.</translation>
     <message>
         <source>5G</source>
         <translation>5G</translation>
+    </message>
+    <message>
+        <source>MEM</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -901,6 +1135,10 @@ Esto puede tardar un minuto.</translation>
         <source>up to date, last checked %1</source>
         <translation>actualizado, último chequeo %1</translation>
     </message>
+    <message>
+        <source>Disable Updates</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SshControl</name>
@@ -976,6 +1214,18 @@ Esto puede tardar un minuto.</translation>
     <message>
         <source>Use the openpilot system for adaptive cruise control and lane keep driver assistance. Your attention is required at all times to use this feature. Changing this setting takes effect when the car is powered off.</source>
         <translation>Utilice el sistema openpilot para acceder a un autocrucero adaptativo y asistencia al conductor para mantenerse en el carril. Se requiere su atención en todo momento para utilizar esta función. Cambiar esta configuración solo tendrá efecto con el auto apagado.</translation>
+    </message>
+    <message>
+        <source>openpilot Longitudinal Control (Alpha)</source>
+        <translation>Control longitudinal de openpilot (fase experimental)</translation>
+    </message>
+    <message>
+        <source>WARNING: openpilot longitudinal control is in alpha for this car and will disable Automatic Emergency Braking (AEB).</source>
+        <translation>AVISO: el control longitudinal de openpilot está en fase experimental para este automóvil y desactivará el Frenado Automático de Emergencia (AEB).</translation>
+    </message>
+    <message>
+        <source>On this car, openpilot defaults to the car&apos;s built-in ACC instead of openpilot&apos;s longitudinal control. Enable this to switch to openpilot longitudinal control. Enabling Experimental mode is recommended when enabling openpilot longitudinal control alpha.</source>
+        <translation>En este automóvil, openpilot se configura de manera predeterminada con el Autocrucero Adaptativo (ACC) incorporado en el automóvil en lugar del control longitudinal de openpilot. Habilita esta opción para cambiar al control longitudinal de openpilot. Se recomienda activar el modo experimental al habilitar el control longitudinal de openpilot (aún en fase experimental).</translation>
     </message>
     <message>
         <source>Experimental Mode</source>
@@ -1076,6 +1326,18 @@ Esto puede tardar un minuto.</translation>
     <message>
         <source>Enable the openpilot longitudinal control (alpha) toggle to allow Experimental mode.</source>
         <translation>Activar el control longitudinal (fase experimental) para permitir el modo Experimental.</translation>
+    </message>
+    <message>
+        <source>Enable Modified Stock Longitudinal Control</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>On this car it works by multiplying a percentage smooth rate based on the distance of front cars detected by mrr.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>MoreRelaxed</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

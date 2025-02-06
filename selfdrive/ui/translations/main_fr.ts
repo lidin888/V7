@@ -88,6 +88,37 @@
     </message>
 </context>
 <context>
+    <name>CarrotPanel</name>
+    <message>
+        <source>Start</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cruise</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Speed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tuning</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disp</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SELECT YOUR CAR</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ConfirmationDialog</name>
     <message>
         <source>Ok</source>
@@ -114,26 +145,41 @@
     </message>
 </context>
 <context>
+    <name>DestinationWidget</name>
+    <message>
+        <source>Home</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Work</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No destination set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>home</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>work</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No %1 location set</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>DeveloperPanel</name>
     <message>
         <source>Joystick Debug Mode</source>
-        <translation>Mode débogage au joystick</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Longitudinal Maneuver Mode</source>
-        <translation>Mode manœuvre longitudinale</translation>
-    </message>
-    <message>
-        <source>openpilot Longitudinal Control (Alpha)</source>
-        <translation>Contrôle longitudinal openpilot (Alpha)</translation>
-    </message>
-    <message>
-        <source>WARNING: openpilot longitudinal control is in alpha for this car and will disable Automatic Emergency Braking (AEB).</source>
-        <translation>ATTENTION : le contrôle longitudinal openpilot est en alpha pour cette voiture et désactivera le freinage d&apos;urgence automatique (AEB).</translation>
-    </message>
-    <message>
-        <source>On this car, openpilot defaults to the car&apos;s built-in ACC instead of openpilot&apos;s longitudinal control. Enable this to switch to openpilot longitudinal control. Enabling Experimental mode is recommended when enabling openpilot longitudinal control alpha.</source>
-        <translation>Sur cette voiture, openpilot utilise par défaut le régulateur de vitesse adaptatif intégré à la voiture plutôt que le contrôle longitudinal d&apos;openpilot. Activez ceci pour passer au contrôle longitudinal openpilot. Il est recommandé d&apos;activer le mode expérimental lors de l&apos;activation du contrôle longitudinal openpilot alpha.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Enable ADB</source>
@@ -142,6 +188,18 @@
     <message>
         <source>ADB (Android Debug Bridge) allows connecting to your device over USB or over the network. See https://docs.comma.ai/how-to/connect-to-comma for more info.</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>openpilot Longitudinal Control (Alpha)</source>
+        <translation type="unfinished">Contrôle longitudinal openpilot (Alpha)</translation>
+    </message>
+    <message>
+        <source>WARNING: openpilot longitudinal control is in alpha for this car and will disable Automatic Emergency Braking (AEB).</source>
+        <translation type="unfinished">ATTENTION : le contrôle longitudinal openpilot est en alpha pour cette voiture et désactivera le freinage d&apos;urgence automatique (AEB).</translation>
+    </message>
+    <message>
+        <source>On this car, openpilot defaults to the car&apos;s built-in ACC instead of openpilot&apos;s longitudinal control. Enable this to switch to openpilot longitudinal control. Enabling Experimental mode is recommended when enabling openpilot longitudinal control alpha.</source>
+        <translation type="unfinished">Sur cette voiture, openpilot utilise par défaut le régulateur de vitesse adaptatif intégré à la voiture plutôt que le contrôle longitudinal d&apos;openpilot. Activez ceci pour passer au contrôle longitudinal openpilot. Il est recommandé d&apos;activer le mode expérimental lors de l&apos;activation du contrôle longitudinal openpilot alpha.</translation>
     </message>
 </context>
 <context>
@@ -280,11 +338,114 @@
     </message>
     <message>
         <source>Pair Device</source>
-        <translation>Associer l&apos;appareil</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>PAIR</source>
-        <translation>ASSOCIER</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Force Offroad</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Git Pull &amp; Reboot</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Git pull &amp; Reboot?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Yes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to fetch updates.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Already up to date.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Git pull failed. Please check the logs.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Git pull successful. Rebooting...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set default</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set to default?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Are you sure you want to go ONroad?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unforce</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Are you sure you want to go OFFroad?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Force</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disengage to Force Offroad</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Go ONroad</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Go OFFroad</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Git fetch process timed out.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Git fetch process crashed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to read Git status.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DrawCarrot</name>
+    <message>
+        <source>ECO</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SAFE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NORM</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>FAST</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ERRM</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -339,6 +500,51 @@
     <message>
         <source>Installing...</source>
         <translation>Installation...</translation>
+    </message>
+</context>
+<context>
+    <name>MapETA</name>
+    <message>
+        <source>eta</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>min</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>hr</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MapSettings</name>
+    <message>
+        <source>NAVIGATION</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Manage at %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Manage at connect.comma.ai</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MapWindow</name>
+    <message>
+        <source>Map Loading</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Waiting for APN</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Waiting for route</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -439,23 +645,23 @@
     <name>OnroadAlerts</name>
     <message>
         <source>openpilot Unavailable</source>
-        <translation>openpilot indisponible</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>TAKE CONTROL IMMEDIATELY</source>
-        <translation>REPRENEZ LE CONTRÔLE IMMÉDIATEMENT</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Reboot Device</source>
-        <translation>Redémarrer l&apos;appareil</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Waiting to start</source>
-        <translation>En attente de démarrage</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>System Unresponsive</source>
-        <translation>Système inopérant</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -478,7 +684,7 @@
     </message>
     <message>
         <source>Please connect to Wi-Fi to complete initial pairing</source>
-        <translation>Connectez-vous au Wi-Fi pour terminer l&apos;appairage initial</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -520,7 +726,7 @@
     </message>
     <message>
         <source>Remote snapshots</source>
-        <translation>Captures à distance</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -546,7 +752,7 @@
     </message>
     <message>
         <source>openpilot</source>
-        <translation>openpilot</translation>
+        <translation type="vanished">openpilot</translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s) ago</source>
@@ -571,7 +777,27 @@
     </message>
     <message>
         <source>now</source>
-        <translation>maintenant</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>km</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>m</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>mi</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ft</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>carrotpilot</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -612,7 +838,7 @@ Cela peut prendre jusqu&apos;à une minute.</translation>
     </message>
     <message>
         <source>System reset triggered. Press confirm to erase all content and settings. Press cancel to resume boot.</source>
-        <translation>Réinitialisation système déclenchée. Appuyez sur confirmer pour effacer tout le contenu et les paramètres. Appuyez sur annuler pour reprendre le démarrage.</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -639,7 +865,11 @@ Cela peut prendre jusqu&apos;à une minute.</translation>
     </message>
     <message>
         <source>Developer</source>
-        <translation>Dév.</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Carrot</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -726,15 +956,15 @@ Cela peut prendre jusqu&apos;à une minute.</translation>
     </message>
     <message>
         <source>Choose Software to Install</source>
-        <translation>Choisir le logiciel à installer</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>openpilot</source>
-        <translation>openpilot</translation>
+        <translation type="unfinished">openpilot</translation>
     </message>
     <message>
         <source>Custom Software</source>
-        <translation>Logiciel personnalisé</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -756,11 +986,11 @@ Cela peut prendre jusqu&apos;à une minute.</translation>
     <name>Sidebar</name>
     <message>
         <source>CONNECT</source>
-        <translation>CONNECTER</translation>
+        <translation type="vanished">CONNECTER</translation>
     </message>
     <message>
         <source>OFFLINE</source>
-        <translation>HORS LIGNE</translation>
+        <translation type="vanished">HORS LIGNE</translation>
     </message>
     <message>
         <source>ONLINE</source>
@@ -768,7 +998,7 @@ Cela peut prendre jusqu&apos;à une minute.</translation>
     </message>
     <message>
         <source>ERROR</source>
-        <translation>ERREUR</translation>
+        <translation type="vanished">ERREUR</translation>
     </message>
     <message>
         <source>TEMP</source>
@@ -776,15 +1006,15 @@ Cela peut prendre jusqu&apos;à une minute.</translation>
     </message>
     <message>
         <source>HIGH</source>
-        <translation>HAUT</translation>
+        <translation type="vanished">HAUT</translation>
     </message>
     <message>
         <source>GOOD</source>
-        <translation>BON</translation>
+        <translation type="vanished">BON</translation>
     </message>
     <message>
         <source>OK</source>
-        <translation>OK</translation>
+        <translation type="vanished">OK</translation>
     </message>
     <message>
         <source>VEHICLE</source>
@@ -825,6 +1055,10 @@ Cela peut prendre jusqu&apos;à une minute.</translation>
     <message>
         <source>5G</source>
         <translation>5G</translation>
+    </message>
+    <message>
+        <source>MEM</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -901,6 +1135,10 @@ Cela peut prendre jusqu&apos;à une minute.</translation>
         <source>up to date, last checked %1</source>
         <translation>à jour, dernière vérification %1</translation>
     </message>
+    <message>
+        <source>Disable Updates</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SshControl</name>
@@ -976,6 +1214,18 @@ Cela peut prendre jusqu&apos;à une minute.</translation>
     <message>
         <source>Use the openpilot system for adaptive cruise control and lane keep driver assistance. Your attention is required at all times to use this feature. Changing this setting takes effect when the car is powered off.</source>
         <translation>Utilisez le système openpilot pour le régulateur de vitesse adaptatif et l&apos;assistance au maintien de voie. Votre attention est requise en permanence pour utiliser cette fonctionnalité. La modification de ce paramètre prend effet lorsque la voiture est éteinte.</translation>
+    </message>
+    <message>
+        <source>openpilot Longitudinal Control (Alpha)</source>
+        <translation>Contrôle longitudinal openpilot (Alpha)</translation>
+    </message>
+    <message>
+        <source>WARNING: openpilot longitudinal control is in alpha for this car and will disable Automatic Emergency Braking (AEB).</source>
+        <translation>ATTENTION : le contrôle longitudinal openpilot est en alpha pour cette voiture et désactivera le freinage d&apos;urgence automatique (AEB).</translation>
+    </message>
+    <message>
+        <source>On this car, openpilot defaults to the car&apos;s built-in ACC instead of openpilot&apos;s longitudinal control. Enable this to switch to openpilot longitudinal control. Enabling Experimental mode is recommended when enabling openpilot longitudinal control alpha.</source>
+        <translation>Sur cette voiture, openpilot utilise par défaut le régulateur de vitesse adaptatif intégré à la voiture plutôt que le contrôle longitudinal d&apos;openpilot. Activez ceci pour passer au contrôle longitudinal openpilot. Il est recommandé d&apos;activer le mode expérimental lors de l&apos;activation du contrôle longitudinal openpilot alpha.</translation>
     </message>
     <message>
         <source>Experimental Mode</source>
@@ -1063,7 +1313,7 @@ Cela peut prendre jusqu&apos;à une minute.</translation>
     </message>
     <message>
         <source>Standard is recommended. In aggressive mode, openpilot will follow lead cars closer and be more aggressive with the gas and brake. In relaxed mode openpilot will stay further away from lead cars. On supported cars, you can cycle through these personalities with your steering wheel distance button.</source>
-        <translation>Le mode Standard est recommandé. En mode Agressif, openpilot suivra les véhicules de plus près et sera plus dynamique avec l&apos;accélérateur et le frein. En mode Détendu, openpilot maintiendra une distance plus importante avec les véhicules qui précèdent. Sur les véhicules compatibles, vous pouvez alterner entre ces personnalités à l&apos;aide du bouton de distance au volant.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>The driving visualization will transition to the road-facing wide-angle camera at low speeds to better show some turns. The Experimental mode logo will also be shown in the top right corner.</source>
@@ -1071,11 +1321,23 @@ Cela peut prendre jusqu&apos;à une minute.</translation>
     </message>
     <message>
         <source>Always-On Driver Monitoring</source>
-        <translation>Surveillance continue du conducteur</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Enable driver monitoring even when openpilot is not engaged.</source>
-        <translation>Activer la surveillance conducteur lorsque openpilot n&apos;est pas actif.</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable Modified Stock Longitudinal Control</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>On this car it works by multiplying a percentage smooth rate based on the distance of front cars detected by mrr.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>MoreRelaxed</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

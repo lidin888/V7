@@ -329,7 +329,7 @@ class SelfdriveD:
         self.events.add(EventName.locationdTemporaryError)
       if not self.sm['liveParameters'].valid and not TESTING_CLOSET and (not SIMULATION or REPLAY):
         self.events.add(EventName.paramsdTemporaryError)
-        
+
     # conservative HW alert. if the data or frequency are off, locationd will throw an error
     if any((self.sm.frame - self.sm.recv_frame[s])*DT_CTRL > 10. for s in self.sensor_packets):
       self.events.add(EventName.sensorDataInvalid)
@@ -370,7 +370,7 @@ class SelfdriveD:
       gps_ok = self.sm.recv_frame[self.gps_location_service] > 0 and (self.sm.frame - self.sm.recv_frame[self.gps_location_service]) * DT_CTRL < 2.0
       if not gps_ok and self.sm['liveLocationKalman'].inputsOK and (self.distance_traveled > 1500):
         if self.distance_traveled < 1600:
-          self.events.add(EventName.noGps)
+          pass #self.events.add(EventName.noGps)
       #if gps_ok:
       #  self.distance_traveled = 0
       self.distance_traveled += abs(CS.vEgo) * DT_CTRL

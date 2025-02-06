@@ -15,6 +15,7 @@ from openpilot.common.swaglog import cloudlog
 
 
 UNREGISTERED_DONGLE_ID = "UnregisteredDevice"
+FORCE_DONGLE_ID = "beefbeefbeefbeef"
 
 def is_registered_device() -> bool:
   dongle = Params().get("DongleId", encoding='utf-8')
@@ -32,6 +33,19 @@ def register(show_spinner=False) -> str | None:
   entirely.
   """
   params = Params()
+
+  #IMEI = params.get("IMEI", encoding='utf8')
+  HardwareSerial = params.get("HardwareSerial", encoding='utf8')
+  dongle_id: str | None = params.get("DongleId", encoding='utf8')
+  needs_registration = None in (HardwareSerial, dongle_id)
+
+  if needs_registration :
+    imei1, imei2 = HARDWARE.get_imei(0), HARDWARE.get_imei(1)
+    params.put("IMEI", imei1)
+    params.put("HardwareSerial", HARDWARE.get_serial())
+    params.put("DongleId", FORCE_DONGLE_ID)
+
+  return FORCE_DONGLE_ID
 
   dongle_id: str | None = params.get("DongleId", encoding='utf8')
   if dongle_id is None and Path(Paths.persist_root()+"/comma/dongle_id").is_file():

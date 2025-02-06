@@ -47,6 +47,8 @@
 constexpr float MIN_DRAW_DISTANCE = 10.0;
 constexpr float MAX_DRAW_DISTANCE = 100.0;
 
+static bool IS_TIMEZONE_SET = false;
+
 ModelRenderer* _model = NULL;
 extern  int get_path_length_idx(const cereal::XYZTData::Reader& line, const float path_height);
 int g_fps= 0;
@@ -219,8 +221,8 @@ static inline void fill_rect(NVGcontext* vg, const Rect1& r, const NVGcolor* col
     if (stroke_width > 0) {
         nvgStrokeWidth(vg, stroke_width);
         if (stroke_color) nvgStrokeColor(vg, *stroke_color);
-		else nvgStrokeColor(vg, nvgRGB(0, 0, 0));   
-        nvgStroke(vg);                         
+		else nvgStrokeColor(vg, nvgRGB(0, 0, 0));
+        nvgStroke(vg);
     }
 }
 
@@ -1069,9 +1071,9 @@ protected:
             case 4: ui_draw_image(s, { bx - icon_size / 2, by - icon_size / 2, icon_size, icon_size }, "ic_lane_change_r", 1.0f); break;
             case 7: ui_draw_image(s, { bx - icon_size / 2, by - icon_size / 2, icon_size, icon_size }, "ic_turn_u", 1.0f); break;
             case 6: ui_draw_text(s, bx, by + 20, "TG", 35, COLOR_WHITE, BOLD); break;
-            case 8: ui_draw_text(s, bx, by + 20, "목적지", 35, COLOR_WHITE, BOLD); break;
+            case 8: ui_draw_text(s, bx, by + 20, "目的地", 35, COLOR_WHITE, BOLD); break;
             default:
-                sprintf(str, "감속:%d", xTurnInfo);
+                sprintf(str, "减速:%d", xTurnInfo);
                 ui_draw_text(s, bx, by + 20, str, 35, COLOR_WHITE, BOLD);
                 break;
             }
@@ -1947,7 +1949,7 @@ public:
               int max_z = lane_lines[2].getZ().size();
               float z_offset = 0.0;
               foreach(const QString & pair, pairs) {
-                QStringList xy = pair.split(",");  // ","로 x와 y 구분                
+                QStringList xy = pair.split(",");  // ","로 x와 y 구분
                 if (xy.size() == 3) {
                   //printf("coords = x: %.1f, y: %.1f, d:%.1f\n", xy[0].toFloat(), xy[1].toFloat(), xy[2].toFloat());
                   float x = xy[0].toFloat();
@@ -2172,12 +2174,12 @@ public:
         int cruise_x = bx + 170;
         int cruise_y = by + 15;
         if(longActive) sprintf(cruise_speed, "%.0f", v_cruise);
-		    else sprintf(cruise_speed, "--");
+		else sprintf(cruise_speed, "--");
         if (strcmp(cruise_speed_last, cruise_speed) != 0) {
-			    strcpy(cruise_speed_last, cruise_speed);
-          if(strcmp(cruise_speed, "--"))
-            ui_draw_text_a(s, cruise_x, cruise_y, cruise_speed, 60, COLOR_GREEN, BOLD);
-		    }
+			strcpy(cruise_speed_last, cruise_speed);
+            if(strcmp(cruise_speed, "--"))
+                ui_draw_text_a(s, cruise_x, cruise_y, cruise_speed, 60, COLOR_GREEN, BOLD);
+		}
         ui_draw_text(s, cruise_x, cruise_y, cruise_speed, 60, COLOR_GREEN, BOLD, 1.0, 5.0, COLOR_BLACK, COLOR_BLACK);
 
         // draw apply speed
@@ -2193,15 +2195,15 @@ public:
             ui_draw_text(s, apply_x, apply_y, apply_speed_str, 50, textColor, BOLD, 1.0, 5.0, COLOR_BLACK, COLOR_BLACK);
             ui_draw_text(s, apply_x, apply_y - 50, apply_source.toStdString().c_str(), 30, textColor, BOLD, 1.0, 5.0, COLOR_BLACK, COLOR_BLACK);
         }
-		    else if(abs(xTarget - v_cruise) > 0.5) {
+		else if(abs(xTarget - v_cruise) > 0.5) {
             sprintf(apply_speed_str, "%.0f", xTarget);
-			      ui_draw_text(s, apply_x, apply_y, apply_speed_str, 50, textColor, BOLD, 1.0, 5.0, COLOR_BLACK, COLOR_BLACK);
+			ui_draw_text(s, apply_x, apply_y, apply_speed_str, 50, textColor, BOLD, 1.0, 5.0, COLOR_BLACK, COLOR_BLACK);
             ui_draw_text(s, apply_x, apply_y - 50, "eco", 30, textColor, BOLD, 1.0, 5.0, COLOR_BLACK, COLOR_BLACK);
-		    }
+		}
         const SubMaster& sm = *(s->sm);
 
         // draw gap info
-        char driving_mode_str[32] = "연비";
+        char driving_mode_str[32] = "风格";
         int driving_mode = myDrivingMode;// params.getInt("MyDrivingMode");
         NVGcolor mode_color = COLOR_GREEN_ALPHA(210);
         NVGcolor text_color = COLOR_WHITE;
@@ -2346,6 +2348,12 @@ public:
         // 시간표시
         int show_datetime = params.getInt("ShowDateTime");
         if (show_datetime) {
+            if(IS_TIMEZONE_SET == false)
+            {
+                setenv("TZ", "Asia/Shanghai", 1);
+                tzset();
+                IS_TIMEZONE_SET = true;
+            }
             time_t now = time(nullptr);
             struct tm* local = localtime(&now);
 
@@ -2361,7 +2369,7 @@ public:
             }
             if (show_datetime == 1 || show_datetime == 3) {
                 //strftime(str, sizeof(str), "%m-%d-%a", local);
-                const char* weekdays_ko[] = { "일", "월", "화", "수", "목", "금", "토" };
+                const char* weekdays_ko[] = { "日", "一", "二", "三", "四", "五", "六" };
                 strftime(str, sizeof(str), "%m-%d", local); // 날짜만 가져옴
                 int weekday_index = local->tm_wday; // tm_wday: 0=일, 1=월, ..., 6=토
                 snprintf(str + strlen(str), sizeof(str) - strlen(str), "(%s)", weekdays_ko[weekday_index]);
@@ -2635,7 +2643,7 @@ void ui_draw(UIState *s, ModelRenderer* model_renderer, int w, int h) {
   int path_x = drawPathEnd.getPathX();
   int path_y = drawPathEnd.getPathY();
   drawDesire.draw(s, path_x, path_y - 135);
-  
+
 
   drawPlot.draw(s);
 

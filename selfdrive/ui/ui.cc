@@ -6,6 +6,7 @@
 #include <QtConcurrent>
 
 #include "common/transformations/orientation.hpp"
+#include "common/params.h"
 #include "common/swaglog.h"
 #include "common/util.h"
 #include "common/watchdog.h"
@@ -59,7 +60,8 @@ static void update_state(UIState *s) {
   } else if (!sm.allAliveAndValid({"wideRoadCameraState"})) {
     scene.light_sensor = -1;
   }
-  scene.started = sm["deviceState"].getDeviceState().getStarted() && scene.ignition;
+  auto params = Params();
+  scene.started = sm["deviceState"].getDeviceState().getStarted() && scene.ignition && !params.getBool("ForceOffroad");
 }
 
 void ui_update_params(UIState *s) {

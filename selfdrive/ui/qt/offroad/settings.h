@@ -45,16 +45,19 @@ public:
 
 signals:
   void reviewTrainingGuide();
-  void showDriverView();
+    void showDriverView();
 
 private slots:
   void poweroff();
   void reboot();
+  void offroadswitch();
+  void updateLabels();
   void updateCalibDescription();
 
 private:
   Params params;
   ButtonControl *pair_device;
+  QPushButton *offroadswitch_btn;
 };
 
 class TogglesPanel : public ListWidget {
@@ -91,6 +94,7 @@ private:
 
   QLabel *onroadLbl;
   LabelControl *versionLbl;
+  ParamControl* updateToggle;
   ButtonControl *installBtn;
   ButtonControl *downloadBtn;
   ButtonControl *targetBranchBtn;
@@ -128,7 +132,7 @@ class CValueControl : public AbstractControl {
   Q_OBJECT
 
 public:
-  CValueControl(const QString& params, const QString& title, const QString& desc, const QString& icon, int min, int max, int unit = 1);
+  CValueControl(const QString& params, const QString& title, const QString& desc, const QString& icon, int min, int max, int unit = 1, int dp = 0);
 
 private slots:
   void increaseValue();
@@ -147,4 +151,5 @@ private:
   int m_min;
   int m_max;
   int m_unit;
+  int m_dp;
 };

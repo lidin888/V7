@@ -88,6 +88,37 @@
     </message>
 </context>
 <context>
+    <name>CarrotPanel</name>
+    <message>
+        <source>Start</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cruise</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Speed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tuning</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disp</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SELECT YOUR CAR</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ConfirmationDialog</name>
     <message>
         <source>Ok</source>
@@ -114,6 +145,33 @@
     </message>
 </context>
 <context>
+    <name>DestinationWidget</name>
+    <message>
+        <source>Home</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Work</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No destination set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>home</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>work</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No %1 location set</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>DeveloperPanel</name>
     <message>
         <source>Joystick Debug Mode</source>
@@ -121,6 +179,14 @@
     </message>
     <message>
         <source>Longitudinal Maneuver Mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable ADB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ADB (Android Debug Bridge) allows connecting to your device over USB or over the network. See https://docs.comma.ai/how-to/connect-to-comma for more info.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -134,14 +200,6 @@
     <message>
         <source>On this car, openpilot defaults to the car&apos;s built-in ACC instead of openpilot&apos;s longitudinal control. Enable this to switch to openpilot longitudinal control. Enabling Experimental mode is recommended when enabling openpilot longitudinal control alpha.</source>
         <translation type="unfinished">โดยปกติสำหรับรถคันนี้ openpilot จะควบคุมการเร่ง/เบรคด้วยระบบ ACC จากโรงงาน แทนการควยคุมโดย openpilot เปิดสวิตซ์นี้เพื่อให้ openpilot ควบคุมการเร่ง/เบรค แนะนำให้เปิดโหมดทดลองเมื่อต้องการให้ openpilot ควบคุมการเร่ง/เบรค ซึ่งอยู่ในสถานะ alpha</translation>
-    </message>
-    <message>
-        <source>Enable ADB</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>ADB (Android Debug Bridge) allows connecting to your device over USB or over the network. See https://docs.comma.ai/how-to/connect-to-comma for more info.</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -286,6 +344,109 @@
         <source>PAIR</source>
         <translation>จับคู่</translation>
     </message>
+    <message>
+        <source>Force Offroad</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Git Pull &amp; Reboot</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Git pull &amp; Reboot?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Yes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to fetch updates.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Already up to date.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Git pull failed. Please check the logs.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Git pull successful. Rebooting...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set default</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set to default?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Are you sure you want to go ONroad?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unforce</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Are you sure you want to go OFFroad?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Force</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disengage to Force Offroad</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Go ONroad</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Go OFFroad</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Git fetch process timed out.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Git fetch process crashed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to read Git status.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DrawCarrot</name>
+    <message>
+        <source>ECO</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SAFE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NORM</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>FAST</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ERRM</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>DriverViewWindow</name>
@@ -338,6 +499,51 @@
     <message>
         <source>Installing...</source>
         <translation>กำลังติดตั้ง...</translation>
+    </message>
+</context>
+<context>
+    <name>MapETA</name>
+    <message>
+        <source>eta</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>min</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>hr</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MapSettings</name>
+    <message>
+        <source>NAVIGATION</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Manage at %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Manage at connect.comma.ai</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MapWindow</name>
+    <message>
+        <source>Map Loading</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Waiting for APN</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Waiting for route</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -545,7 +751,7 @@
     </message>
     <message>
         <source>openpilot</source>
-        <translation>openpilot</translation>
+        <translation type="vanished">openpilot</translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s) ago</source>
@@ -568,6 +774,26 @@
     <message>
         <source>now</source>
         <translation>ตอนนี้</translation>
+    </message>
+    <message>
+        <source>km</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>m</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>mi</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ft</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>carrotpilot</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -635,6 +861,10 @@ This may take up to a minute.</source>
     </message>
     <message>
         <source>Developer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Carrot</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -752,11 +982,11 @@ This may take up to a minute.</source>
     <name>Sidebar</name>
     <message>
         <source>CONNECT</source>
-        <translation>เชื่อมต่อ</translation>
+        <translation type="vanished">เชื่อมต่อ</translation>
     </message>
     <message>
         <source>OFFLINE</source>
-        <translation>ออฟไลน์</translation>
+        <translation type="vanished">ออฟไลน์</translation>
     </message>
     <message>
         <source>ONLINE</source>
@@ -764,7 +994,7 @@ This may take up to a minute.</source>
     </message>
     <message>
         <source>ERROR</source>
-        <translation>เกิดข้อผิดพลาด</translation>
+        <translation type="vanished">เกิดข้อผิดพลาด</translation>
     </message>
     <message>
         <source>TEMP</source>
@@ -772,15 +1002,15 @@ This may take up to a minute.</source>
     </message>
     <message>
         <source>HIGH</source>
-        <translation>สูง</translation>
+        <translation type="vanished">สูง</translation>
     </message>
     <message>
         <source>GOOD</source>
-        <translation>ดี</translation>
+        <translation type="vanished">ดี</translation>
     </message>
     <message>
         <source>OK</source>
-        <translation>พอใช้</translation>
+        <translation type="vanished">พอใช้</translation>
     </message>
     <message>
         <source>VEHICLE</source>
@@ -821,6 +1051,10 @@ This may take up to a minute.</source>
     <message>
         <source>5G</source>
         <translation>5G</translation>
+    </message>
+    <message>
+        <source>MEM</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -896,6 +1130,10 @@ This may take up to a minute.</source>
     <message>
         <source>up to date, last checked %1</source>
         <translation>ล่าสุดแล้ว ตรวจสอบครั้งสุดท้ายเมื่อ %1</translation>
+    </message>
+    <message>
+        <source>Disable Updates</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1030,6 +1268,18 @@ This may take up to a minute.</source>
         <translation>ระบบควบคุมการเร่ง/เบรคโดย openpilot อาจมาในการอัปเดตในอนาคต</translation>
     </message>
     <message>
+        <source>openpilot Longitudinal Control (Alpha)</source>
+        <translation>ระบบควบคุมการเร่ง/เบรคโดย openpilot (Alpha)</translation>
+    </message>
+    <message>
+        <source>WARNING: openpilot longitudinal control is in alpha for this car and will disable Automatic Emergency Braking (AEB).</source>
+        <translation>คำเตือน: การควบคุมการเร่ง/เบรคโดย openpilot สำหรับรถคันนี้ยังอยู่ในสถานะ alpha และระบบเบรคฉุกเฉินอัตโนมัติ (AEB) จะถูกปิด</translation>
+    </message>
+    <message>
+        <source>On this car, openpilot defaults to the car&apos;s built-in ACC instead of openpilot&apos;s longitudinal control. Enable this to switch to openpilot longitudinal control. Enabling Experimental mode is recommended when enabling openpilot longitudinal control alpha.</source>
+        <translation>โดยปกติสำหรับรถคันนี้ openpilot จะควบคุมการเร่ง/เบรคด้วยระบบ ACC จากโรงงาน แทนการควยคุมโดย openpilot เปิดสวิตซ์นี้เพื่อให้ openpilot ควบคุมการเร่ง/เบรค แนะนำให้เปิดโหมดทดลองเมื่อต้องการให้ openpilot ควบคุมการเร่ง/เบรค ซึ่งอยู่ในสถานะ alpha</translation>
+    </message>
+    <message>
         <source>Aggressive</source>
         <translation>ดุดัน</translation>
     </message>
@@ -1071,6 +1321,18 @@ This may take up to a minute.</source>
     </message>
     <message>
         <source>Enable driver monitoring even when openpilot is not engaged.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable Modified Stock Longitudinal Control</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>On this car it works by multiplying a percentage smooth rate based on the distance of front cars detected by mrr.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>MoreRelaxed</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
