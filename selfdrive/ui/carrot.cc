@@ -689,11 +689,11 @@ public:
         else if (longActive) {
             if (xState == 3 || xState == 5) {      //XState.e2eStop, XState.e2eStopped
                 if (v_ego < 1.0) {
-                    sprintf(str, "%s", (trafficState >= 1000) ? "신호오류" : "신호대기");
+                    sprintf(str, "%s", (trafficState >= 1000) ? "信号错误" : "等待信号");
                     ui_draw_text(s, x, disp_y, str, disp_size, COLOR_WHITE, BOLD);
                 }
                 else {
-                    ui_draw_text(s, x, disp_y, "신호감속중", disp_size, COLOR_WHITE, BOLD);
+                    ui_draw_text(s, x, disp_y, "减速信号", disp_size, COLOR_WHITE, BOLD);
                 }
 #if 0
                 else if (getStopDist() > 0.5) {
@@ -705,7 +705,7 @@ public:
 #endif
             }
             else if (xState == 4) {     //XState.e2ePrepare
-				ui_draw_text(s, x, disp_y, "신호출발중", disp_size, COLOR_WHITE, BOLD);
+				ui_draw_text(s, x, disp_y, "起步信号", disp_size, COLOR_WHITE, BOLD);
 			}
             else if (xState == 0 || xState == 1 || xState == 2) {     //XState.lead
                 draw_dist = true;
@@ -1028,7 +1028,7 @@ protected:
         active_carrot = 2;
         nGoPosDist = 500000;
         nGoPosTime = 4 * 60 * 60;
-        szSdiDescr = "어린이 보호구역(스쿨존 시작 구간)";
+        szSdiDescr = "注意学校";
         xTurnInfo = 1;
         xDistToTurn = 1000;
         szPosRoadName = "구문천 1길 17";
