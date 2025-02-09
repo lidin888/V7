@@ -725,6 +725,10 @@ CarrotPanel::CarrotPanel(QWidget* parent) : QWidget(parent) {
   latLongToggles->addItem(new CValueControl("LateralTorqueKd", "LAT: TorqKd(0)", "", "../assets/offroad/icon_logic.png", 0, 1000, 1, 2));
   latLongToggles->addItem(new CValueControl("LateralTorqueCustom", "LAT: TorqueCustom(0)", "0:Off, 1:PID, 2:Default", "../assets/offroad/icon_logic.png", 0, 2, 1));
   latLongToggles->addItem(new CValueControl("SteerActuatorDelay", "LAT:SteerActuatorDelay(0.8)", "标准", "../assets/offroad/icon_logic.png", 1, 100, 1, 2));
+  latLongToggles->addItem(new CValueControl("CustomSR", "LAT: SteerRatio(0)", "Custom SteerRatio", "../assets/offroad/icon_logic.png", 0, 300, 1, 1));
+  latLongToggles->addItem(new CValueControl("SteerRatioRate", "LAT: SteerRatioRate(1)", "SteerRatio apply rate", "../assets/offroad/icon_logic.png", 30, 170, 1, 2));
+  latLongToggles->addItem(new CValueControl("BydAutoTuning", "LAT: AutoTuning", "Auto Lateral parameters", "../assets/offroad/icon_logic.png", 0, 1, 1));
+  latLongToggles->addItem(new CValueControl("BydLatUseSiglin", "LAT: Use Siglin", "0:Linear, 1:Siglin", "../assets/offroad/icon_logic.png", 0, 1, 1));
   //latLongToggles->addItem(new CValueControl("MaxAngleFrames", "MaxAngleFrames(89)", "89:默认,方向盘传感器错误时85~87", "../assets/offroad/icon_logic.png", 80, 100, 1));
   //latLongToggles->addItem(new CValueControl("CustomSteerMax", "LAT: CustomSteerMax(0)", "", "../assets/offroad/icon_logic.png", 0, 30000, 5));
   //latLongToggles->addItem(new CValueControl("CustomSteerDeltaUp", "LAT: CustomSteerDeltaUp(0)", "", "../assets/offroad/icon_logic.png", 0, 50, 1));
@@ -735,8 +739,7 @@ CarrotPanel::CarrotPanel(QWidget* parent) : QWidget(parent) {
   latLongToggles->addItem(new CValueControl("AdjustLaneOffset", "AdjustLaneOffset(0)cm", "", "../assets/offroad/icon_logic.png", 0, 500, 5));
   latLongToggles->addItem(new CValueControl("AdjustCurveOffset", "AdjustLaneCurveOffset(0)cm", "", "../assets/offroad/icon_logic.png", 0, 500, 5));
   latLongToggles->addItem(new CValueControl("AdjustLaneTime", "AdjustLaneTimeOffset(0.05)s", "", "../assets/offroad/icon_logic.png", 0, 20, 1, 2));
-  latLongToggles->addItem(new CValueControl("CustomSR", "LAT: SteerRatio(0)", "Custom SteerRatio", "../assets/offroad/icon_logic.png", 0, 300, 1, 1));
-  latLongToggles->addItem(new CValueControl("SteerRatioRate", "LAT: SteerRatioRate(1)", "SteerRatio apply rate", "../assets/offroad/icon_logic.png", 30, 170, 1, 2));
+
   //latLongToggles->addItem(new CValueControl("PathOffset", "PathOffset", "(-)left, (+)right, when UseLaneLineSpeed > 0", "../assets/offroad/icon_road.png", -50, 50, 1));
   //latLongToggles->addItem(horizontal_line());
   //latLongToggles->addItem(new CValueControl("JerkStartLimit", "LONG: JERK START(10)x0.1", "Starting Jerk.", "../assets/offroad/icon_road.png", 1, 50, 1));
