@@ -46,7 +46,7 @@ def get_default_params():
     ("ShowRadarInfo", "1"),
     ("ShowRouteInfo", "1"),
     ("ShowPathMode", "9"),
-    ("ShowPathColor", "13"),
+    ("ShowPathColor", "12"),
     ("ShowPathModeCruiseOff", "0"),
     ("ShowPathColorCruiseOff", "19"),
     ("ShowPathModeLane", "14"),
@@ -115,20 +115,23 @@ def get_default_params():
     ("DynamicTFollow", "0"),
     ("DynamicTFollowLC", "100"),
     ("HapticFeedbackWhenSpeedCamera", "0"),
-    ("UseLaneLineSpeed", "0"),
+    ("UseLaneLineSpeed", "20"),
     ("UseLaneLineCurveSpeed", "0"),
     ("UseLaneLineSpeedApply", "0"),
     ("AdjustLaneOffset", "0"),
     ("AdjustCurveOffset", "0"),
+    ("PathOffset", "0"),
     ("AdjustLaneTime", "13"),
-    ("LaneChangeNeedTorque", "0"),
+    ("LaneChangeNeedTorque", "1"),
+    ("LaneChangeDelay", "0"),
+    ("LaneChangeBsd", "0"),
     ("MaxAngleFrames", "89"),
-    ("CarrotLatControl", "0"),
+    ("CarrotLatControl", "1"),
     ("DampingFactor", "0"),
-    ("LateralTorqueCustom", "0"),
+    ("LateralTorqueCustom", "1"),
     ("LateralTorqueAccelFactor", "2500"),
-    ("LateralTorqueFriction", "100"),
-    ("LateralTorqueKp", "100"),
+    ("LateralTorqueFriction", "300"),
+    ("LateralTorqueKp", "230"),
     ("LateralTorqueKi", "10"),
     ("LateralTorqueKd", "0"),
     ("LatMpcPathCost", "100"),
@@ -140,7 +143,7 @@ def get_default_params():
     ("CustomSteerDeltaUp", "0"),
     ("CustomSteerDeltaDown", "0"),
     ("SpeedFromPCM", "2"),
-    ("SteerActuatorDelay", "30"),
+    ("SteerActuatorDelay", "10"),
     ("ModelActuatorDelay", "20"),
     ("MaxTimeOffroadMin", "60"),
     ("DisableDM", "0"),
@@ -171,7 +174,7 @@ def get_default_params_key():
   return all_keys
 
 def manager_init() -> None:
-  save_bootlog()
+  #save_bootlog()
 
   build_metadata = get_build_metadata()
 
@@ -199,7 +202,7 @@ def manager_init() -> None:
     pass
   except PermissionError:
     print(f"WARNING: failed to make {Paths.shm_path()}")
-
+  
   # set params
   serial = HARDWARE.get_serial()
   params.put("Version", build_metadata.openpilot.version)
@@ -321,12 +324,13 @@ def manager_thread() -> None:
 
 def main() -> None:
   manager_init()
-  print(f"python ../../opendbc/car/byd/values.py > {Params().get_param_path()}/SupportedCars")
-  #os.system(f"python ../../opendbc/car/hyundai/values.py > {Params().get_param_path()}/SupportedCars")
-  os.system(f"python ../../opendbc/car/byd/values.py > {Params().get_param_path()}/SupportedCars")
-  os.system(f"python ../../opendbc/car/gm/values.py > {Params().get_param_path()}/SupportedCars_gm")
-  os.system(f"python ../../opendbc/car/toyota/values.py > {Params().get_param_path()}/SupportedCars_toyota")
-  os.system(f"python ../../opendbc/car/mazda/values.py > {Params().get_param_path()}/SupportedCars_mazda")
+  print(f"python opendbc/car/byd/values.py > {Params().get_param_path()}/SupportedCars")
+  os.system(f"python ./opendbc/car/hyundai/values.py > {Params().get_param_path()}/SupportedCars")
+  os.system(f"python ./opendbc/car/byd/values.py > {Params().get_param_path()}/SupportedCars_byd")
+  os.system(f"python ./opendbc/car/gm/values.py > {Params().get_param_path()}/SupportedCars_gm")
+  os.system(f"python ./opendbc/car/toyota/values.py > {Params().get_param_path()}/SupportedCars_toyota")
+  os.system(f"python ./opendbc/car/mazda/values.py > {Params().get_param_path()}/SupportedCars_mazda")
+  os.system(f"python ./opendbc/car/volkswagen/values.py > {Params().get_param_path()}/SupportedCars_volkswagen")
 
   if os.getenv("PREPAREONLY") is not None:
     return

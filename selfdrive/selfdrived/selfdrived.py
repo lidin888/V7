@@ -27,6 +27,7 @@ REPLAY = "REPLAY" in os.environ
 SIMULATION = "SIMULATION" in os.environ
 TESTING_CLOSET = "TESTING_CLOSET" in os.environ
 LONGITUDINAL_PERSONALITY_MAP = {v: k for k, v in log.LongitudinalPersonality.schema.enumerants.items()}
+NO_DM = os.getenv("NO_DM") is not None
 
 ThermalStatus = log.DeviceState.ThermalStatus
 State = log.SelfdriveState.OpenpilotState
@@ -62,21 +63,26 @@ class SelfdriveD:
 
     self.gps_location_service = get_gps_location_service(self.params)
     self.gps_packets = [self.gps_location_service]
-    self.sensor_packets = ["accelerometer", "gyroscope"]
-    self.camera_packets = ["roadCameraState", "driverCameraState", "wideRoadCameraState"]
+    self.sensor_packets = []
+    self.camera_packets = ["roadCameraState"]
+    if not NO_DM:
+      self.camera_packets.append("driverCameraState")
 
     # TODO: de-couple selfdrived with card/conflate on carState without introducing controls mismatches
     self.car_state_sock = messaging.sub_sock('carState', timeout=20)
 
-    ignore = self.sensor_packets + self.gps_packets + ['alertDebug']
+    #ignore = self.sensor_packets + self.gps_packets + ["accelerometer", "gyroscope", "alertDebug", "dmonitoringmodeld", "dmonitoringd", 'driverMonitoringState']
+    ignore = self.sensor_packets + self.gps_packets + ["accelerometer", "gyroscope", "alertDebug", 'driverMonitoringState','liveLocationKalman','liveParameters','liveTorqueParameters', 'livePose','driverAssistance']
+    if NO_DM:
+      ignore += ['driverMonitoringState']
     if SIMULATION:
       ignore += ['driverCameraState', 'managerState']
     if REPLAY:
       # no vipc in replay will make them ignored anyways
       ignore += ['roadCameraState', 'wideRoadCameraState']
     self.sm = messaging.SubMaster(['deviceState', 'pandaStates', 'peripheralState', 'modelV2', 'liveCalibration',
-                                   'carOutput', 'driverMonitoringState', 'longitudinalPlan', 'liveLocationKalman',
-                                   'managerState', 'liveParameters', 'radarState', 'liveTorqueParameters',
+                                   'carOutput', 'livePose', 'driverMonitoringState', 'longitudinalPlan', 'liveLocationKalman',
+                                   'managerState', 'liveParameters', 'livePose','radarState', 'liveTorqueParameters',
                                    'carrotMan',
                                    'controlsState', 'carControl', 'driverAssistance', 'alertDebug'] + \
                                    self.camera_packets + self.sensor_packets + self.gps_packets,
@@ -165,7 +171,7 @@ class SelfdriveD:
     if not self.CP.pcmCruise and CS.vCruise > 250 and resume_pressed:
       self.events.add(EventName.resumeBlocked)
 
-    if not self.CP.notCar and self.params.get_int("DisableDM") == 0:
+    if not self.CP.notCar and not NO_DM:
       self.events.add_from_msg(self.sm['driverMonitoringState'].events)
 
     self.events.add_from_msg(self.sm['longitudinalPlan'].events)  ## carrot

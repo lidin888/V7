@@ -12,6 +12,7 @@ from openpilot.selfdrive.locationd.models.car_kf import CarKalman, ObservationKi
 from openpilot.selfdrive.locationd.models.constants import GENERATED_DIR
 from openpilot.common.swaglog import cloudlog
 
+from openpilot.selfdrive.locationd.helpers import PoseCalibrator, Pose
 
 MAX_ANGLE_OFFSET_DELTA = 20 * DT_MDL  # Max 20 deg/s
 ROLL_MAX_DELTA = math.radians(20.0) * DT_MDL  # 20deg in 1 second is well within curvature limits
@@ -37,6 +38,10 @@ class ParamsLearner:
     self.kf.filter.set_global("stiffness_rear", CP.tireStiffnessRear)
 
     self.active = False
+    
+    
+    self.calibrator = PoseCalibrator()  #33333333333333333333333333333333
+    
 
     self.speed = 0.0
     self.yaw_rate = 0.0
@@ -47,11 +52,25 @@ class ParamsLearner:
 
   def handle_log(self, t, which, msg):
     if which == 'liveLocationKalman':
-      self.yaw_rate = msg.angularVelocityCalibrated.value[2]
-      self.yaw_rate_std = msg.angularVelocityCalibrated.std[2]
+      device_pose = Pose.from_live_pose(msg)#33333333333333333333333333333333
+      calibrated_pose = self.calibrator.build_calibrated_pose(device_pose)#33333333333333333333333333333333
+    
+      #self.yaw_rate = msg.angularVelocityCalibrated.value[2]
+      #self.yaw_rate_std = msg.angularVelocityCalibrated.std[2]
+      
+      yaw_rate_valid = msg.angularVelocityDevice.valid
+      yaw_rate_valid = yaw_rate_valid and 0 < self.yaw_rate_std < 10  # rad/s
+      yaw_rate_valid = yaw_rate_valid and abs(self.yaw_rate) < 1  # rad/s
+      if yaw_rate_valid:
+        self.yaw_rate, self.yaw_rate_std = calibrated_pose.angular_velocity.z, calibrated_pose.angular_velocity.z_std
+      else:
+        # This is done to bound the yaw rate estimate when localizer values are invalid or calibrating
+        self.yaw_rate, self.yaw_rate_std = 0.0, np.radians(10.0)
 
-      localizer_roll = msg.orientationNED.value[0]
-      localizer_roll_std = np.radians(1) if np.isnan(msg.orientationNED.std[0]) else msg.orientationNED.std[0]
+      #localizer_roll = msg.orientationNED.value[0]
+      #localizer_roll_std = np.radians(1) if np.isnan(msg.orientationNED.std[0]) else msg.orientationNED.std[0]
+      localizer_roll, localizer_roll_std = device_pose.orientation.x, device_pose.orientation.x_std#33333333333333333333333333333333
+      localizer_roll_std = np.radians(1) if np.isnan(localizer_roll_std) else localizer_roll_std#33333333333333333333333333333333
       self.roll_valid = (localizer_roll_std < ROLL_STD_MAX) and (ROLL_MIN < localizer_roll < ROLL_MAX) and msg.sensorsOK
       if self.roll_valid:
         roll = localizer_roll
@@ -63,9 +82,9 @@ class ParamsLearner:
         roll_std = np.radians(10.0)
       self.roll = np.clip(roll, self.roll - ROLL_MAX_DELTA, self.roll + ROLL_MAX_DELTA)
 
-      yaw_rate_valid = msg.angularVelocityCalibrated.valid
-      yaw_rate_valid = yaw_rate_valid and 0 < self.yaw_rate_std < 10  # rad/s
-      yaw_rate_valid = yaw_rate_valid and abs(self.yaw_rate) < 1  # rad/s
+      #yaw_rate_valid = msg.angularVelocityCalibrated.valid
+      #yaw_rate_valid = yaw_rate_valid and 0 < self.yaw_rate_std < 10  # rad/s
+      #yaw_rate_valid = yaw_rate_valid and abs(self.yaw_rate) < 1  # rad/s
 
       if self.active:
         if msg.posenetOK:

@@ -9,7 +9,7 @@ from openpilot.common.realtime import config_realtime_process, DT_MDL
 from openpilot.common.filter_simple import FirstOrderFilter
 from openpilot.common.swaglog import cloudlog
 from openpilot.selfdrive.controls.lib.vehicle_model import ACCELERATION_DUE_TO_GRAVITY
-from openpilot.selfdrive.locationd.helpers import PointBuckets, ParameterEstimator
+from openpilot.selfdrive.locationd.helpers import PointBuckets, ParameterEstimator, PoseCalibrator, Pose
 
 HISTORY = 5  # secs
 POINTS_PER_BUCKET = 1500
@@ -77,6 +77,7 @@ class TorqueEstimator(ParameterEstimator):
       self.offline_friction = CP.lateralTuning.torque.friction
       self.offline_latAccelFactor = CP.lateralTuning.torque.latAccelFactor
 
+    self.calibrator = PoseCalibrator()  #3333333333333333333333333333333333
     self.reset()
 
     initial_params = {
@@ -173,8 +174,14 @@ class TorqueEstimator(ParameterEstimator):
       self.raw_points["steer_override"].append(msg.steeringPressed)
     elif which == "liveLocationKalman":
       if len(self.raw_points['steer_torque']) == self.hist_len:
-        yaw_rate = msg.angularVelocityCalibrated.value[2]
-        roll = msg.orientationNED.value[0]
+        device_pose = Pose.from_live_pose(msg) #3333333333333333333333333333333333
+        calibrated_pose = self.calibrator.build_calibrated_pose(device_pose)
+        angular_velocity_calibrated = calibrated_pose.angular_velocity
+        
+        #yaw_rate = msg.angularVelocityCalibrated.value[2]
+        yaw_rate = angular_velocity_calibrated.yaw
+        #roll = msg.orientationNED.value[0]
+        roll = device_pose.orientation.roll
         # check lat active up to now (without lag compensation)
         lat_active = np.interp(np.arange(t - MIN_ENGAGE_BUFFER, t + self.lag, DT_MDL),
                                self.raw_points['carControl_t'], self.raw_points['lat_active']).astype(bool)

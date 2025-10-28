@@ -72,6 +72,9 @@ class LatControlTorque(LatControl):
         self.torque_params.friction = self.friction_default
         self.torque_params.latAccelOffset = self.latAccelOffset_default
       self.lateralTorqueCustom = lateralTorqueCustom
+      
+    #print("888:",self.torque_params.latAccelFactor,"  ",self.torque_params.friction,"  ",self.pid._k_p,"  ",self.pid._k_i,"   ",self.pid._k_d)
+    
 
     pid_log = log.ControlsState.LateralTorqueState.new_message()
     steeringRate = math.radians(CS.steeringRateDeg)

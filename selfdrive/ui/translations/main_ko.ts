@@ -91,30 +91,54 @@
     <name>CarrotPanel</name>
     <message>
         <source>Start</source>
-        <translation type="unfinished">시작</translation>
+        <translation type="obsolete">시작</translation>
     </message>
     <message>
         <source>Cruise</source>
-        <translation type="unfinished">크루즈</translation>
+        <translation type="obsolete">크루즈</translation>
     </message>
     <message>
         <source>Speed</source>
-        <translation type="unfinished">속도</translation>
+        <translation type="obsolete">속도</translation>
     </message>
     <message>
         <source>Tuning</source>
-        <translation type="unfinished">튜닝</translation>
+        <translation type="obsolete">튜닝</translation>
     </message>
     <message>
         <source>Disp</source>
-        <translation type="unfinished">화면</translation>
+        <translation type="obsolete">화면</translation>
     </message>
     <message>
         <source>Path</source>
-        <translation type="unfinished">패쓰</translation>
+        <translation type="obsolete">패쓰</translation>
     </message>
     <message>
         <source>SELECT YOUR CAR</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>开始</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>巡航</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>速度</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>调整</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>显示</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>路径</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1376,15 +1400,15 @@ This may take up to a minute.</source>
         <translation>Openpilot이 활성화되지 않은 경우에도 드라이버 모니터링을 활성화합니다.</translation>
     </message>
     <message>
-        <source>Enable Modified Stock Longitudinal Control</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>On this car it works by multiplying a percentage smooth rate based on the distance of front cars detected by mrr.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>MoreRelaxed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable BYD Modified Stock Longitudinal Control</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

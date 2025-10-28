@@ -760,10 +760,10 @@ class CarrotMan:
     turn_speed = 250
 
     if abs(curvature) > 0.0001:
-        # 곡률의 절대값을 사용하여 속도를 계산합니다.
+        # 使用曲率的绝对值来计算速度.
         base_speed = np.interp(abs(curvature), V_CURVE_LOOKUP_BP, V_CRUVE_LOOKUP_VALS)
         base_speed = np.clip(base_speed, self.autoCurveSpeedLowerLimit, 255)
-        # 곡률의 부호를 적용하여 turn_speed의 부호를 결정합니다.
+        # 使用曲率符号确定turn_speed的符号.
         turn_speed = np.sign(curvature) * base_speed
 
     self.turn_speed_last = abs(turn_speed)

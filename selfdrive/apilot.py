@@ -2,8 +2,8 @@
 import os
 import json
 
-folder_path = "/data/params/d"
-output_file = "/data/backup_params.json"
+folder_path = "/data/params/cp"
+output_file = "/data/backup_params_cp.json"
 
 result = []
 

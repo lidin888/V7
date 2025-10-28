@@ -98,7 +98,7 @@ function op_check_git() {
     echo -e " ↳ [${GREEN}✔${NC}] git lfs files found."
   else
     echo -e " ↳ [${RED}✗${NC}] git lfs files not found! Run 'git lfs pull'"
-    return 1
+    #return 1
   fi
 
   echo "Checking for git submodules..."

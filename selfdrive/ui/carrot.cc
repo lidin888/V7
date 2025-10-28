@@ -1628,6 +1628,7 @@ public:
         }
         if (!make_data(s)) return;
         int temp = params.getInt("UseLaneLineSpeedApply");
+        
         if (temp != use_lane_line_speed_apply) {
             ui_draw_text_a(s, 0, 0, (temp>0)?"LaneMode":"Laneless", 30, COLOR_GREEN, BOLD);
             use_lane_line_speed_apply = temp;
@@ -2018,6 +2019,7 @@ public:
                 }
             }
         }
+        makeDeviceInfo(s);
 	}
     void drawRadarInfo(UIState* s) {
         char str[128];
@@ -2332,13 +2334,13 @@ public:
 
             dx += 150;
             ui_fill_rect(s->vg, { dx - 65, dy - 38, 130, 90 }, (memoryUsage > 85 && blink_timer <= 8) ? COLOR_RED : mode_color, 15, 2);
-            ui_draw_text(s, dx, dy-5, "MEM", 25, COLOR_WHITE, BOLD);
+            ui_draw_text(s, dx, dy-5, "内存", 25, COLOR_WHITE, BOLD);
             sprintf(str, "%d%%", memoryUsage);
             ui_draw_text(s, dx, dy + 40, str, 40, COLOR_WHITE, BOLD);
 
             dx += 150;
             ui_fill_rect(s->vg, { dx - 65, dy - 38, 130, 90 }, mode_color, 15, 2);
-            ui_draw_text(s, dx, dy-5, "DISK", 25, COLOR_WHITE, BOLD);
+            ui_draw_text(s, dx, dy-5, "磁盘", 25, COLOR_WHITE, BOLD);
             sprintf(str, "%.0f%%", 100 - freeSpace);
             ui_draw_text(s, dx, dy + 40, str, 40, COLOR_WHITE, BOLD);
         }
@@ -2470,17 +2472,18 @@ public:
         memoryUsage = deviceState.getMemoryUsagePercent();
         const auto cpuTempC = deviceState.getCpuTempC();
         const auto cpuUsagePercent = deviceState.getCpuUsagePercent();
-        int   size = sizeof(cpuTempC) / sizeof(cpuTempC[0]);
-        if (size > 0) {
-            for (int i = 0; i < size; i++) {
+        cpuTemp = 0.0f;
+        if (cpuTempC.size() > 0) {
+            for (int i = 0; i < cpuTempC.size(); i++) {
                 cpuTemp += cpuTempC[i];
             }
-            cpuTemp /= static_cast<float>(size);
+            cpuTemp /= static_cast<float>(cpuTempC.size());
         }
-        size = sizeof(cpuUsagePercent) / sizeof(cpuUsagePercent[0]);
-        if (size > 0) {
+
+        cpuUsage = 0.0f;
+        if (cpuUsagePercent.size() > 0) {
             int cpu_size = 0;
-            for (cpu_size = 0; cpu_size < size; cpu_size++) {
+            for (cpu_size = 0; cpu_size < cpuUsagePercent.size(); cpu_size++) {
                 if (cpuUsagePercent[cpu_size] <= 0) break;
                 cpuUsage += cpuUsagePercent[cpu_size];
             }
@@ -2496,7 +2499,7 @@ public:
 
         nvgTextAlign(s->vg, NVG_ALIGN_RIGHT | NVG_ALIGN_TOP);
         QString str = "";
-        str.sprintf("MEM:%d%% DISK:%.0f%% CPU:%.0f%%,%.0f\u00B0C", memoryUsage, freeSpace, cpuUsage, cpuTemp);
+        str.sprintf("内存:%d%% 磁盘:%.0f%% CPU:%.0f%%,%.0f\u00B0C", memoryUsage, freeSpace, cpuUsage, cpuTemp);
         NVGcolor top_right_color = (cpuTemp > 85.0 || memoryUsage > 85.0) ? COLOR_ORANGE : COLOR_WHITE;
 		ui_draw_text(s, s->fb_w - 10, 2, str.toStdString().c_str(), 30, top_right_color, BOLD, 3.0f, 1.0f);
     }
@@ -2777,7 +2780,8 @@ public:
         strcpy(bottom, str.toStdString().c_str());
 
         // bottom_left
-        QString gitBranch = QString::fromStdString(params.get("GitBranch"));
+        //QString gitBranch = QString::fromStdString(params.get("GitBranch"));
+        QString gitBranch=QString::fromStdString("carrot-BYD v1.0");
         sprintf(bottom_left, "%s", gitBranch.toStdString().c_str());
 
         // bottom_right

@@ -60,7 +60,7 @@ class LateralPlanner:
     self.lanelines_active_tmp = False
 
     self.useLaneLineSpeedApply = self.params.get_int("UseLaneLineSpeedApply")
-    self.pathOffset = 0.0 #float(self.params.get_int("PathOffset")) * 0.01
+    self.pathOffset = float(self.params.get_int("PathOffset")) * 0.01
     self.useLaneLineMode = False
     self.plan_a = np.zeros((TRAJECTORY_SIZE, ))
     self.plan_yaw = np.zeros((TRAJECTORY_SIZE,))
@@ -89,7 +89,8 @@ class LateralPlanner:
     if self.readParams <= 0:
       self.readParams = 100
       self.useLaneLineSpeedApply = self.params.get_int("UseLaneLineSpeedApply")
-      self.pathOffset = 0.0 #float(self.params.get_int("PathOffset")) * 0.01
+      self.pathOffset =float(self.params.get_int("PathOffset")) * 0.01
+      #self.pathOffset =0.3
       PATH_COST = self.params.get_float("LatMpcPathCost") * 0.01
       LATERAL_MOTION_COST = self.params.get_float("LatMpcMotionCost") * 0.01
       LATERAL_ACCEL_COST = self.params.get_float("LatMpcAccelCost") * 0.01
@@ -129,6 +130,7 @@ class LateralPlanner:
       self.useLaneLineMode = True
     elif self.v_ego*3.6 < self.useLaneLineSpeedApply - 2:
       self.useLaneLineMode = False
+      
 
     # Turn off lanes during lane change
     #if self.DH.desire == log.Desire.laneChangeRight or self.DH.desire == log.Desire.laneChangeLeft:
