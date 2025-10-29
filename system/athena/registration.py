@@ -41,7 +41,7 @@ def register(show_spinner=False) -> str | None:
 
   if needs_registration :
     imei1, imei2 = HARDWARE.get_imei(0), HARDWARE.get_imei(1)
-    params.put("IMEI", imei1)
+    #params.put("IMEI", imei1)
     params.put("HardwareSerial", HARDWARE.get_serial())
     params.put("DongleId", FORCE_DONGLE_ID)
 

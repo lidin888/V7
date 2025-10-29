@@ -18,10 +18,12 @@ from openpilot.selfdrive.controls.lib.latcontrol_angle import LatControlAngle, S
 from openpilot.selfdrive.controls.lib.latcontrol_torque import LatControlTorque
 from openpilot.selfdrive.controls.lib.longcontrol import LongControl
 from openpilot.selfdrive.controls.lib.vehicle_model import VehicleModel
+from openpilot.common.swaglog import cloudlog
 
 from openpilot.common.realtime import DT_CTRL, DT_MDL
 from openpilot.selfdrive.modeld.constants import ModelConstants
 from openpilot.selfdrive.controls.lib.drive_helpers import CONTROL_N
+from openpilot.selfdrive.locationd.helpers import PoseCalibrator, Pose
 
 State = log.SelfdriveState.OpenpilotState
 LaneChangeState = log.LaneChangeState
@@ -41,7 +43,7 @@ class Controls:
     self.disable_dm = False
 
     self.sm = messaging.SubMaster(['liveParameters', 'liveTorqueParameters', 'modelV2', 'selfdriveState',
-                                   'liveCalibration', 'liveLocationKalman', 'longitudinalPlan', 'carState', 'carOutput',
+                                   'liveCalibration', 'livePose','liveLocationKalman','longitudinalPlan', 'carState', 'carOutput',
                                    'carrotMan', 'lateralPlan', 'radarState',
                                    'driverMonitoringState', 'onroadEvents', 'driverAssistance'], poll='selfdriveState')
     self.pm = messaging.PubMaster(['carControl', 'controlsState'])
@@ -49,6 +51,8 @@ class Controls:
     self.steer_limited = False
     self.desired_curvature = 0.0
 
+    self.pose_calibrator = PoseCalibrator()  #33333333333333333333
+    self.calibrated_pose: Pose | None = None
 
     self.LoC = LongControl(self.CP)
     self.VM = VehicleModel(self.CP)
@@ -62,6 +66,11 @@ class Controls:
 
   def update(self):
     self.sm.update(15)
+    if self.sm.updated["liveCalibration"]: #3333333333333333333333333
+      self.pose_calibrator.feed_live_calib(self.sm['liveCalibration'])
+    if self.sm.updated["livePose"]:
+      device_pose = Pose.from_live_pose(self.sm['livePose'])
+      self.calibrated_pose = self.pose_calibrator.build_calibrated_pose(device_pose)
 
   def state_control(self):
     CS = self.sm['carState']
@@ -120,14 +129,15 @@ class Controls:
     actuators.accel = float(accel)
     actuators.aTargetNow = float(aTargetNow)
     actuators.jerk = float(jerk)
-
+    
     # Steering PID loop and lateral MPC
     lat_plan = self.sm['lateralPlan']
     curve_speed_abs = abs(self.sm['carrotMan'].vTurnSpeed)
-    self.lanefull_mode_enabled = (lat_plan.useLaneLines and self.params.get_int("UseLaneLineSpeedApply") > 0 and
-                                  curve_speed_abs > self.params.get_int("UseLaneLineCurveSpeed"))
+    self.lanefull_mode_enabled = (lat_plan.useLaneLines and self.params.get_int("UseLaneLineSpeed") > 0 and
+                                  curve_speed_abs > self.params.get_int("UseLaneLineCurveSpeed")) 
 
     carrot_lat_control = self.params.get_int("CarrotLatControl")
+    
     if carrot_lat_control > 0:
       model_delay = self.params.get_float("ModelActuatorDelay") * 0.01
       steer_actuator_delay = self.params.get_float("SteerActuatorDelay") * 0.01
@@ -140,6 +150,7 @@ class Controls:
           desired_curvature_ff = np.interp(model_delay + steer_actuator_delay + t_since_plan, ModelConstants.T_IDXS[:CONTROL_N], lat_plan.curvatures)
           self.desired_curvature = clip_curvature(CS.vEgo, self.desired_curvature, curvature)
       elif carrot_lat_control == 2:
+      
         desired_curvature = get_lag_adjusted_curvature1(self.CP, CS.vEgo, lat_plan.psis, lat_plan.curvatures, steer_actuator_delay)
         desired_curvature_ff = self.desired_curvature = clip_curvature(CS.vEgo, self.desired_curvature, desired_curvature)
       else:
@@ -161,6 +172,7 @@ class Controls:
     steer, steeringAngleDeg, lac_log = self.LaC.update(CC.latActive, CS, self.VM, lp,
                                                                             self.steer_limited, desired_curvature_ff, self.desired_curvature,
                                                                             self.sm['liveLocationKalman']) # TODO what if not available
+    
     actuators.steer = float(steer)
     actuators.steeringAngleDeg = float(steeringAngleDeg)
     # Ensure no NaNs/Infs
@@ -177,16 +189,24 @@ class Controls:
 
   def publish(self, CC, lac_log):
     CS = self.sm['carState']
-
+    
     # Orientation and angle rates can be useful for carcontroller
     # Only calibrated (car) frame is relevant for the carcontroller
+    '''
     orientation_value = list(self.sm['liveLocationKalman'].calibratedOrientationNED.value)
     if len(orientation_value) > 2:
       CC.orientationNED = orientation_value
     angular_rate_value = list(self.sm['liveLocationKalman'].angularVelocityCalibrated.value)
     if len(angular_rate_value) > 2:
       CC.angularVelocity = angular_rate_value
-
+    ''' 
+    # Orientation and angle rates can be useful for carcontroller
+    # Only calibrated (car) frame is relevant for the carcontroller
+      
+    if self.calibrated_pose is not None:
+      CC.orientationNED = self.calibrated_pose.orientation.xyz.tolist()
+      CC.angularVelocity = self.calibrated_pose.angular_velocity.xyz.tolist()
+      
     CC.cruiseControl.override = CC.enabled and not CC.longActive and self.CP.openpilotLongitudinalControl
     CC.cruiseControl.cancel = CS.cruiseState.enabled and (not CC.enabled or not self.CP.pcmCruise)
 
@@ -281,6 +301,7 @@ class Controls:
   def run(self):
     rk = Ratekeeper(100, print_delay_threshold=None)
     while True:
+      
       self.update()
       CC, lac_log = self.state_control()
       self.publish(CC, lac_log)

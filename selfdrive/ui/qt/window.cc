@@ -4,6 +4,7 @@
 
 #include "system/hardware/hw.h"
 
+
 MainWindow::MainWindow(QWidget *parent) : QWidget(parent) {
   main_layout = new QStackedLayout(this);
   main_layout->setMargin(0);

@@ -46,7 +46,7 @@ def get_default_params():
     ("ShowRadarInfo", "1"),
     ("ShowRouteInfo", "1"),
     ("ShowPathMode", "9"),
-    ("ShowPathColor", "13"),
+    ("ShowPathColor", "12"),
     ("ShowPathModeCruiseOff", "0"),
     ("ShowPathColorCruiseOff", "19"),
     ("ShowPathModeLane", "14"),
@@ -115,20 +115,23 @@ def get_default_params():
     ("DynamicTFollow", "0"),
     ("DynamicTFollowLC", "100"),
     ("HapticFeedbackWhenSpeedCamera", "0"),
-    ("UseLaneLineSpeed", "0"),
+    ("UseLaneLineSpeed", "20"),
     ("UseLaneLineCurveSpeed", "0"),
     ("UseLaneLineSpeedApply", "0"),
     ("AdjustLaneOffset", "0"),
     ("AdjustCurveOffset", "0"),
+    ("PathOffset", "0"),
     ("AdjustLaneTime", "13"),
-    ("LaneChangeNeedTorque", "0"),
+    ("LaneChangeNeedTorque", "1"),
+    ("LaneChangeDelay", "0"),
+    ("LaneChangeBsd", "0"),
     ("MaxAngleFrames", "89"),
-    ("CarrotLatControl", "0"),
+    ("CarrotLatControl", "1"),
     ("DampingFactor", "0"),
-    ("LateralTorqueCustom", "0"),
+    ("LateralTorqueCustom", "1"),
     ("LateralTorqueAccelFactor", "2500"),
-    ("LateralTorqueFriction", "100"),
-    ("LateralTorqueKp", "100"),
+    ("LateralTorqueFriction", "300"),
+    ("LateralTorqueKp", "230"),
     ("LateralTorqueKi", "10"),
     ("LateralTorqueKd", "0"),
     ("LatMpcPathCost", "100"),
@@ -140,7 +143,7 @@ def get_default_params():
     ("CustomSteerDeltaUp", "0"),
     ("CustomSteerDeltaDown", "0"),
     ("SpeedFromPCM", "2"),
-    ("SteerActuatorDelay", "30"),
+    ("SteerActuatorDelay", "10"),
     ("ModelActuatorDelay", "20"),
     ("MaxTimeOffroadMin", "60"),
     ("DisableDM", "0"),
@@ -171,7 +174,7 @@ def get_default_params_key():
   return all_keys
 
 def manager_init() -> None:
-  save_bootlog()
+  #save_bootlog()
 
   build_metadata = get_build_metadata()
 
@@ -199,7 +202,7 @@ def manager_init() -> None:
     pass
   except PermissionError:
     print(f"WARNING: failed to make {Paths.shm_path()}")
-
+  
   # set params
   serial = HARDWARE.get_serial()
   params.put("Version", build_metadata.openpilot.version)
@@ -270,16 +273,22 @@ def manager_thread() -> None:
 
   sm = messaging.SubMaster(['deviceState', 'carParams'], poll='deviceState')
   pm = messaging.PubMaster(['managerState'])
-
+  
+  # 添加传感器数据订阅
+  sensor_sm = messaging.SubMaster(['accelerometer', 'gyroscope'])
+  
   write_onroad_params(False, params)
   ensure_running(managed_processes.values(), False, params=params, CP=sm['carParams'], not_run=ignore)
 
   print_timer = 0
-
+  sensor_check_count = 0  # 用于检查传感器连接状态的计数器
+  gyro_connected = False  # 陀螺仪连接状态标志
+  
   started_prev = False
 
   while True:
     sm.update(1000)
+    sensor_sm.update(0)  # 更新传感器数据
 
     started = sm['deviceState'].started
 
@@ -301,6 +310,14 @@ def manager_thread() -> None:
     print_timer = (print_timer + 1)%10
     if print_timer == 0:
       print(running)
+      # 每10次循环检查一次传感器连接状态（启动初期检查）
+      if sensor_check_count < 10:
+        if not gyro_connected and sensor_sm.updated['gyroscope']:
+          gyro_connected = True
+          print("✅陀螺仪连接成功，数据输出正常！")
+        elif not gyro_connected:
+          print("❌ 正在等待陀螺仪连接...")
+        sensor_check_count += 1
     cloudlog.debug(running)
 
     # send managerState
@@ -321,12 +338,13 @@ def manager_thread() -> None:
 
 def main() -> None:
   manager_init()
-  print(f"python ../../opendbc/car/byd/values.py > {Params().get_param_path()}/SupportedCars")
-  #os.system(f"python ../../opendbc/car/hyundai/values.py > {Params().get_param_path()}/SupportedCars")
-  os.system(f"python ../../opendbc/car/byd/values.py > {Params().get_param_path()}/SupportedCars")
-  os.system(f"python ../../opendbc/car/gm/values.py > {Params().get_param_path()}/SupportedCars_gm")
-  os.system(f"python ../../opendbc/car/toyota/values.py > {Params().get_param_path()}/SupportedCars_toyota")
-  os.system(f"python ../../opendbc/car/mazda/values.py > {Params().get_param_path()}/SupportedCars_mazda")
+  print(f"python opendbc/car/byd/values.py > {Params().get_param_path()}/SupportedCars")
+  os.system(f"python ./opendbc/car/hyundai/values.py > {Params().get_param_path()}/SupportedCars")
+  os.system(f"python ./opendbc/car/byd/values.py > {Params().get_param_path()}/SupportedCars_byd")
+  os.system(f"python ./opendbc/car/gm/values.py > {Params().get_param_path()}/SupportedCars_gm")
+  os.system(f"python ./opendbc/car/toyota/values.py > {Params().get_param_path()}/SupportedCars_toyota")
+  os.system(f"python ./opendbc/car/mazda/values.py > {Params().get_param_path()}/SupportedCars_mazda")
+  os.system(f"python ./opendbc/car/volkswagen/values.py > {Params().get_param_path()}/SupportedCars_volkswagen")
 
   if os.getenv("PREPAREONLY") is not None:
     return

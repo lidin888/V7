@@ -1209,6 +1209,9 @@ struct ModelDataV2 {
 
   struct Action {
     desiredCurvature @0 :Float32;
+    desiredAcceleration @1 :Float32;
+    shouldStop @2 :Bool;
+    desiredVelocity @3 :Float32;
   }
 }
 

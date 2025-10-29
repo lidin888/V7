@@ -90,31 +90,31 @@
 <context>
     <name>CarrotPanel</name>
     <message>
-        <source>Start</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Cruise</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Speed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Tuning</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Disp</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Path</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>SELECT YOUR CAR</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>开始</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>巡航</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>速度</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>调整</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>显示</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>路径</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1328,15 +1328,15 @@ Esto puede tardar un minuto.</translation>
         <translation>Activar el control longitudinal (fase experimental) para permitir el modo Experimental.</translation>
     </message>
     <message>
-        <source>Enable Modified Stock Longitudinal Control</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>On this car it works by multiplying a percentage smooth rate based on the distance of front cars detected by mrr.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>MoreRelaxed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable BYD Modified Stock Longitudinal Control</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

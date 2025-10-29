@@ -311,7 +311,10 @@ std::unordered_map<std::string, uint32_t> keys = {
     {"AdjustLaneOffset", PERSISTENT},
     {"AdjustCurveOffset", PERSISTENT},
     {"AdjustLaneTime", PERSISTENT},
+    {"PathOffset", PERSISTENT},
     {"LaneChangeNeedTorque", PERSISTENT},
+    {"LaneChangeDelay", PERSISTENT},
+    {"LaneChangeBsd", PERSISTENT},
     {"MaxAngleFrames", PERSISTENT},
     {"SoftHoldMode", PERSISTENT},
     {"CarrotLatControl", PERSISTENT },
@@ -348,7 +351,7 @@ std::unordered_map<std::string, uint32_t> keys = {
 
 
 Params::Params(const std::string &path) {
-  params_prefix = "/" + util::getenv("OPENPILOT_PREFIX", "d");
+  params_prefix = "/" + util::getenv("OPENPILOT_PREFIX", "cpbyd");  //33333333333333333333333333333333333333333
   params_path = ensure_params_path(params_prefix, path);
 }
 
@@ -382,6 +385,8 @@ int Params::put(const char* key, const char* value, size_t value_size) {
   // 3) fsync() the temp file
   // 4) rename the temp file to the real name
   // 5) fsync() the containing directory
+  //char kk[]="CarrotLatContro";
+  //if (strcmp(key, kk) == 0) printf("6666666666666666666666666666666:%s  %s",key,value);
   std::string tmp_path = params_path + "/.tmp_value_XXXXXX";
   int tmp_fd = mkstemp((char*)tmp_path.c_str());
   if (tmp_fd < 0) return -1;
