@@ -13,6 +13,7 @@ from openpilot.common.gpio import gpio_set, gpio_init, get_irqs_for_action
 from openpilot.system.hardware.base import HardwareBase, ThermalConfig, ThermalZone
 from openpilot.system.hardware.tici import iwlist
 from openpilot.system.hardware.tici.pins import GPIO
+from openpilot.system.hardware.hw import Paths
 from openpilot.system.hardware.tici.amplifier import Amplifier
 
 NM = 'org.freedesktop.NetworkManager'
@@ -127,7 +128,7 @@ class Tici(HardwareBase):
     subprocess.check_output(["sudo", "reboot"])
 
   def uninstall(self):
-    Path("/data/__system_reset__").touch()
+    Path(os.path.join(Paths.data_root(), "__system_reset__")).touch()
     os.sync()
     self.reboot()
 

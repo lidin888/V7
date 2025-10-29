@@ -1,0 +1,4 @@
+write(1, "c8ffbf0f1f18 Too bad...isatty su"..., 39) = 39
+write(1, "open /dev/ttyUSB0 success\n", 26) = 26
+write(1, "isatty success!\n", 16)       = 16
+strace: Process 181846 detached

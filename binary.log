@@ -1,0 +1,5 @@
+c8ffbf0f1f18 Too bad...isatty success!
+open /dev/ttyUSB0 success
+isatty success!
+115200 baud find sensor
+

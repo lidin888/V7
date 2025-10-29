@@ -1,0 +1,17 @@
+ioctl(3, SIOCGIFHWADDR, {ifr_name="enp2s0", ifr_hwaddr={sa_family=ARPHRD_ETHER, sa_data=c8:ff:bf:0f:1f:18}}) = 0
+ioctl(0, TCGETS, {c_iflag=BRKINT|ICRNL|IXON|IXANY|IMAXBEL|IUTF8, c_oflag=NL0|CR0|TAB0|BS0|VT0|FF0|OPOST|ONLCR, c_cflag=B38400|CS8|CREAD|HUPCL, c_lflag=ISIG|ICANON|ECHO|ECHOE|ECHOK|IEXTEN|ECHOCTL|ECHOKE, ...}) = 0
+write(1, "c8ffbf0f1f18 Too bad...isatty success!\n", 39) = 39
+ioctl(3, TCGETS, {c_iflag=, c_oflag=NL0|CR0|TAB0|BS0|VT0|FF0|, c_cflag=B115200|CS8|CREAD|CLOCAL, c_lflag=, ...}) = 0
+ioctl(3, TCFLSH, TCIFLUSH)              = 0
+ioctl(3, TCGETS, {c_iflag=, c_oflag=NL0|CR0|TAB0|BS0|VT0|FF0|, c_cflag=B115200|CS8|CREAD|CLOCAL, c_lflag=, ...}) = 0
+ioctl(3, SNDCTL_TMR_START or TCSETS, {c_iflag=, c_oflag=NL0|CR0|TAB0|BS0|VT0|FF0|, c_cflag=B115200|CS8|CREAD|CLOCAL, c_lflag=, ...}) = 0
+ioctl(3, TCGETS, {c_iflag=, c_oflag=NL0|CR0|TAB0|BS0|VT0|FF0|, c_cflag=B115200|CS8|CREAD|CLOCAL, c_lflag=, ...}) = 0
+write(1, "open /dev/ttyUSB0 success\n", 26) = 26
+ioctl(0, TCGETS, {c_iflag=, c_oflag=NL0|CR0|TAB0|BS0|VT0|FF0|, c_cflag=B115200|CS8|CREAD|CLOCAL, c_lflag=, ...}) = 0
+write(1, "isatty success!\n", 16)       = 16
+ioctl(0, TCGETS, {c_iflag=, c_oflag=NL0|CR0|TAB0|BS0|VT0|FF0|, c_cflag=B115200|CS8|CREAD|CLOCAL, c_lflag=, ...}) = 0
+ioctl(0, TCFLSH, TCIFLUSH)              = 0
+ioctl(0, TCGETS, {c_iflag=, c_oflag=NL0|CR0|TAB0|BS0|VT0|FF0|, c_cflag=B115200|CS8|CREAD|CLOCAL, c_lflag=, ...}) = 0
+ioctl(0, SNDCTL_TMR_START or TCSETS, {c_iflag=, c_oflag=NL0|CR0|TAB0|BS0|VT0|FF0|, c_cflag=B115200|CS8|CREAD|CLOCAL, c_lflag=, ...}) = 0
+ioctl(0, TCGETS, {c_iflag=, c_oflag=NL0|CR0|TAB0|BS0|VT0|FF0|, c_cflag=B115200|CS8|CREAD|CLOCAL, c_lflag=, ...}) = 0
+strace: Process 181981 detached

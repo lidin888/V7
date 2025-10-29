@@ -1,9 +1,11 @@
 import os
 import operator
 import importlib.util
+from typing import Any, Optional
 
 from cereal import car
 from openpilot.common.params import Params
+from openpilot.common.swaglog import cloudlog
 from openpilot.system.hardware import PC, TICI
 from openpilot.system.manager.process import PythonProcess, NativeProcess, DaemonProcess
 
@@ -60,6 +62,68 @@ def only_offroad(started: bool, params: Params, CP: car.CarParams) -> bool:
 
 def check_fleet(started, params, CP: car.CarParams) -> bool:
   return FLASK_AVAILABLE
+
+def jy62_sensor(started: bool, params: Params, CP: Optional[Any]) -> bool:
+  """
+  检查JY62陀螺仪是否应该运行
+  - 检查设备连接和参数状态
+  - 输出详细的启动和运行条件日志
+  """
+  print("\n============ JY62传感器状态检查开始 ============")
+  cloudlog.info("开始JY62传感器状态检查")
+
+  # 检查串口设备是否存在
+  serial_ports = ["/dev/ttyUSB0", "/dev/ttyUSB1", "/dev/ttyS0"]
+  serial_exists = False
+  serial_port = None
+  for port in serial_ports:
+    if os.path.exists(port):
+      serial_exists = True
+      serial_port = port
+      break
+  print(f"串口设备状态: {'存在' if serial_exists else '不存在'} ({serial_port if serial_exists else 'N/A'})")
+
+  # 检查设备权限
+  if serial_exists:
+    try:
+      st = os.stat(serial_port)
+      perms = oct(st.st_mode)[-3:]
+      owner = st.st_uid
+      print(f"串口设备权限: {perms}, 所有者UID: {owner}")
+    except Exception as e:
+      print(f"无法获取串口设备权限信息: {e}")
+
+  # 检查传感器连接状态参数
+  gyro_connected = params.get_bool("GyroSensorConnected")
+  accel_connected = params.get_bool("AccelSensorConnected")
+  print(f"参数状态:")
+  print(f"  - 陀螺仪连接状态: {'已连接' if gyro_connected else '未连接'}")
+  print(f"  - 加速度计连接状态: {'已连接' if accel_connected else '未连接'}")
+
+  # 检查车辆状态
+  print(f"车辆状态:")
+  print(f"  - 车辆已启动: {'是' if started else '否'}")
+
+  # 决定是否运行传感器进程
+  # 在PC模式下，即使未启动也可以运行传感器进程进行测试
+  should_run = (started or PC) and (gyro_connected or serial_exists)
+  print(f"\n运行条件分析:")
+  print(f"  - 车辆已启动: {'✓' if started else '✗'}")
+  print(f"  - PC模式: {'✓' if PC else '✗'}")
+  print(f"  - 传感器已连接: {'✓' if gyro_connected else '✗'}")
+  print(f"  - 串口设备存在: {'✓' if serial_exists else '✗'}")
+  print(f"\n最终决定: {'启动' if should_run else '不启动'} JY62传感器进程")
+  if serial_port:
+    print(f"使用串口设备: {serial_port}")
+  print("=======================================\n")
+
+  # 记录到系统日志
+  if should_run:
+    cloudlog.info(f"JY62传感器进程即将启动 (使用设备: {serial_port})")
+  else:
+    cloudlog.info(f"JY62传感器进程未启动 - 车辆启动:{started}, PC模式:{PC}, 陀螺仪:{gyro_connected}, 串口:{serial_exists}")
+
+  return should_run
 
 def or_(*fns):
   return lambda *args: operator.or_(*(fn(*args) for fn in fns))
@@ -127,6 +191,10 @@ procs = [
   #PythonProcess("fleet_manager", "selfdrive.frogpilot.fleetmanager.fleet_manager", check_fleet, enabled=not PC),
   PythonProcess("fleet_manager", "selfdrive.frogpilot.fleetmanager.fleet_manager", check_fleet),
   PythonProcess("carrot_man", "selfdrive.carrot.carrot_man", always_run),#, enabled=not PC),
+
+  # JY62陀螺仪传感器进程
+  PythonProcess("sensord_jy62", "system.sensord.jy62.wrapper_sensord_jy62", jy62_sensor, enabled=True),
 ]
 
 managed_processes = {p.name: p for p in procs}
+

@@ -9,15 +9,19 @@ import threading
 import time
 import numpy as np
 import zmq
+import traceback
 from datetime import datetime
 
 from ftplib import FTP
+import ftplib
 from cereal import log
 import cereal.messaging as messaging
 from openpilot.common.realtime import Ratekeeper
 from openpilot.common.params import Params
 from openpilot.common.filter_simple import StreamingMovingAverage
 from openpilot.system.hardware import PC, TICI
+from openpilot.system.hardware.hw import Paths
+from openpilot.common.swaglog import cloudlog
 from openpilot.selfdrive.navd.helpers import Coordinate
 
 try:
@@ -181,6 +185,12 @@ class CarrotMan:
   def __init__(self):
     self.params = Params()
     self.params_memory = Params("/dev/shm/params")
+    # Ensure expected /data paths exist on host systems (helpful for desktop runs)
+    try:
+      self.ensure_data_paths()
+    except Exception:
+      # Non-fatal: if this fails, later file operations will handle missing paths
+      pass
     self.sm = messaging.SubMaster(['deviceState', 'carState', 'controlsState', 'longitudinalPlan', 'modelV2', 'selfdriveState', 'carControl'])
     self.pm = messaging.PubMaster(['carrotMan', "navRoute", "navInstruction"])
 
@@ -238,9 +248,9 @@ class CarrotMan:
 
   def get_local_ip(self):
       try:
-          # 외부 서버와의 연결을 통해 로컬 IP 확인
+          # 通过连接外部服务器获取本地IP
           with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
-              s.connect(("8.8.8.8", 80))  # Google DNS로 연결 시도
+              s.connect(("8.8.8.8", 80))  # 尝试连接Google DNS
               return s.getsockname()[0]
       except Exception as e:
           return f"Error: {e}"
@@ -455,110 +465,185 @@ class CarrotMan:
 
 
   def carrot_man_thread(self):
+    """CarrotMan UDP服务线程
+
+    处理UDP数据包的接收和解析。使用超时机制确保服务的稳定性。
+    """
     while True:
       try:
         with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as sock:
-          sock.settimeout(10)  # 소켓 타임아웃 설정 (10초)
-          sock.bind(('0.0.0.0', self.carrot_man_port))  # UDP 포트 바인딩
-          print("#########carrot_man_thread: UDP thread started...")
+          sock.settimeout(10)  # 设置10秒超时
+          sock.bind(('0.0.0.0', self.carrot_man_port))  # 绑定UDP端口
+          cloudlog.info("UDP线程启动: CarrotMan UDP服务就绪...")
 
           while True:
             try:
-              #self.remote_addr = None
-              # 데이터 수신 (UDP는 recvfrom 사용)
+              # 接收UDP数据(最大4096字节)
               try:
-                data, remote_addr = sock.recvfrom(4096)  # 최대 4096 바이트 수신
-                #print(f"Received data from {self.remote_addr}")
+                data, remote_addr = sock.recvfrom(4096)
 
                 if not data:
-                  raise ConnectionError("No data received")
+                  raise ConnectionError("未收到数据")
 
-                if self.remote_addr is None:
-                  print("Connected to: ", remote_addr)
-                self.remote_addr = remote_addr
+                # 更新远程地址
+                if self.remote_addr != remote_addr:
+                  cloudlog.info(f"新连接来自: {remote_addr}")
+                  self.remote_addr = remote_addr
+
+                # 解析JSON数据
                 try:
                   json_obj = json.loads(data.decode())
                   self.carrot_serv.update(json_obj)
+                except json.JSONDecodeError as e:
+                  cloudlog.error(f"JSON解析错误: {e}")
+                  cloudlog.debug(f"收到的原始数据: {data}")
+                except UnicodeDecodeError as e:
+                  cloudlog.error(f"数据解码错误: {e}")
                 except Exception as e:
-                  print(f"carrot_man_thread: json error...: {e}")
-                  print(data)
+                  cloudlog.error(f"数据处理错误: {e}")
 
-                # 응답 메시지 생성 및 송신 (UDP는 sendto 사용)
-                #try:
-                #  msg = self.make_send_message()
-                #  sock.sendto(msg.encode('utf-8'), self.remote_addr)
-                #except Exception as e:
-                #  print(f"carrot_man_thread: send error...: {e}")
-
-              except TimeoutError:
-                print("Waiting for data (timeout)...")
+              except socket.timeout:
+                cloudlog.info("等待数据中(超时)...")
                 self.remote_addr = None
                 time.sleep(1)
+                continue
+
+              except ConnectionError as e:
+                cloudlog.error(f"连接错误: {e}")
+                self.remote_addr = None
+                break
 
               except Exception as e:
-                print(f"carrot_man_thread: error...: {e}")
+                cloudlog.error(f"接收数据错误: {e}")
                 self.remote_addr = None
                 break
 
             except Exception as e:
-              print(f"carrot_man_thread: recv error...: {e}")
+              cloudlog.exception(f"UDP服务内部错误: {e}")
               self.remote_addr = None
               break
 
           time.sleep(1)
+
       except Exception as e:
         self.remote_addr = None
-        print(f"Network error, retrying...: {e}")
+        cloudlog.error(f"网络错误,正在重试: {e}")
         time.sleep(2)
 
   def make_tmux_data(self):
     try:
-      subprocess.run("rm /data/media/tmux.log; tmux capture-pane -pq -S-1000 > /data/media/tmux.log", shell=True, capture_output=True, text=False)
-      subprocess.run("/data/openpilot/selfdrive/apilot.py", shell=True, capture_output=True, text=False)
+        # 确保目标目录存在，用于写入tmux日志
+        media_path = os.path.join(Paths.data_root(), "media")
+        try:
+          os.makedirs(media_path, exist_ok=True)
+        except Exception:
+          cloudlog.warning(f"无法创建media目录: {media_path}")
+          pass
+
+        tmux_log = os.path.join(media_path, "tmux.log")
+        try:
+          subprocess.run(f"rm {tmux_log}; tmux capture-pane -pq -S-1000 > {tmux_log}",
+                       shell=True, capture_output=True, text=False, check=True)
+        except subprocess.CalledProcessError as e:
+          cloudlog.error(f"TMUX 命令执行失败: {e}")
+          return
+        except Exception as e:
+          cloudlog.error(f"TMUX 日志创建错误: {e}")
+          return
+
+        # 执行apilot脚本
+        apilot_path = os.path.join(Paths.data_root(), "openpilot", "selfdrive", "apilot.py")
+        try:
+          subprocess.run(apilot_path, shell=True, capture_output=True, text=False, check=True)
+        except subprocess.CalledProcessError as e:
+          cloudlog.error(f"apilot.py执行失败: {e}")
+        except Exception as e:
+          cloudlog.error(f"apilot.py执行错误: {e}")
     except Exception as e:
-      print(f"TMUX creation error: {e}")
+      cloudlog.error(f"TMUX数据创建失败: {e}")
       return
 
   def send_tmux(self, ftp_password, tmux_why, send_settings=False):
+    """将TMUX日志上传到FTP服务器
 
+    Args:
+        ftp_password: FTP密码
+        tmux_why: 上传原因描述
+        send_settings: 是否同时上传设置文件
+    """
     ftp_server = "shind0.synology.me"
     ftp_port = 8021
     ftp_username = "carrotpilot"
-    ftp = FTP()
-    ftp.connect(ftp_server, ftp_port)
-    ftp.login(ftp_username, ftp_password)
-    car_selected = Params().get("CarName")
-    if car_selected is None:
-      car_selected = "none"
-    else:
-      car_selected = car_selected.decode('utf-8')
-
-    directory = "CR2 " + car_selected + " " + Params().get("DongleId").decode('utf-8')
-    current_time = datetime.now().strftime("%Y%m%d-%H%M%S")
-    filename = tmux_why + "-" + current_time + "-" + Params().get("GitBranch").decode('utf-8') + ".txt"
+    ftp = None
 
     try:
-      ftp.mkd(directory)
+        # 初始化FTP连接
+        ftp = FTP()
+        try:
+            ftp.connect(ftp_server, ftp_port)
+            ftp.login(ftp_username, ftp_password)
+        except ftplib.error_perm as e:
+            cloudlog.error(f"FTP登录失败: {e}")
+            return
+        except Exception as e:
+            cloudlog.error(f"FTP连接错误: {e}")
+            return
+
+        # 获取车辆信息
+        car_selected = Params().get("CarName")
+        car_selected = "none" if car_selected is None else car_selected.decode('utf-8')
+        dongle_id = Params().get("DongleId").decode('utf-8')
+
+        # 构建目录和文件名
+        directory = f"CR2 {car_selected} {dongle_id}"
+        current_time = datetime.now().strftime("%Y%m%d-%H%M%S")
+        git_branch = Params().get("GitBranch").decode('utf-8')
+        filename = f"{tmux_why}-{current_time}-{git_branch}.txt"
+
+        # 创建并进入目录
+        try:
+            ftp.mkd(directory)
+        except ftplib.error_perm as e:
+            # 忽略目录已存在的错误
+            if not (str(e).startswith('550') and 'File exists' in str(e)):
+                cloudlog.warning(f"FTP目录创建失败: {e}")
+
+        try:
+            ftp.cwd(directory)
+        except ftplib.error_perm as e:
+            cloudlog.error(f"FTP切换目录失败: {e}")
+            return
+
+        # 上传TMUX日志
+        tmux_log = os.path.join(Paths.data_root(), "media", "tmux.log")
+        try:
+            with open(tmux_log, "rb") as file:
+                ftp.storbinary(f'STOR {filename}', file)
+                cloudlog.info(f"TMUX日志上传成功: {filename}")
+        except (IOError, ftplib.error_perm) as e:
+            cloudlog.error(f"TMUX日志上传失败: {e}")
+            return
+
+        # 上传设置文件
+        if send_settings:
+            self.save_toggle_values()
+            toggle_path = os.path.join(Paths.data_root(), 'toggle_values.json')
+            try:
+                with open(toggle_path, "rb") as file:
+                    settings_filename = f"toggles-{current_time}.json"
+                    ftp.storbinary(f'STOR {settings_filename}', file)
+                    cloudlog.info(f"设置文件上传成功: {settings_filename}")
+            except (IOError, ftplib.error_perm) as e:
+                cloudlog.error(f"设置文件上传失败: {e}")
+
     except Exception as e:
-      print(f"Directory creation failed: {e}")
-    ftp.cwd(directory)
-
-    try:
-      with open("/data/media/tmux.log", "rb") as file:
-        ftp.storbinary(f'STOR {filename}', file)
-    except Exception as e:
-      print(f"ftp sending error...: {e}")
-
-    if send_settings:
-      self.save_toggle_values()
-      try:
-        #with open("/data/backup_params.json", "rb") as file:
-        with open("/data/toggle_values.json", "rb") as file:
-          ftp.storbinary(f'STOR toggles-{current_time}.json', file)
-      except Exception as e:
-        print(f"ftp params sending error...: {e}")
-
-    ftp.quit()
+        cloudlog.error(f"FTP操作发生未知错误: {e}")
+    finally:
+        if ftp:
+            try:
+                ftp.quit()
+            except Exception:
+                pass
 
   def carrot_panda_debug(self):
     #time.sleep(2)
@@ -566,7 +651,8 @@ class CarrotMan:
       if self.show_panda_debug:
         self.show_panda_debug = False
         try:
-          subprocess.run("/data/openpilot/selfdrive/debug/debug_console_carrot.py", shell=True)
+          debug_path = os.path.join(Paths.data_root(), "openpilot", "selfdrive", "debug", "debug_console_carrot.py")
+          subprocess.run(debug_path, shell=True)
         except Exception as e:
           print(f"debug_console error: {e}")
           time.sleep(2)
@@ -578,16 +664,55 @@ class CarrotMan:
       import openpilot.selfdrive.frogpilot.fleetmanager.helpers as fleet
 
       toggle_values = fleet.get_all_toggle_values()
-      file_path = os.path.join('/data', 'toggle_values.json')
-      with open(file_path, 'w') as file:
-        json.dump(toggle_values, file, indent=2)
+      # ensure /data exists and is writable (desktop runs may not have /data mounted)
+      try:
+        os.makedirs(Paths.data_root(), exist_ok=True)
+      except Exception:
+        pass
+      file_path = os.path.join(Paths.data_root(), 'toggle_values.json')
+      try:
+        with open(file_path, 'w') as file:
+          json.dump(toggle_values, file, indent=2)
+      except Exception as e:
+        print(f"save_toggle_values write error: {e}")
     except Exception as e:
       print(f"save_toggle_values error: {e}")
 
-  def carrot_cmd_zmq(self):
+  def ensure_data_paths(self):
+    """确保常用的数据目录存在，避免桌面运行时文件操作失败
 
+    创建以下目录:
+    - /data/media: 用于存储媒体文件
+    - /data/params: 用于存储参数文件
+    """
+    required_paths = [
+      os.path.join(Paths.data_root(), 'media'),
+      os.path.join(Paths.data_root(), 'params'),
+    ]
+
+    for path in required_paths:
+      try:
+        os.makedirs(path, exist_ok=True)
+        cloudlog.debug(f"确保目录存在: {path}")
+      except PermissionError:
+        cloudlog.warning(f"无权限创建目录: {path}")
+      except Exception as e:
+        # 忽略目录已存在等错误，让上层代码处理文件缺失问题
+        cloudlog.warning(f"创建目录失败: {path} ({e})")
+        pass
+
+  def carrot_cmd_zmq(self):
+    """CarrotMan的ZMQ命令处理线程
+
+    处理通过ZMQ接收到的各种命令请求，包括:
+    - echo命令执行
+    - tmux数据收集和发送
+    - 异常监控和处理
+    """
     context = zmq.Context()
+
     def setup_socket():
+        """设置ZMQ socket和poller"""
         socket = context.socket(zmq.REP)
         socket.bind("tcp://*:7710")
         poller = zmq.Poller()
@@ -598,57 +723,106 @@ class CarrotMan:
     isOnroadCount = 0
     is_tmux_sent = False
 
-    print("#########carrot_cmd_zmq: thread started...")
+    cloudlog.info("ZMQ命令处理线程启动...")
+
     while True:
       try:
+        # 轮询等待消息
         socks = dict(poller.poll(100))
 
         if socket in socks and socks[socket] == zmq.POLLIN:
-          message = socket.recv(zmq.NOBLOCK)
-          print(f"Received:7710 request: {message}")
-          json_obj = json.loads(message.decode())
+          try:
+            message = socket.recv(zmq.NOBLOCK)
+            cloudlog.debug(f"收到ZMQ请求: {message}")
+            json_obj = json.loads(message.decode())
+          except json.JSONDecodeError as e:
+            cloudlog.error(f"ZMQ消息JSON解析错误: {e}")
+            continue
+          except Exception as e:
+            cloudlog.error(f"ZMQ消息接收错误: {e}")
+            continue
         else:
           json_obj = None
 
+        # 处理空闲状态
         if json_obj is None:
+          # 更新onroad计数器
           isOnroadCount = isOnroadCount + 1 if self.params.get_bool("IsOnroad") else 0
           if isOnroadCount == 0:
             is_tmux_sent = False
           if isOnroadCount == 1:
             self.show_panda_debug = True
 
-          network_type = self.sm['deviceState'].networkType # if not force_wifi else NetworkType.wifi
-          networkConnected = False if network_type == NetworkType.none else True
+          # 检查网络状态
+          network_type = self.sm['deviceState'].networkType
+          networkConnected = network_type != NetworkType.none
 
+          # TMUX数据处理
           if isOnroadCount == 500:
+            cloudlog.info("开始收集TMUX数据...")
             self.make_tmux_data()
           if isOnroadCount > 500 and not is_tmux_sent and networkConnected:
-            self.send_tmux("Ekdrmsvkdlffjt7710", "onroad", send_settings = True)
+            cloudlog.info("发送onroad TMUX数据...")
+            self.send_tmux("Ekdrmsvkdlffjt7710", "onroad", send_settings=True)
             is_tmux_sent = True
+
+          # 异常处理
           if self.params.get_bool("CarrotException") and networkConnected:
+            cloudlog.warning("检测到CarrotException，收集和发送异常数据")
             self.params.put_bool("CarrotException", False)
             self.make_tmux_data()
             self.send_tmux("Ekdrmsvkdlffjt7710", "exception")
+
+        # 处理echo命令
         elif 'echo_cmd' in json_obj:
           try:
-            result = subprocess.run(json_obj['echo_cmd'], shell=True, capture_output=True, text=False)
+            result = subprocess.run(json_obj['echo_cmd'],
+                                 shell=True,
+                                 capture_output=True,
+                                 text=False,
+                                 check=True)
             try:
               stdout = result.stdout.decode('utf-8')
             except UnicodeDecodeError:
-              stdout = result.stdout.decode('euc-kr', 'ignore')
+              stdout = result.stdout.decode('utf-8', 'ignore')
 
-            echo = json.dumps({"echo_cmd": json_obj['echo_cmd'], "result": stdout})
+            echo = json.dumps({
+              "echo_cmd": json_obj['echo_cmd'],
+              "result": stdout
+            })
+            cloudlog.debug(f"Echo命令执行成功: {json_obj['echo_cmd']}")
+          except subprocess.CalledProcessError as e:
+            echo = json.dumps({
+              "echo_cmd": json_obj['echo_cmd'],
+              "result": f"命令执行失败: {e}"
+            })
+            cloudlog.error(f"Echo命令执行失败: {e}")
           except Exception as e:
-            echo = json.dumps({"echo_cmd": json_obj['echo_cmd'], "result": f"exception error: {str(e)}"})
-          #print(echo)
+            echo = json.dumps({
+              "echo_cmd": json_obj['echo_cmd'],
+              "result": f"未知错误: {e}"
+            })
+            cloudlog.error(f"Echo命令处理错误: {e}")
           socket.send(echo.encode())
+
+        # 处理tmux发送请求
         elif 'tmux_send' in json_obj:
+          cloudlog.info("处理TMUX发送请求...")
           self.make_tmux_data()
           self.send_tmux(json_obj['tmux_send'], "tmux_send")
-          echo = json.dumps({"tmux_send": json_obj['tmux_send'], "result": "success"})
+          echo = json.dumps({
+            "tmux_send": json_obj['tmux_send'],
+            "result": "success"
+          })
           socket.send(echo.encode())
+
+      except zmq.ZMQError as e:
+        cloudlog.error(f"ZMQ错误: {e}")
+        socket.close()
+        time.sleep(1)
+        socket, poller = setup_socket()
       except Exception as e:
-        print(f"carrot_cmd_zmq error: {e}")
+        cloudlog.exception(f"ZMQ处理线程错误: {e}")
         socket.close()
         time.sleep(1)
         socket, poller = setup_socket()
@@ -673,59 +847,90 @@ class CarrotMan:
 
 
   def carrot_route(self):
-    host = '0.0.0.0'  # 혹은 다른 호스트 주소
-    port = 7709  # 포트 번호
+    """CarrotMan路由线程
+
+    处理来自CarrotMan的路由数据:
+    - 接收TCP连接
+    - 处理二进制导航点数据
+    - 更新导航路线
+    - 发送navRoute消息
+    """
+    host = '0.0.0.0'  # 监听所有网络接口
+    port = 7709  # TCP端口
 
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+      # 设置socket选项
+      s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
       s.bind((host, port))
-      s.listen()
+      s.listen(1)  # 最大连接数为1
 
       while True:
-        print("################# waiting connection from CarrotMan route #####################")
-        conn, addr = s.accept()
-        with conn:
-          print(f"Connected by {addr}")
-          #self.clear_route()
+        cloudlog.info("等待CarrotMan路由连接...")
+        try:
+          conn, addr = s.accept()
+          with conn:
+            cloudlog.info(f"接受来自 {addr} 的连接")
 
-          # 전체 데이터 크기 수신
-          total_size_bytes = self.recvall(conn, 4)
-          if not total_size_bytes:
-            print("Connection closed or error occurred")
-            continue
-          try:
-            total_size = struct.unpack('!I', total_size_bytes)[0]
-            # 전체 데이터를 한 번에 수신
-            all_data = self.recvall(conn, total_size)
-            if all_data is None:
-                print("Connection closed or incomplete data received")
+            # 接收数据大小信息
+            total_size_bytes = self.recvall(conn, 4)
+            if not total_size_bytes:
+              cloudlog.error("连接关闭或发生错误")
+              continue
+
+            try:
+              total_size = struct.unpack('!I', total_size_bytes)[0]
+              cloudlog.debug(f"即将接收 {total_size} 字节的数据")
+
+              # 接收所有导航点数据
+              all_data = self.recvall(conn, total_size)
+              if all_data is None:
+                cloudlog.error("连接关闭或数据接收不完整")
                 continue
 
-            self.navi_points = []
-            points = []
-            for i in range(0, len(all_data), 8):
-              x, y = struct.unpack('!ff', all_data[i:i+8])
-              self.navi_points.append((x, y))
-              coord = Coordinate.from_mapbox_tuple((x, y))
-              points.append(coord)
-            coords = [c.as_dict() for c in points]
-            self.navi_points_start_index = 0
-            self.navi_points_active = True
-            print("Received points:", len(self.navi_points))
-            #print("Received points:", self.navi_points)
+              # 解析导航点数据
+              self.navi_points = []
+              points = []
+              for i in range(0, len(all_data), 8):
+                try:
+                  x, y = struct.unpack('!ff', all_data[i:i+8])
+                  self.navi_points.append((x, y))
+                  coord = Coordinate.from_mapbox_tuple((x, y))
+                  points.append(coord)
+                except struct.error as e:
+                  cloudlog.error(f"解析导航点数据失败: {e}")
+                  continue
 
-            msg = messaging.new_message('navRoute', valid=True)
-            msg.navRoute.coordinates = coords
-            self.pm.send('navRoute', msg)
-            #self.carrot_route_active = True
-            #self.params.put_bool_nonblocking("CarrotRouteActive", True)
+              # 转换坐标格式
+              coords = [c.as_dict() for c in points]
+              self.navi_points_start_index = 0
+              self.navi_points_active = True
+              cloudlog.info(f"成功接收 {len(self.navi_points)} 个导航点")
 
-            if len(coords):
-              dest = coords[-1]
-              dest['place_name'] = "External Navi"
-              self.params.put("NavDestination", json.dumps(dest))
+              # 发送导航路线消息
+              msg = messaging.new_message('navRoute', valid=True)
+              msg.navRoute.coordinates = coords
+              self.pm.send('navRoute', msg)
 
-          except Exception as e:
-            print(e)
+              # 如果有坐标点，设置导航目的地
+              if coords:
+                dest = coords[-1]
+                dest['place_name'] = "External Navi"
+                self.params.put("NavDestination", json.dumps(dest))
+                cloudlog.info("已更新导航目的地")
+
+            except struct.error as e:
+              cloudlog.error(f"数据包格式错误: {e}")
+            except json.JSONEncodeError as e:
+              cloudlog.error(f"JSON编码错误: {e}")
+            except Exception as e:
+              cloudlog.exception(f"处理导航数据时发生错误: {e}")
+
+        except socket.error as e:
+          cloudlog.error(f"Socket错误: {e}")
+          time.sleep(1)  # 避免CPU占用过高
+        except Exception as e:
+          cloudlog.exception(f"路由线程发生未知错误: {e}")
+          time.sleep(1)  # 避免CPU占用过高
 
 
   def carrot_curve_speed_params(self):
@@ -1639,7 +1844,7 @@ class CarrotServ:
   def set_time(self, epoch_time, timezone):
     import datetime
     new_time = datetime.datetime.utcfromtimestamp(epoch_time)
-    localtime_path = "/data/etc/localtime"
+    localtime_path = os.path.join(Paths.data_root(), "etc", "localtime")
 
     no_timezone = False
     try:
@@ -1656,17 +1861,17 @@ class CarrotServ:
     print(f"Setting time to {new_time}, diff={diff}")
     zoneinfo_path = f"/usr/share/zoneinfo/{timezone}"
     if os.path.exists(localtime_path) or os.path.islink(localtime_path):
-        try:
-            subprocess.run(["sudo", "rm", "-f", localtime_path], check=True)
-            print(f"Removed existing file or link: {localtime_path}")
-        except subprocess.CalledProcessError as e:
-            print(f"Error removing {localtime_path}: {e}")
-            return
+      try:
+        subprocess.run(["sudo", "rm", "-f", localtime_path], check=True)
+        print(f"Removed existing file or link: {localtime_path}")
+      except subprocess.CalledProcessError as e:
+        print(f"Error removing {localtime_path}: {e}")
+        return
     try:
-        subprocess.run(["sudo", "ln", "-s", zoneinfo_path, localtime_path], check=True)
-        print(f"Timezone successfully set to: {timezone}")
+      subprocess.run(["sudo", "ln", "-s", zoneinfo_path, localtime_path], check=True)
+      print(f"Timezone successfully set to: {timezone}")
     except subprocess.CalledProcessError as e:
-        print(f"Failed to set timezone to {timezone}: {e}")
+      print(f"Failed to set timezone to {timezone}: {e}")
 
 
     try:

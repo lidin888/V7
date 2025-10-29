@@ -19,10 +19,11 @@ from openpilot.common.markdown import parse_markdown
 from openpilot.common.swaglog import cloudlog
 from openpilot.selfdrive.selfdrived.alertmanager import set_offroad_alert
 from openpilot.system.hardware import AGNOS, HARDWARE
+from openpilot.system.hardware.hw import Paths
 from openpilot.system.version import get_build_metadata
 
 LOCK_FILE = os.getenv("UPDATER_LOCK_FILE", "/tmp/safe_staging_overlay.lock")
-STAGING_ROOT = os.getenv("UPDATER_STAGING_ROOT", "/data/safe_staging")
+STAGING_ROOT = os.getenv("UPDATER_STAGING_ROOT", os.path.join(Paths.data_root(), "safe_staging"))
 
 OVERLAY_UPPER = os.path.join(STAGING_ROOT, "upper")
 OVERLAY_METADATA = os.path.join(STAGING_ROOT, "metadata")

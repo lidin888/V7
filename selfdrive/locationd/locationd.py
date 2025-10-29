@@ -98,7 +98,6 @@ class LocationEstimator:
     new_x, new_P = None, None
     if which == "accelerometer" and msg.which() == "acceleration":
       sensor_time = msg.timestamp * 1e-9
-'''
       if not self._validate_sensor_time(sensor_time, t) or not self._validate_timestamp(sensor_time):
         return HandleLogResult.TIMING_INVALID
 
@@ -115,10 +114,8 @@ class LocationEstimator:
         _, new_x, _, new_P, _, _, (acc_err,), _, _ = acc_res
         self.observation_errors[ObservationKind.PHONE_ACCEL] = np.array(acc_err)
         self.observations[ObservationKind.PHONE_ACCEL] = meas
-'''
     elif which == "gyroscope" and msg.which() == "gyroUncalibrated":
       sensor_time = msg.timestamp * 1e-9
-'''
       if not self._validate_sensor_time(sensor_time, t) or not self._validate_timestamp(sensor_time):
         return HandleLogResult.TIMING_INVALID
 
@@ -141,10 +138,9 @@ class LocationEstimator:
         _, new_x, _, new_P, _, _, (gyro_err,), _, _ = gyro_res
         self.observation_errors[ObservationKind.PHONE_GYRO] = np.array(gyro_err)
         self.observations[ObservationKind.PHONE_GYRO] = meas
-'''
     elif which == "carState" and msg.which() == "carState":
       self.car_speed = abs(msg.vEgo)
-      
+
       sensor_time = t
       # # accel
       meas = np.array([msg.aEgo, 0, -9.81])

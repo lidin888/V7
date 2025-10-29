@@ -20,6 +20,7 @@ from openpilot.common.params import Params
 from openpilot.common.realtime import DT_HW
 from openpilot.selfdrive.selfdrived.alertmanager import set_offroad_alert
 from openpilot.system.hardware import HARDWARE, TICI, AGNOS
+from openpilot.system.hardware.hw import Paths
 from openpilot.system.loggerd.config import get_available_percent
 from openpilot.system.statsd import statlog
 from openpilot.common.swaglog import cloudlog
@@ -339,7 +340,7 @@ def hardware_thread(end_event, hw_queue) -> None:
     # TODO: this should move to TICI.initialize_hardware, but we currently can't import params there
     if TICI and HARDWARE.get_device_type() == "tici":
       if not os.path.isfile("/persist/comma/living-in-the-moment"):
-        if not Path("/data/media").is_mount():
+        if not Path(os.path.join(Paths.data_root(), "media")).is_mount():
           pass #set_offroad_alert_if_changed("Offroad_StorageMissing", True)
         else:
           # check for bad NVMe

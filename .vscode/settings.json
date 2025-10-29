@@ -23,5 +23,10 @@
     "system/**",
     "third_party/**",
     "tools/**",
-  ]
+  ],
+  "Lingma.aI Chat.webToolsInAsk/AgentMode": "Auto-execute",
+  "Lingma.aI Chat.mcpToolsInAgentMode": true,
+  "Lingma.DisplayLanguage": "简体中文",
+  "Lingma.PreferredLanguage for AI Chat": "简体中文",
+  "Lingma.PreferredLanguage forCommitMessage": "简体中文"
 }

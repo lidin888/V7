@@ -222,7 +222,9 @@ std::unordered_map<std::string, uint32_t> keys = {
     {"GMapKey", PERSISTENT},
     {"SearchInput", PERSISTENT},
 
-
+    // 传感器连接状态参数
+    {"GyroSensorConnected", PERSISTENT},
+    {"AccelSensorConnected", PERSISTENT},
 
     {"CarSelected3", PERSISTENT},
     {"SupportedCars", PERSISTENT},
